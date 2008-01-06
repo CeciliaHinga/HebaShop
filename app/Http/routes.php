@@ -1,5 +1,6 @@
 <?php
 use App\CategoryType;
+use App;
 use Illuminate\Pagination\Paginator;
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +12,12 @@ use Illuminate\Pagination\Paginator;
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('500',function(){
+	abort(500);
+});
+App::missing(function($exception){
+	return Redirect::route('errors');
+});
 Route::group(['middleware' => ['guest']], function(){ 
 		Route::get('/', function () {
 	$advertisement = CategoryType::orderBy('id','DESC')->paginate(10);
