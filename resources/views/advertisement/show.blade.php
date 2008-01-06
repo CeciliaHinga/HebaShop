@@ -10,7 +10,7 @@
 @endsection
 @section('content')
  {!! Breadcrumb::withLinks(['Home'   => '/',
-   'My Adverts' => '/advertisement',
+   'My Adverts' => '/advertisement/create',
    "$advertisement->ads_title"
    ]) !!}
    <div class="row">

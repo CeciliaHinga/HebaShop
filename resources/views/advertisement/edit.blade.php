@@ -15,26 +15,17 @@
                                 ]) !!}
 
 <div class="row">
-	    <div class="col-lg-12 margin-tb">
+	    <div class="col-lg-10 col-lg-offset-2 margin-tb">
 	        <div class="pull-left">
 	            <h2>Edit New Advert</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('/') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ url('/') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
-	@if (count($errors) > 0)
-		<div class="alert alert-danger">
-			<strong>Whoops!</strong> There were some problems with your input.<br><br>
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
 <hr>
+<div class="col-sm-10 col-sm-offset-2">
 <div>
     Note: name and path values for the image cannot be changed.  If you wish to change these, then delete and create a new image:
 </div>
@@ -45,14 +36,18 @@
 ) !!}
 
     <!-- image name Form Input -->
-    <div>
-
-
+    <div class="form-group">
+    <div class="col-sm-6">
         <ul>
             <li><h4>Image Name:   {{ $advertisement->ads_image. '.' . $advertisement->image_extension }}  </h4></li>
             <li><h4>Image Path:   {{ $advertisement->image_path }} </h4> </li>          
          </ul>
     </div>
+    <div class="col-sm-6">
+    <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advertisement->ads_image. '.' . $advertisement->image_extension . '?'. 'time='. time() }}">
+</div>
+</div>
+<br>
     <div class="form-group">
         <label class="col-md-4 control-label">Title</label>
         <div class="col-md-6">
@@ -140,7 +135,8 @@
 
 
     </div>
-
+</div>
+<br><br>
 @endsection
 @section('scripts')
     <script>
@@ -153,6 +149,26 @@
             else
                 return false;
         }
+                $('#category_id').on('change', function(e){
+
+            var cat_id = e.target.value;
+
+            //ajax
+
+                $.get('/api/category-dropdown?cat+id=' + cat_id, function(data){
+
+                //success data
+                    $('#type_id').empty();
+
+                        $('#type_id').append('<option value="">Please choose one</option>');
+
+                            $.each(data, function(index, subcatObj)
+                            {
+
+                            $('#type_id').append('<option value="' +subcatObj.id+'" required>'+ subcatObj.ads_type + '</option>');
+                        });
+                        });
+            });
 
     </script>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
 use App\Category;
 use App\CategoryType;
 use Intervention\Image\Facades\Image;
@@ -38,12 +39,12 @@ class AdvertisesController extends Controller
 		
 		return View('advertisement.index',compact('categories'));
 	}
-	public function create()
+	public function create(Request $request)
 	{
-		//$categories = Category::orderBy('name', 'asc')->get();
-		
-		//return View('advertisement.create',compact('categories'));
-	}
+		$advertisement = CategoryType::orderBy('id', 'DESC')->paginate(5);
+        return view('advertisement.create',compact('advertisement'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
+    }
 	public function formatCheckboxValue($advertisement)
 {
 
@@ -181,7 +182,7 @@ public function destroy($id)
 
    flash()->success('advert deleted!');
 
-   return redirect()->route('/');
+   return redirect()->route('advertisement.create');
 
 }
 

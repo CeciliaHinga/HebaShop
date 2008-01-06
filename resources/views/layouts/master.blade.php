@@ -81,6 +81,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-2">
                 <p style="padding:20px"></p>
+                <img src="/pics/ads.jpg" class="img-responsive">
                 </div>
             </div>
         </div>
@@ -108,8 +109,8 @@
 <ul class="nav nav-pills nav-stacked">
 <li class="dropdown bg-1"><a href="/categories/1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
-    <li><a href="/types/1">Electronics</a></li>
-    <li><a href="/types/2">Toys</a></li> 
+    <li><a href="/types/1">Toys</a></li>
+    <li><a href="/types/2">Electronics</a></li> 
   </ul> </li>
   <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Real Estates</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
@@ -123,8 +124,8 @@
   </ul> </li>
     <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vehicles</a>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="/types/7">Cars</a></li>
-    <li><a href="/types/8">Bikes</a></li>
+    <li><a href="/types/7">Bikes</a></li>
+    <li><a href="/types/8">Cars</a></li>
   </ul>
   </li>
   </ul>
@@ -149,9 +150,9 @@
                 <div class="col-xs-6 col-sm-5">
                     <h5>Our Address</h5>
                     <address>Address<br>
-                      <i class="fa fa-phone"></i>: +711 391705<br>
-                      <i class="fa fa-envelope">P.O Box</i>: 
-                        <a href="mailto:ceciliahinga@gmail.com">ceciliahinga(at)gmail(dot)com</a>
+                      <i class="fa fa-phone"></i>: +254 711 391705<br>
+                      <i class="fa fa-envelope"> P.O Box 22701-00400 Nairobi</i></br>
+                      Email:<a href="mailto:ceciliahinga@gmail.com"> ceciliahinga(at)gmail(dot)com</a>
                    </address>
                 </div>
                 <div class="col-xs-12 col-sm-4">

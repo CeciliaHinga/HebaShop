@@ -76,10 +76,9 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RolesController@update','middleware' => ['permission:role-edit']]);
 	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RolesController@destroy','middleware' => ['permission:role-delete']]);
 
-	Route::get('/',['as'=>'index','uses'=>'AdvertisesController@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
+	/*Route::get('/',['as'=>'index','uses'=>'AdvertisesController@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);*/
 	Route::get('advertisement',['as'=>'advertisement.index','uses'=>'AdvertisesController@create','middleware' => ['permission:item-create']]);
 	Route::post('advertisement',['as'=>'advertisement.store','uses'=>'AdvertisesController@store','middleware' => ['permission:item-create']]);
-	Route::get('advertisement/{id}',['as'=>'advertisement.show','uses'=>'AdvertisesController@show']);
 	Route::get('advertisement/{id}/edit',['as'=>'advertisement.edit','uses'=>'AdvertisesController@edit','middleware' => ['permission:item-edit']]);
 	Route::patch('advertisement/{id}',['as'=>'advertisement.update','uses'=>'AdvertisesController@update','middleware' => ['permission:item-edit']]);
 	Route::delete('advertisement/{id}',['as'=>'advertisement.destroy','uses'=>'AdvertisesController@destroy','middleware' => ['permission:item-delete']]);
@@ -88,4 +87,5 @@ Route::group(['middleware' => ['auth']], function() {
 
 //Route::get('index', 'HomeController@index');
 Route::resource ('advertisement', 'AdvertisesController');
+Route::get('advertisement/{id}',['as'=>'advertisement.show','uses'=>'AdvertisesController@show']);
 Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');
