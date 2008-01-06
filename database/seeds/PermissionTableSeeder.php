@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
+use App\Permission;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -14,27 +16,31 @@ class PermissionTableSeeder extends Seeder
         //delete categories table records
     	DB::table('permissions')->delete();
         //insert dummy data
-        DB::table('permissions')->insert(array(array
-        	(
-        		'name' => 'role-list',
-        		'display_name' => 'Display Role Listing',
-        		'description' => 'See only Listing Of Role'
-        	),
-        	array(
-        		'name' => 'role-create',
-        		'display_name' => 'Create Role',
-        		'description' => 'Create New Role'
-        	),
-        	array(
-        		'name' => 'role-edit',
-        		'display_name' => 'Edit Role',
-        		'description' => 'Edit Role'
-        	),
-        	array(
-        		'name' => 'role-delete',
-        		'display_name' => 'Delete Role',
-        		'description' => 'Delete Role'
-        	),
+        $role_list = new Permission();
+                $role_list ->name = 'role-list';
+                $role_list ->display_name = 'Display Role Listing';
+                $role_list ->description = 'See only Listing Of Role';
+                $role_list->save();
+    
+        $role_create = new Permission();
+                $role_create ->name = 'role-create';
+                $role_create ->display_name = 'Create Role';
+                $role_create ->description = 'Create New Role';
+                $role_create->save();
+    
+            $role_edit = new Permission();
+                $role_edit ->name = 'role-edit';
+                $role_edit ->display_name = 'Edit Role';
+                $role_edit ->description = 'Edit Role';
+                $role_edit->save();
+            
+        $role_delete = new Permission();
+                $role_delete ->name = 'role-delete';
+                $role_delete ->display_name = 'Delete Role';
+                $role_delete ->description = 'Delete Role';
+                $role_delete->save();
+            
+         DB::table('permissions')->insert(array (
         	array(
         		'name' => 'item-list',
         		'display_name' => 'Display Item Listing',
@@ -56,5 +62,7 @@ class PermissionTableSeeder extends Seeder
         		'description' => 'Delete Item'
         	),
         ));
+        $role = Role::where('name','=','Admin')->firstOrFail();
+        $role->attachPermissions(array ($role_list, $role_edit, $role_delete, $role_create));
     }
 }

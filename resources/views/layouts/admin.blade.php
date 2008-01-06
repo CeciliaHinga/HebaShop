@@ -39,12 +39,21 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 <li class="active"><a href="/admin">Dashboard</a></li>
-        <li class="bg-1 dropdown"><a data-toggle="dropdown" data-target="#roles" aria-haspopup="true" aria-expanded="false">Roles</a>  <ul class="collapse" id="roles" role="menu">
-    <li><a href="/roles">View</a></li>
-    <li><a href="/roles/createrole"></a>New</li> 
-  </ul></li>
-        <li class="bg-1"><a href="/permissions">Permission</a></li>
-        <li class="bg-1"><a href="/users">Users</a></li>        <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Roles<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('roles') }}">View Roles</a></li>
+    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Permission<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
+    <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Users<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('users') }}">View Users</a></li>
+    <li><a href="{{route('users.create') }}">New Users</a></li> 
+  </ul> </li>   <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 <li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
@@ -71,7 +80,7 @@
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
-<li><a href="/users/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+<li><a href="{{ route('users.show',Auth::user()->id ) }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
 <li>
@@ -102,7 +111,7 @@
 </div>
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>View Site</a></li>
 <li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
@@ -146,14 +155,22 @@
 <div class="col-sm-3 sidenav hidden-xs"> 
 <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav nav-pills nav-stacked">
-<li class="active"><a href="/admin">Dashboard</a></li>
-         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Roles<span class="caret"></span></a>  
+<li class="active"><a href="/admin" class="bg-4">Dashboard</a></li>
+         <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Roles<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="roles">View</a></li>
-    <li><a href="admin/roles/createrole">New</a></li> 
+    <li><a href="{{route('roles') }}">View Roles</a></li>
+    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
   </ul> </li>
-        <li class="bg-1"><a href="/permissions">Permission</a></li>
-        <li class="bg-1"><a href="/users">Users</a></li>        
+        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Permission<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
+    <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Users<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('users') }}">View Users</a></li>
+    <li><a href="{{route('users.create') }}">New Users</a></li> 
+  </ul> </li>        
       </ul>
     </div>
     </div>

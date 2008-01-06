@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Permission')
+@section('title','Permission|Create')
  
 @section('content')
         <div class="col-sm-9 ">

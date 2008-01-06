@@ -22,6 +22,28 @@
 </button>
 <a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/h.jpg" height="30" width="41"></a>
 </div>
+@role('Admin')
+<div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+<li><a href="/admin">Dashboard</a></li>
+         <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Roles<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('roles') }}">View Roles</a></li>
+    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Permission<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
+    <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Users<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('users') }}">View Users</a></li>
+    <li><a href="{{route('users.create') }}">New Users</a></li> 
+  </ul> </li>        
+      </ul>
+    </div>
+    @endrole
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
 <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
@@ -65,6 +87,7 @@
 </div>
 </div>
 </nav>
+@role('Admin')<br><br>@endrole
 <header class="jumbotron">
         <!-- Main component for a primary marketing message or call to action -->
 

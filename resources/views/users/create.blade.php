@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('title','Create User')
 
@@ -6,7 +6,7 @@
 
     @parent
   
-    
+@endsection    
 @section('content')
 <div class="col-sm-10 col-sm-offset-2">
 	<div class="row">

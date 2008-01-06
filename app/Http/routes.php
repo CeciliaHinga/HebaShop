@@ -11,13 +11,11 @@ use Illuminate\Pagination\Paginator;
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['middleware' => ['guest']],function(){
 
 	Route::get('/', function () {
 	$advertisement = CategoryType::orderBy('id','DESC')->paginate(10);
     		return view('index',compact('advertisement'));
 
-});
 });
 
 // Authentication routes...

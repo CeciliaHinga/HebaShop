@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title','Create User')
+@section('title','Profile')
 
 @section('sidebar')
 
 	@parent
   
     
-@stop
+@endsection
 @section('content')
 <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
