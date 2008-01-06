@@ -52,40 +52,18 @@
 </ul>
 </div>
 </nav>
- <div id="loginModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!--modal content-->
-        <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Login</h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-inline" role="form" method="POST" action="/auth/login">
-<div class="form-group">
-{!! csrf_field() !!}
-<input type="email" class="form-control input-sm" id="Email" name="Email" placeholder="Email" value="{{ old('email') }}">
-<input type="password" class="form-control input-sm" id="password" name="Email" placeholder="Password">
-</div>
-<div class="form-group">
-<div class="checkbox">
-<label class="checkbox-inline">
-<input type="checkbox" name="remember" value=""><font color="#303F9F">Remember me</font></label>
-</div>
-</div> 
-<div class="form-group">
-<a href="#">
-<button type="submit" class="btn navbar-btn btn-info">Sign In</button>
-</a>
-    <a href="#">
-    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-    </a>
-</div>
-</form> 
-            </div>
-        </div>
-        </div>
-    </div>
     <div class="notice">
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><b>
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul></b>
+            </div>
+        @endif
+        </div>
 @section('sidebar')
  
 @show
