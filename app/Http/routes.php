@@ -71,9 +71,9 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::resource('users','UsersController');
 	
 	Route::get('roles',['as'=>'roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-	Route::get('roles/create',['as'=>'roles.create','uses'=>'RolesController@create');
-	Route::post('roles/create',['as'=>'roles.store','uses'=>'RolesController@store');
-	Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RolesController@show']);
+	Route::get('roles/create',['as'=>'roles.create','uses'=>'RolesController@create']);
+	Route::post('roles/create',['as'=>'roles.store','uses'=>'RolesController@assignRole']);
+	Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
 	Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RolesController@edit','middleware' => ['permission:role-edit']]);
 	Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RolesController@update','middleware' => ['permission:role-edit']]);
 	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RolesController@destroy','middleware' => ['permission:role-delete']]);

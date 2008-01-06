@@ -33,14 +33,13 @@ class UsersController extends Controller
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-    public function create($id)
+    public function create()
     {
-        $role = Role::find($id)
          $roles = Role::lists('display_name','id');
         return view('users.create',compact('roles'));
         if (Auth::attempt(array('email' => $email, 'password' => $password)))
 {
-return Redirect::intended('/index');
+return Redirect::intended('roles.create',compact('roles'));
 }
     }
     /**

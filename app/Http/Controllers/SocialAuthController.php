@@ -22,10 +22,11 @@ class SocialAuthController extends Controller
 
  public function callback(SocialAccountService $service, $provider)
     {
+        $roles = Role::orderBy('id','desc')->get();
         $user = $service->createOrGetUser(Socialite::driver($provider));
 
         auth()->login($user);
 
-        return redirect()->to('roles.create');
+        return redirect()->to('roles.create',compact('roles'));
     }
 }

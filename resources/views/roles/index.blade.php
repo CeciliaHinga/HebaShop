@@ -1,3 +1,4 @@
+@if (Auth::user()->$role->role_id)
 @extends('layouts.master')
 
 @section('title','Roles')
@@ -50,3 +51,4 @@
 	{!! $roles->render() !!}
 	</div>
 @endsection
+@endif

@@ -10,6 +10,8 @@ use App\Permission;
 
 use DB;
 
+use Auth;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -42,8 +44,8 @@ class RolesController extends Controller
     */
      public function create()
     {
-        $role = Role::get();
-        return view('roles.create',compact('role'));
+        $roles = Role::orderBy('id','desc')->get();
+        return view('roles.create',compact('roles'));
     }
     /**
     *Store a newly created user in storage
@@ -51,21 +53,20 @@ class RolesController extends Controller
     *@param \App\User $user
     * @return Response
     */
-    public function store(Request $request, $id)
+    public function assignRole(Request $request)
     {
         $this->validate($request, [
             'roles' => 'required',
         ]);
+        $user = Auth::user();
 
-        $user = User::find($id);
-        $role->role_id = $request->input('roles');
-        $role->save();
+        $role = Role::where('name', '=', $request->input('roles'))->first();
+        //$user->attachRole($request->input('role'));
+        $user->roles()->attach($role->id);
 
-        foreach ($request->input('roles') as $key => $value) {
-            $user->attachRole($value);
-        }
-        return redirect()->route('roles.index')
+        return redirect()->route('roles.show', compact('role'))
                         ->with('success','Role created successfully');
+                            
     }
     /**
     *Display the specified resource
@@ -76,7 +77,7 @@ class RolesController extends Controller
     */
     public function show($id)
     {
-        $role = Role::find($id);
+        $role = Role::findOrFail($id);
         $rolePermissions = Permission::join("permission_role","permission_role.permission_id","=","permissions.id")
             ->where("permission_role.role_id",$id)
             ->get();

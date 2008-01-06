@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('auth/register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -37,6 +37,26 @@
                                 @endif
                             </div>
                         </div>
+
+<div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
+                            <label for="roles" class="col-md-4 control-label">Role</label>
+                            <div class="col-md-6">
+<select type="dropdown" class="form-control dropdown dropdown-toggle" id="roles" name="roles" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" required>
+        <option value="">Select A Role</option>
+        @foreach($roles as $role)
+        @if ($role->id == 2 || $role->id == 3)
+            <option value="{{ $role->id }}"> {{ $role->display_name }} </option>
+            @endif
+        @endforeach
+        </select>
+
+                                @if ($errors->has('roles'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('roles') }}</strong>
+                                    </span>
+                                @endif
+            </div>
+        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

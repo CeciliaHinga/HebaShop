@@ -1,3 +1,4 @@
+@if (Auth::user())
 @extends('layouts.master')
 
 @section('title','Role')
@@ -18,11 +19,14 @@
 	{!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Display Name:</strong>
-                @foreach($permission as $value)
-                {!! Form::select('display_name', null, array('placeholder' => 'Display Name','class' => 'form-control')) !!}
-                @endforeach
+            <div class="form-group"><select type="dropdown" class="form-control dropdown dropdown-toggle" id="roles" name="roles" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" required>
+        <option value="">Select A Role</option>
+        @foreach($roles as $role)
+        @if ($role->id==2 || $role->id==3)
+            <option value="{{ $role->name }}"> {{ $role->display_name }} </option>
+        @endif
+        @endforeach
+        </select>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -32,3 +36,4 @@
 	{!! Form::close() !!}
     </div>
 @endsection
+@endif
