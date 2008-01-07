@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryType;
+
 use App\Category;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
+
+use Illuminate\Pagination\Paginator;
+
 
 class CategoriesController extends Controller
 {
-public function index(Category $category)
+public function index()
 {
-	return view('categories.index',compact('category'));
+    $categories = CategoryType::paginate(15);
+	return view('categories.index',compact('categories'));
 }
 public function create()
 { 
@@ -23,7 +30,7 @@ public function create()
     *
     * @return Response
     */
-    public function Store
+    public function Store()
     {
 
     }
@@ -33,9 +40,13 @@ public function create()
     *@param \App\Category $category
     * @return Response
     */
-    public function show(Category $category)
+    public function show($id)
     {
-        return view('categories.show',compact('category'));
+         $advertisement = Category::findOrFail($id);
+
+        $categories = CategoryType::where('category_id','=',$id)->paginate(15);
+
+        return view('categories.show',compact('categories', 'advertisement'));
     }
     /**
     *Show the form for editing the specified resource
@@ -45,6 +56,7 @@ public function create()
     */
     public function edit(category $category)
     {
+
         return view('categories.edit',compact('category'));
     }
     /**

@@ -26,6 +26,12 @@
 <ul class="nav navbar-nav">
 <li class="active"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 <li ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
+<li><a href="/categories/1">Appliances</a></li>
+<li><a href="/categories/2">Real Estates</a></li>
+<li><a href="/categories/3">Jobs</a></li>
+<li><a href="/categories/4">Vehicles</a></li>
+</ul></li>
 <li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
 <li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
 </ul>

@@ -40,8 +40,8 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::model('users', 'Users');
 Route::model('roles', 'Roles');
-Route::model('categories', 'Categories');
-Route::model('types', 'types');
+//Route::model('categories', 'Categories');
+//Route::model('types', 'types');
 
 //use slugs rather than IDs in URLs
 Route::bind('users', function($value, $route) {
@@ -50,17 +50,17 @@ Route::bind('users', function($value, $route) {
 Route::bind('roles', function($value, $route) {
 	return App\Role::whereSlug($value)->first();
 });
-Route::bind('categories', function($value, $route) {
-	return App\Category::whereSlug($value)->first();
-});
-Route::bind('types', function($value, $route) {
-	return App\Types::whereSlug($value)->first();
-});
+//Route::bind('categories', function($value, $route) {
+//	return App\Category::whereSlug($value)->first();
+//});
+//Route::bind('types', function($value, $route) {
+//	return App\Types::whereSlug($value)->first();
+//});
 
 Route::resource('users','UsersController');
 Route::resource('users.roles','RolesController');
 Route::resource('categories','CategoriesController');
-Route::resource('categories.types','TypesController');
+Route::resource('types','TypesController');
 
 
 Route::auth();

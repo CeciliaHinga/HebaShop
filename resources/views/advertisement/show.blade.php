@@ -11,7 +11,7 @@
 @section('content')
  {!! Breadcrumb::withLinks(['Home'   => '/',
    'My Adverts' => '/advertisement',
-   "show $advertisement->ads_title"
+   "$advertisement->ads_title"
    ]) !!}
    <div class="container">
 <div class="row">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryType;
+
 use App\Category;
 
 use App\Type;
@@ -21,9 +23,10 @@ class TypesController extends Controller
     *@param \App\Category $category
     *@return Response
     */
-    public function index(Category $category)
+    public function index(Type $category)
     {
-    	return view('types.index',compact('category'));
+        //$categories = CategoryType::paginate(15);
+    	return ("No such Page Exists");
     }
     /**
     *Show the form for creating a new resource
@@ -52,9 +55,12 @@ class TypesController extends Controller
     *@param \App\Type $type
     * @return Response
     */
-    public function show(Category $category, Type $type)
+    public function show($id)
     {
-    	return view('types.show',compact('category','type'));
+        $advertisement = Type::findOrFail($id);
+
+        $categories = CategoryType::where('type_id','=',$id)->paginate(15);
+    	return view('types.show',compact('categories','advertisement'));
     }
     /**
     *Show the form for editing the specified resource
