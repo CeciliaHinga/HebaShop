@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-2">
                 <p style="padding:20px;"></p>
-                <img src="/pics/heba.jpg" class="img-responsive">
+                <img src="/pics/heba.jpg" id="pic" class="img-responsive">
                 </div>
                 <div class="col-xs-12 col-sm-2">
                 <p style="padding:20px"></p>
@@ -101,35 +101,36 @@
         <div class="container">
 <div class="row">
 @section('sidebar')
+@show
  <nav class="hidden-xs col-sm-1" >
-<div class="nav nav-pills nav-stacked btn-group-vertical affix" data-spy="affix" data-offset-top="205">
-<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Appliances</button>
+<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
+<ul class="nav nav-pills nav-stacked">
+<li class="dropdown bg-1"><a href="/categories/1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
     <li><a href="/types/1">Electronics</a></li>
     <li><a href="/types/2">Toys</a></li> 
-  </ul></div>
-  <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Real Estates</button>
+  </ul> </li>
+  <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Real Estates</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
     <li><a href="/types/3">Land</a></li>
     <li><a href="/types/4">Mortgages</a></li>
-  </ul></div>
-    <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Jobs</button>
+  </ul> </li>
+    <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jobs</a>
   <ul class="dropdown-menu" role="menu">
     <li><a href="/types/5">White Collar</a></li>
     <li><a href="/types/6">Blue Collar</a></li>
-  </ul></div>
-    <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Vehicles</button>
+  </ul> </li>
+    <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vehicles</a>
   <ul class="dropdown-menu" role="menu">
     <li><a href="/types/7">Cars</a></li>
     <li><a href="/types/8">Bikes</a></li>
-  </ul></div>
+  </ul>
+  </li>
+  </ul>
   </div>
   </nav>
-@show
 @yield('content')
+</div>
 </div>
 <footer class="row-footer">
         <div class="container">
@@ -168,9 +169,8 @@
             </div>
         </div>
     </footer>
-</div>
-<script src="js/jquery-1.9.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
     @yield('scripts')
     </body>
 </html>

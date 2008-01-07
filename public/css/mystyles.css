@@ -20,7 +20,7 @@ padding:20px 0px 20px 0px;
 padding:0px;
 margin:0px 0px 20px 0px;
 background:#2196F3;
-color:florawhite;
+color: #fff;
 /*max-height: 50px;*/
 }
 address{
@@ -66,7 +66,7 @@ color:#000000;
     padding: 10px;
 }
 .affix{
-    top:100px;
+    top:355px;
 }
 .carousel{
     background: #1A237E;
@@ -123,9 +123,8 @@ border: 2px solid transparent;
 .portfolio:hover{
 	 border-color: #f1f1f1;
 }
-.bg-1 {
+.bg-1{
     background: #1abc9c;
-    color: #bdbdbd;
 }
 .bg-1 h3 {color: #fff;}
 .bg-1 p {font-style: italic;}
@@ -177,12 +176,28 @@ border: 2px solid transparent;
     color: #fff;
 }
 .nav-pills li a{
-	color:#000;
+	color:#fff;
 	font:20px "Montserrat", sans-serif;;
 }
 .panel-heading h1{
 	font-size:40px;
 }
-/*.dropdown-menu{
-    position: relative;
-}*/
+.nav-pills li a:hover{
+    color:#303F9F;
+    background-color: #1abc9c;
+}
+.nav-pills > .open > a,
+.nav-pills > .open > a:focus,
+.navbar-nav .nav-pills li a:hover{
+    background:#1abc9c;
+}
+.dropdown-menu{
+    background-color: #1abc9c;
+}
+#pic{
+    height: 200px;
+    width: 200px;
+    margin: 0px auto;
+    padding: 0px 0px 20px 0px;
+    position: absolute;
+}
