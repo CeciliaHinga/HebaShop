@@ -23,6 +23,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
     protected $loginPath = '/login';
+    //protected $advertPath = '/advertise';
 
     /**
      * Where to redirect users after login / registration.
@@ -72,9 +73,4 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-    /** public function getLogout()
-    {
-    Auth::logout(); // log the user out of our application
-    return Redirect::intended('/auth/login'); // redirect the user to the login screen
-    }*/
 }

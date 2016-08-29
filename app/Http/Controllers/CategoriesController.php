@@ -15,10 +15,9 @@ public function index(Category $category)
 {
 	return view('categories.index',compact('category'));
 }
-   public function create()
-    {
-        return view('categories.create');
-    }
+public function create()
+{ 
+}
     /**
     *Store a newly created resource in storage
     *

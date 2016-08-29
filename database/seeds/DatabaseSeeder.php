@@ -1,6 +1,7 @@
 <?php
-
-use Illuminate\Database\Seeder;
+use App\Category;
+use App\Type;
+use Illuminate\Database\Seeder; 
 
 class DatabaseSeeder extends Seeder
 {
@@ -9,8 +10,12 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // $this->call(UsersTableSeeder::class);
-    }
+public function run()
+	{
+//call Categories and Types seeder classes
+		$this->call('CategoriesTableSeeder');
+		$this->call('TypesTableSeeder');
+		//message shown in your terminal after running db:seed command
+		$this->command->info("Users table seeded:");
+	}  
 }

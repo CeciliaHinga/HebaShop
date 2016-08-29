@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>@yield('title')</title>
+<meta http-equiv = "Content-Type" name="csrf-token" content="{{ csrf_token() }}; charset=utf-8" />
+<title>Heba&nbsp;:&nbsp;@yield('title')</title>
 {!!Html::style('css/bootstrap.min.css')!!}
 {!!Html::style('css/font-awesome.min.css')!!}
 {!!Html::style('css/bootstrap-social.css')!!}
@@ -20,12 +20,12 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="index.html"><img src="/pics/heba.jpg" height="30" width="41"></a>
+<a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/heba.jpg" height="30" width="41"></a>
 </div>
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li class="active"><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li><a href="aboutus.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
+<li class="active"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+<li ><a href="{{ url('/advertise') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li><a href="#">Appliances</a></li>
 <li><a href="#">Real Estate</a></li>
@@ -39,8 +39,8 @@
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
+<li><a href="#" class="btn btn-link">{{ Auth::user()->name }}</a></li>
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
-
 @else
 <li>
     <a href="/auth/login">
@@ -92,24 +92,8 @@
 <div>
 @yield('content')
 </div>
-{!!Html::script('js/jquery-1.9.1.js')!!}
-{!!Html::script('js/bootstrap.min.js')!!}
-<script>
-    $(document).ready(function(){
-                      $("#mycarousel").carousel({interval:2000});
-    $("#carousel-pause").click(function(){
-                               $("#mycarousel").carousel('pause');
-                               });
-    $("#carousel-play").click(function(){
-                               $("#mycarousel").carousel('cycle');
-                               });
-        $("#login").click(function(){
-            $("#loginModal").modal();
-        });
-        $("#reservebutton").click(function(){
-            $("#reserveModal").modal();
-        });
-                     });
-    </script>
-</body>
+<script src="js/jquery-1.9.1.js"</script>
+<script src="js/bootstrap.min.js"></script>
+    @yield('scripts')
+    </body>
 </html>

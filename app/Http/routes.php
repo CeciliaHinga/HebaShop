@@ -21,6 +21,8 @@ Route::get('auth/logout', 'Auth\AuthController@logout', function(){
 	return redirect($redirectAfterLogout);
 });
 
+
+//Route::post('auth/advertise', 'Auth\AuthController@postAdvert');
 /*Route::get('/{current session id}/logout',function(){
     //TODO check if session id match with the session id parameter
     Auth::logout();
@@ -58,3 +60,9 @@ Route::resource('users.roles','RolesController');
 Route::resource('categories','CategoriesController');
 Route::resource('categories.types','TypesController');
 
+
+Route::auth();
+
+Route::get('/index', 'HomeController@index');
+Route::resource ('advertise', 'AdvertisesController');
+Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');

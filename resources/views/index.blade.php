@@ -1,7 +1,6 @@
-@require 
-@extends('layouts.master')
+ @extends('layouts.master')
 
-@section('title','$title')
+@section('title','Home')
 
 @section('sidebar')
 
