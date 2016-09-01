@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Advertise;
+use App\CategoryType;
 
 class HomeController extends Controller
 {
@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $advertisement = CategoryType::findOrFail($id);
+        $advertisement = CategoryType::all();
         return view('index', compact('advertisement'));
     }
 }

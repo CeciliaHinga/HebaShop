@@ -22,7 +22,7 @@ class CreateAdvertisesTable extends Migration
             $table->string('ads_content');
             $table->boolean('is_active')->default(false);
             $table->boolean('is_featured')->default(false);
-            $table->string('ads_image')->unique();
+            $table->string('ads_image');
             $table->string('image_path');
             $table->string('image_extension', 10);
             $table->integer('ads_price');

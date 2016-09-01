@@ -50,7 +50,7 @@ class AdvertisesController extends Controller
     	$imageName = $advertisement->ads_title . '.' . $request->file('image')->getClientOriginalExtension();
     	$request->file('image')->move(base_path() . '/public/uploadedimage/', $imageName);
     	$advertisement = CategoryType::lists('ads_title');
-    	return View('home', compact('advertisement'))->with('message', 'Advert added successfully!');
+    	return View('/index', compact('advertisement'))->with('message', 'Advert added successfully!');
     }
     public function edit($id)
 {

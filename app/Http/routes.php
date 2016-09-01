@@ -12,7 +12,7 @@ use App\CategoryType;
 */
 
 Route::get('/', function () {
-	$advertisement = CategoryType::pluck('ads_title');
+	$advertisement = CategoryType::all();
     		return view('index',compact('advertisement'));
 });
 // Authentication routes...
