@@ -10,7 +10,10 @@
 		"illuminate/html": "5.*",
 		"laravelcollective/html": "5.*",
         "kodeine/laravel-acl": "~1.0@dev",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "intervention/image": "~2.2",
+         "patricktalmadge/bootstrapper": "~5",
+        "intervention/imagecache": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -10,4 +10,8 @@ class Type extends Model
  {
  	return $this->belongsTo('App\Category')->withPivot('ads_title','ads_content','ads_image')->withTimestamps();
  }   //
+ protected $fillable = ['ads_type',
+ 'type_id',
+ 'category_id',
+ ];
 }

@@ -1,5 +1,5 @@
 <?php
-
+use App\CategoryType;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    		return view('index');
+	$advertisement = CategoryType::pluck('ads_title');
+    		return view('index',compact('advertisement'));
 });
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -63,6 +64,6 @@ Route::resource('categories.types','TypesController');
 
 Route::auth();
 
-Route::get('/index', 'HomeController@index');
-Route::resource ('advertise', 'AdvertisesController');
+//Route::get('/index', 'HomeController@index');
+Route::resource ('advertisement', 'AdvertisesController');
 Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');
