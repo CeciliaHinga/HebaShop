@@ -15,6 +15,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Home</div>
+                <div class="pagination">{{ $advertisement->links() }}</div>
                 <div class="panel-body">
                 @foreach($advertisement as $advert)
 <div class="row row-content">
@@ -50,8 +51,9 @@
             </div>
         </div>
                 </div>
-                </div>
+                </div>                
                 @endforeach
+                <div class="pagination">{{ $advertisement->links() }}</div>
                 </div>
                 </div>
                 </div>
