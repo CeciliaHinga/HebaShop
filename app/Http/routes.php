@@ -13,7 +13,7 @@ use Illuminate\Pagination\Paginator;
 */
 
 Route::get('/', function () {
-	$advertisement = CategoryType::all();
+	$advertisement = CategoryType::all()->pagination(5);
     		return view('index',compact('advertisement'));
 });
 // Authentication routes...
