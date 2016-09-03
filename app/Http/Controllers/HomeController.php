@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $advertisement = CategoryType::all();
-        return view('index', compact('advertisement'));
+        return view('index');
     }
 }

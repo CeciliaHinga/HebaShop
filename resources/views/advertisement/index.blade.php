@@ -23,10 +23,10 @@
         <div class="form-group">
         <label class="col-md-4 control-label">Category</label>
         <div class="col-md-6">
-        <select type="dropdown" class="form-control dropdown dropdown-toggle" id="category_id" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" required>
+        <select type="dropdown" class="form-control dropdown dropdown-toggle" id="category_id" name="category_id" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" required>
         <option value="">Select A Category</option>
         @foreach($categories as $category)
-            <option value="{{ $category->id }}" name="category_id"> {{ $category->name }} </option>
+            <option value="{{ $category->id }}"> {{ $category->name }} </option>
         @endforeach
         </select>
             </div>
@@ -47,25 +47,32 @@
 </div>
 </div>
 <!--Image name form input -->
+<div class="form-group"><label class="col-md-4 control-label">Price</label>
+<div class="col-md-6">
+    <input class="form-control" type="number" name="ads_price" min="100" required id="price">
+</div>
+</div>
+<!--Image name form input -->
 <div class="form-group"><label class="col-md-4 control-label">Image Name</label>
 <div class="col-md-6">
     <input class="form-control" type="text" name="ads_image" required>
 </div>
 </div>
 <!--is_active form input -->
-<div class="form-group"><label class="col-md-4 control-label">Is Active:</label>
+<div class="form-group"><label for="is_active" class="col-md-4 control-label">Is Active:</label>
 <div class="col-md-1">
-    <input type="checkbox" class="checkbox" name="is_active">
-</div>
-<!--is_featured form input --><label class="col-md-4 control-label">Featured:</label>
+    <input type="checkbox" class="checkbox" name="is_active" value="1" id="is_active">
+</div></div>
+<!--is_featured form input -->
+<div class="form-group"><label for="is_featured" class="col-md-4 control-label">Featured:</label>
 <div class="col-md-1">
-    <input type="checkbox" class="checkbox" name="is_featured">
+    <input type="checkbox" class="checkbox" name="is_featured" value="1" id="is_featured">
 </div>
 </div>
 <!--Form field for file -->
-<div class="form-group"><label class="col-md-4 control-label">Primary Image</label>
+<div class="form-group"><label for="image" class="col-md-4 control-label">Primary Image</label>
 <div class="col-md-6">
-    <input type="file" name="image" value="" required>
+    <input type="file" name="image" value="" id="image" required>
 </div>
 </div>
 <div class="form-group">

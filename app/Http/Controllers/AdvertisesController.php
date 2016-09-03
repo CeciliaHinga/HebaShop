@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Category;
 use App\CategoryType;
-use DB;
+use Intervention\Image\Facades\Image;
 use Auth;
 use App\Http\Requests;
+use App\Http\Requests\AdvertiserRequest;
 use App\Http\Controllers\Controller;
+
 
 class AdvertisesController extends Controller
 {
@@ -41,30 +44,125 @@ class AdvertisesController extends Controller
 		
 		//return View('advertisement.create',compact('categories'));
 	}
+	public function formatCheckboxValue($advertisement)
+{
+
+   $advertisement->is_active = ($advertisement->is_active == null) ? 0 : 1;
+   $advertisement->is_featured = ($advertisement->is_featured == null) ? 0 : 1;
+}
+
     //Save advert to the db
-    public function store(Request $request)
-    {
-    	$advertisement = new CategoryType(array('ads_title' => $request->get('ads_title'),'ads_category' => $request->get('ads_category'),'ads_type' => $request->get('ads_type'),'ads_content' => $request->get('ads_content')
-    		));
-    	$advertisement -> save();
-    	$imageName = $advertisement->ads_title . '.' . $request->file('image')->getClientOriginalExtension();
-    	$request->file('image')->move(base_path() . '/public/uploadedimage/', $imageName);
-    	$advertisement = CategoryType::lists('ads_title');
-    	return View('/index', compact('advertisement'))->with('message', 'Advert added successfully!');
-    }
+public function store(AdvertiserRequest $request)
+{
+   //create new instance of model to save from form
+
+   //$category =Category::lists('name','id')->get();
+   $advertisement = new CategoryType([
+       'ads_title'        => $request->get('ads_title'),
+       'category_id'        => $request->get('category_id'),
+       'type_id'        => $request->get('type_id'),
+       'ads_content'        => $request->get('ads_content'),
+       'ads_price'        => $request->get('ads_price'),
+       'ads_image'        => $request->get('ads_image'),
+       'image_extension'   => $request->file('image')->getClientOriginalExtension(),
+       'is_active'         => $request->get('is_active'),
+       'is_featured'       => $request->get('is_featured'),
+
+   ]);
+
+   //define the image paths
+
+   $destinationFolder = '/uploadedimage/Advertising/';
+   $destinationThumbnail = '/uploadedimage/Advertising/thumbnails/';
+   $destinationMobile = '/uploadedimage/advertising/mobile/';
+
+   //assign the image paths to new model, so we can save them to DB
+
+   $advertisement->image_path = $destinationFolder;
+
+   // format checkbox values and save model
+
+   $this->formatCheckboxValue($advertisement);
+   $advertisement->save();
+
+   //parts of the image we will need
+
+   $file = Input::file('image');
+
+   $imageName = $advertisement->ads_image;
+   $extension = $request->file('image')->getClientOriginalExtension();
+
+   //create instance of image from temp upload
+
+   $image = Image::make($file->getRealPath());
+
+   //save image with thumbnail
+
+   $image->save(public_path() . $destinationFolder . $imageName . '.' . $extension)
+       ->resize(160, 160)
+       // ->greyscale()
+       ->save(public_path() . $destinationThumbnail . 'thumb-' . $imageName . '.' . $extension);
+
+   // Process the uploaded image, add $model->attribute and folder name
+
+   //flash()->success('Advert Created!');
+
+   return redirect()->route('advertisement.show', [$advertisement]);
+}
+
     public function edit($id)
 {
 
-   $advertisement = CategoryType::findOrFail($id);
+   $advertisement = CategoryType::all($id);
 
    return view('advertisement.edit', compact('advertisement'));
 }
 public function show($id)
 {
 
+   //$ads = CategoryType::all();
    $advertisement = CategoryType::findOrFail($id);
 
-   return view('advertisement.edit', compact('advertisement'));	
+   return view('advertisement.show', compact('advertisement'));	
+}
+public function update($id, EditImageRequest $request)
+{
+   $advertisement = CategoryType::lists($id);
+
+   $advertisement->ads_title = $request->get('ads_title');
+   $advertisement->category_id = $request->get('category_id');
+   $advertisement->type_id = $request->get('type_id');
+   $advertisement->ads_content = $request->get('ads_content');
+   $advertisement->ads_price = $request->get('ads_price');
+   $advertisement->is_active = $request->get('is_active');
+   $advertisement->is_featured = $request->get('is_featured');
+
+   $this->formatCheckboxValue($advertisement);
+   $advertisement->save();
+
+   if ( ! empty(Input::file('image'))){
+
+       $destinationFolder = '/uploadedimage/Advertising/';
+       $destinationThumbnail = '/uploadedimage/Advertising/thumbnail';
+
+       $file = Input::file('image');
+
+       $imageName = $advertisement->ads_image;
+       $extension = $request->file('image')->getClientOriginalExtension();
+
+       //create instance of image from temp upload
+       $image = Image::make($file->getRealPath());
+
+       //save image with thumbnail
+       $image->save(public_path() . $destinationFolder . $imageName . '.' . $extension)
+           ->resize(60, 60)
+           // ->greyscale()
+           ->save(public_path() . $destinationThumbnail . 'thumb-' . $imageName . '.' . $extension);
+
+   }
+
+   //flash()->success('image edited!');
+   return view('marketingimage.edit', compact('marketingImage'));
 }
 
     

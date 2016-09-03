@@ -59,6 +59,7 @@
         @endif
         </div>
 @section('sidebar')
+
  
 @show
 <div>

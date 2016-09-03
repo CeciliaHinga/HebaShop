@@ -204,7 +204,7 @@ return [
 		'Html' => Collective\Html\HtmlFacade::class,
         'Icon' => Bootstrapper\Facades\Icon::class,
         //'Image' => Bootstrapper\Facades\Image::class,
-        'Image'=>Intervention\Image\ImageServiceProvider::class,
+        'Image'=>Intervention\Image\Facades\Image::class,
         'InputGroup' => Bootstrapper\Facades\InputGroup::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,

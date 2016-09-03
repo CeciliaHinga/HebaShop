@@ -1,5 +1,6 @@
 <?php
 use App\CategoryType;
+use Illuminate\Pagination\Paginator;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -64,6 +65,6 @@ Route::resource('categories.types','TypesController');
 
 Route::auth();
 
-//Route::get('/index', 'HomeController@index');
+//Route::get('index', 'HomeController@index');
 Route::resource ('advertisement', 'AdvertisesController');
 Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');

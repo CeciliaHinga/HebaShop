@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 
-{!! Form::model($marketingImage, ['route' => ['marketingimage.update', $marketingImage->id],
+{!! Form::model($advertisement, ['route' => ['advertisement.update', $advertisement->id],
 'method' => 'PATCH',
 'class' => 'form',
 'files' => true]
