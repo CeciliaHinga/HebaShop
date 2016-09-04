@@ -19,8 +19,9 @@ padding:20px 0px 20px 0px;
 .jumbotron{
 padding:0px;
 margin:0px auto;
-background:#7986CB;
+background:#2196F3;
 color:florawhite;
+max-height: 50px;
 }
 address{
 font-size:80%;
@@ -66,6 +67,7 @@ color:#000000;
 }
 .affix{
     top:100px;
+    position: relative;
 }
 .carousel{
     background: #1A237E;
