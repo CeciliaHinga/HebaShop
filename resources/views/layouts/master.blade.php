@@ -34,20 +34,20 @@
 <li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
 <li><a href="#">Land</a></li>
 <li><a href="#">Mortgages</a></li>
-</li></li><li role="separator" class="divider"></li>
+</li><li role="separator" class="divider"></li>
 <li><a href="/categories/3" class="dropdown-header">Jobs</a><li role="separator" class="divider"></li>
 <li><a href="#">Blue Collar</a></li>
 <li><a href="#">White Collar</a></li>
-</li></li><li role="separator" class="divider"></li>
+</li><li role="separator" class="divider"></li>
 <li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
 <li><a href="#">Cars</a></li>
 <li><a href="#">Bikes</a></li>
-</li></li>
-</ul></li>
+</li>
+</ul>
+</li>
 <li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
 <li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
 </ul>
-
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
@@ -62,6 +62,7 @@
     </li>
     @endif
 </ul>
+</div>
 </div>
 </nav>
 <header class="jumbotron">
