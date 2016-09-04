@@ -100,32 +100,73 @@
         <div class="container">
 <div class="row">
 @section('sidebar')
- <nav class="hidden-xs col-sm-2" >
-<div class="btn-group-vertical" data-spy="affix" data-offset-top="197">
-<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="collapse">Appliances</button>
-  <ul class="dropdown-menu" role="menu">
+ <nav class="hidden-xs col-sm-1" >
+<div class="nav nav-pills nav-stacked btn-group-vertical affix" data-spy="affix" data-offset-top="205">
+<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Appliances</button>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu">
     <li><a href="/types/1">Electronics</a></li>
-    <li><a href="/types/2">Toys</a></li>
-  </ul>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="collapse">Real Estates</button>
-  <ul class="dropdown-menu" role="menu">
+    <li><a href="/types/2">Toys</a></li> 
+  </ul></div>
+  <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Real Estates</button>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu">
     <li><a href="/types/3">Land</a></li>
     <li><a href="/types/4">Mortgages</a></li>
-  </ul>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="collapse">Jobs</button>
+  </ul></div>
+    <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Jobs</button>
   <ul class="dropdown-menu" role="menu">
     <li><a href="/types/5">White Collar</a></li>
     <li><a href="/types/6">Blue Collar</a></li>
-  </ul>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="collapse">Vehicles</button>
+  </ul></div>
+    <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Vehicles</button>
   <ul class="dropdown-menu" role="menu">
     <li><a href="/types/7">Cars</a></li>
     <li><a href="/types/8">Bikes</a></li>
-  </ul>
-  </div></nav>
+  </ul></div>
+  </div>
+  </nav>
 @show
 @yield('content')
 </div>
+<footer class="row-footer">
+        <div class="container">
+            <div class="row">             
+                <div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/advertisement">Advertise</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-5">
+                    <h5>Our Address</h5>
+                    <address>Address<br>
+                      <i class="fa fa-phone"></i>: +711 391705<br>
+                      <i class="fa fa-envelope">P.O Box</i>: 
+                        <a href="mailto:ceciliahinga@gmail.com">ceciliahinga(at)gmail(dot)com</a>
+                   </address>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="nav navbar-nav" style="padding: 40px 10px;">
+                        <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                        <a class="btn btn-social-icon" href="mailto:ceciliahinga@gmail.com"><i class="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <p style="padding:10px;"></p>
+                    <p align=center>© Copyright 2016 Heba Online. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 <script src="js/jquery-1.9.1.js"></script>
 <script src="js/bootstrap.min.js"></script>

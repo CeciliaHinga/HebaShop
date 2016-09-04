@@ -13,8 +13,6 @@
    'My Adverts' => '/advertisement',
    "$advertisement->ads_title"
    ]) !!}
-   <div class="container">
-<div class="row">
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Advert</div>
@@ -51,8 +49,6 @@
                 <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
             </div>
         </div>
-                </div>
-                </div>
                 </div>
                 </div>
                 </div>
