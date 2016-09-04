@@ -2,12 +2,6 @@
 
 @section('title','Types')
 
-@section('sidebar')
-
-	@parent
-    
-@endsection
-
 @section('content')
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement',  'Type' ])!!}
  <div class="col-md-10 col-md-offset-2">
