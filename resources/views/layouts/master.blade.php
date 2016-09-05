@@ -24,24 +24,24 @@
 </div>
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li class="active"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
+<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+<li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
-<li><a href="/categories/1" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
-<li><a href="#">Electronics</a></li>
-<li><a href="#">Toys</a></li>
+<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
+<li><a href="/types/1">Electronics</a></li>
+<li><a href="/types/2">Toys</a></li>
 </li><li role="separator" class="divider"></li>
 <li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
-<li><a href="#">Land</a></li>
-<li><a href="#">Mortgages</a></li>
+<li><a href="/types/3">Land</a></li>
+<li><a href="/types/4">Mortgages</a></li>
 </li><li role="separator" class="divider"></li>
 <li><a href="/categories/3" class="dropdown-header">Jobs</a><li role="separator" class="divider"></li>
-<li><a href="#">Blue Collar</a></li>
-<li><a href="#">White Collar</a></li>
+<li><a href="/types/5">Blue Collar</a></li>
+<li><a href="/types/6">White Collar</a></li>
 </li><li role="separator" class="divider"></li>
 <li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
-<li><a href="#">Cars</a></li>
-<li><a href="#">Bikes</a></li>
+<li><a href="/types/7">Cars</a></li>
+<li><a href="/types/8">Bikes</a></li>
 </li>
 </ul>
 </li>
@@ -102,7 +102,8 @@
 <div class="row">
 @section('sidebar')
 @show
- <nav class="hidden-xs col-sm-1" >
+<div id="sidebar">
+ <nav class="hidden-xs col-sm-1 navbar" >
 <div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
 <ul class="nav nav-pills nav-stacked">
 <li class="dropdown bg-1"><a href="/categories/1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
@@ -129,6 +130,7 @@
   </ul>
   </div>
   </nav>
+  </div>
 @yield('content')
 </div>
 </div>

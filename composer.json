@@ -13,7 +13,8 @@
         "doctrine/dbal": "^2.5",
         "intervention/image": "~2.2",
          "patricktalmadge/bootstrapper": "~5",
-        "intervention/imagecache": "^2.3"
+        "intervention/imagecache": "^2.3",
+        "laravelista/ekko": "~1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

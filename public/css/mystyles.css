@@ -14,7 +14,7 @@ min-height:150px;
 .row-footer{
 background-color:#AfAfAf;
 margin:0px auto;
-padding:20px 0px 20px 0px;
+padding:0px auto;
 }
 .jumbotron{
 padding:0px;
@@ -67,6 +67,7 @@ color:#000000;
 }
 .affix{
     top:355px;
+
 }
 .carousel{
     background: #1A237E;
@@ -125,6 +126,7 @@ border: 2px solid transparent;
 }
 .bg-1{
     background: #1abc9c;
+    bottom: 8px;
 }
 .bg-1 h3 {color: #fff;}
 .bg-1 p {font-style: italic;}
@@ -177,7 +179,9 @@ border: 2px solid transparent;
 }
 .nav-pills li a{
 	color:#fff;
-	font:20px "Montserrat", sans-serif;;
+	font:20px "Montserrat", sans-serif;
+    padding: 8px 4px 6px 4px;
+    margin: 0px;
 }
 .panel-heading h1{
 	font-size:40px;
