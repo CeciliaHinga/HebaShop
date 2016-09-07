@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-//use Kodeine\Acl\Traits\HasRole;
+
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 
 class User extends Authenticatable
 {
-    //use Authenticatable, CanResetPassword, HasRole;
+    use EntrustUserTrait;
 
     /**
      * The attributes that are mass assignable.

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BigintUserKeys extends Migration
+class CreateCacheTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class BigintUserKeys extends Migration
      */
     public function up()
     {
-        Schema::table('role_user', function (Blueprint $table) {
-            $table->bigInteger("user_id")->unsigned()->change();
+        Schema::create('cache', function (Blueprint $table) {
+            $table->string('key')->unique();
+            $table->text('value');
+            $table->integer('expiration');
         });
     }
 
@@ -24,8 +26,6 @@ class BigintUserKeys extends Migration
      */
     public function down()
     {
-        Schema::table('role_user', function (Blueprint $table) {
-            $table->integer("user_id")->unsigned()->change();
-        });
+        Schema::drop('cache');
     }
 }

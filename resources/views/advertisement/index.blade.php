@@ -3,7 +3,17 @@
     @section('title','Advertise')
 
         @section('content')
-        {!! Breadcrumb::withLinks(['Home' => '/', 'edit' => '/advertisement/edit', 'create']) !!}        
+        {!! Breadcrumb::withLinks(['Home' => '/', 'edit' => '/advertisement/edit', 'create']) !!}       
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif <a class="btn btn-primary" href="{{ url('/') }}"> Back</a>
         <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
         <div class="panel-heading">ADVERTISE</div>

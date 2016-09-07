@@ -14,7 +14,10 @@
         "intervention/image": "~2.2",
          "patricktalmadge/bootstrapper": "~5",
         "intervention/imagecache": "^2.3",
-        "laravelista/ekko": "~1.2"
+        "laravelista/ekko": "~1.2",
+        "zizaco/entrust": "5.2.x-dev",
+        "laracasts/flash": "^2.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -28,8 +28,8 @@
 <li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
-<li><a href="/types/1">Electronics</a></li>
-<li><a href="/types/2">Toys</a></li>
+<li><a href="/types/1">Toys</a></li>
+<li><a href="/types/2">Electronics</a></li>
 </li><li role="separator" class="divider"></li>
 <li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
 <li><a href="/types/3">Land</a></li>
@@ -40,8 +40,8 @@
 <li><a href="/types/6">White Collar</a></li>
 </li><li role="separator" class="divider"></li>
 <li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
-<li><a href="/types/7">Cars</a></li>
-<li><a href="/types/8">Bikes</a></li>
+<li><a href="/types/7">Bikes</a></li>
+<li><a href="/types/8">Cars</a></li>
 </li>
 </ul>
 </li>
@@ -51,7 +51,7 @@
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
-<li><a href="#" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+<li><a href="/users/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
 <li>

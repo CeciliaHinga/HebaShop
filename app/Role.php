@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+use Zizaco\Entrust\EntrustRole;
+
+class Role extends EntrustRole
 {
-    //create roles
-    public function $role = new Role();
     
 }

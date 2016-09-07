@@ -1,21 +1,15 @@
-@extends('layouts.master')
+extends('layouts.master')
 
-@section('title','Create User')
+@section('title','Roles|Create')
 
-@section('sidebar')
-
-	@parent
-  
-    
-@endsection
 @section('content')
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">
-	            <h2>Edit New User</h2>
+	            <h2>Create New Role</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
@@ -29,7 +23,7 @@
 			</ul>
 		</div>
 	@endif
-	{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+	{!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -37,28 +31,27 @@
                 {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Email:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                <strong>Display Name:</strong>
+                {!! Form::text('display_name', null, array('placeholder' => 'Display Name','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Password:</strong>
-                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                <strong>Description:</strong>
+                {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Confirm Password:</strong>
-                {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Role:</strong>
-                {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+                <strong>Permission:</strong>
+                <br/>
+                @foreach($permission as $value)
+                	<label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                	{{ $value->display_name }}</label>
+                	<br/>
+                @endforeach
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

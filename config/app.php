@@ -151,9 +151,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
-        Kodeine\Acl\AclServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
+        Laravelista\Ekko\EkkoServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -196,9 +198,12 @@ return [
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DropdownButton' => Bootstrapper\Facades\DropdownButton::class,
         'DB' => Illuminate\Support\Facades\DB::class,
+        'Ekko' => Laravelista\Ekko\Facades\Ekko::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
+        'Flash' => Laracasts\Flash\Flash::class,
         //'Form' => Bootstrapper\Facades\Form::class,
 		'Form' => Collective\Html\FormFacade::class,
         'Helpers' => Bootstrapper\Facades\Helpers::class,

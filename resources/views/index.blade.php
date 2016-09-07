@@ -10,8 +10,24 @@
 @endsection
 @section('content')
 
-
-        <div class="col-md-10 col-md-offset-2">
+        <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2></h2>
+            </div>
+            <div class="pull-right">
+                @permission('item-create')
+                <a class="btn btn-success" href="{{ route('advertisement') }}"> Create New Advert</a>
+                @endpermission
+            </div>
+        </div>
+    </div>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Home</div>
                 <div class="pagination">{{ $advertisement->links() }}</div>
@@ -46,7 +62,7 @@
                 ${{ $advert->ads_price }}</span>
                 </h4></div>
                 <p>{{ $advert->ads_content }}</p>
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+                <p><a class="btn btn-primary btn-xs" href="#" id="advert">More &raquo;</a></p>
             </div>
         </div>
                 </div>
@@ -56,4 +72,17 @@
                 </div>
                 </div>
                 </div>
+@endsection
+@section('scripts')
+    <script>
+
+        $.(document).ready(function()
+        {
+                    $("#advert").click(function(){
+            $("#advertModal").modal();
+        });
+        });
+
+    </script>
+
 @endsection

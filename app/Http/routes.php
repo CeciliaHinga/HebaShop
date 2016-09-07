@@ -13,7 +13,7 @@ use Illuminate\Pagination\Paginator;
 */
 
 Route::get('/', function () {
-	$advertisement = CategoryType::paginate(10);
+	$advertisement = CategoryType::orderBy('id','DESC')->paginate(10
     		return view('index',compact('advertisement'));
 });
 // Authentication routes...
@@ -36,20 +36,22 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 /*Route::controllers([
    'password' => 'Auth\PasswordController',
 ]);*/
+// Authentication route
+Route::post('authenticate', 'AuthController@authenticate');
 // Provide controller methods with object instead of ID
 
-Route::model('users', 'Users');
-Route::model('roles', 'Roles');
+//Route::model('users', 'Users');
+//Route::model('roles', 'Roles');
 //Route::model('categories', 'Categories');
 //Route::model('types', 'types');
 
 //use slugs rather than IDs in URLs
-Route::bind('users', function($value, $route) {
+/*Route::bind('users', function($value, $route) {
 	return App\User::whereSlug($value)->first();
 });
 Route::bind('roles', function($value, $route) {
 	return App\Role::whereSlug($value)->first();
-});
+});*/
 //Route::bind('categories', function($value, $route) {
 //	return App\Category::whereSlug($value)->first();
 //});
@@ -57,14 +59,26 @@ Route::bind('roles', function($value, $route) {
 //	return App\Types::whereSlug($value)->first();
 //});
 
-Route::resource('users','UsersController');
-Route::resource('users.roles','RolesController');
+//Route::resource('users.roles','RolesController');
 Route::resource('categories','CategoriesController');
 Route::resource('types','TypesController');
 
 
 Route::auth();
+Route::group(['middleware' => ['auth']], function() {
+
+	Route::resource('users','UsersController');
+	Route::resource ('advertisement', 'AdvertisesController');
+Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');
+
+	Route::get('roles',['as'=>'roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+	Route::get('roles/create',['as'=>'roles.create','uses'=>'RolesController@create','middleware' => ['permission:role-create']]);
+	Route::post('roles/create',['as'=>'roles.store','uses'=>'RolesController@store','middleware' => ['permission:role-create']]);
+	Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RolesController@show']);
+	Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RolesController@edit','middleware' => ['permission:role-edit']]);
+	Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RolesController@update','middleware' => ['permission:role-edit']]);
+	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RolesController@destroy','middleware' => ['permission:role-delete']]);
+
+});
 
 //Route::get('index', 'HomeController@index');
-Route::resource ('advertisement', 'AdvertisesController');
-Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');

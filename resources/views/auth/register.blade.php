@@ -1,8 +1,8 @@
 @extends('layouts.master')
-
 @section('title','Register')
-
 @section('content')
+<div class="container">
+    <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
@@ -67,17 +67,21 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-3 col-md-offset-3">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Register
                                 </button>
-                              &nbsp;&nbsp;&nbsp;  
-                                <a href="{{ url('/auth/login') }}" class="fa btn btn-primary fa-sign-in">&nbspLogin</a>
-                                
+                        </div>
+                            <div class="col-md-3 col-md-offset-3">
+                                <a href="/auth/login" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                </a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        @endsection
+    </div>
+</div>
+@endsection

@@ -11,7 +11,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Requests\AdvertiserRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Pagination\Paginator;
 
 class AdvertisesController extends Controller
 {
@@ -21,7 +21,7 @@ class AdvertisesController extends Controller
     }
 	public function index()
 	{
-		$categories = Category::orderBy('id', 'asc')->get();
+		$categories = Category::orderBy('id', 'desc')->get();
 		//$advertisement = Advertise::all();
 		//$categories = Category::lists('name');
 		//$types = Type::pluck('ads_type');
@@ -105,17 +105,18 @@ public function store(AdvertiserRequest $request)
 
    // Process the uploaded image, add $model->attribute and folder name
 
-   //flash()->success('Advert Created!');
+   flash()->success('Advert Created!');
 
    return redirect()->route('advertisement.show', [$advertisement]);
 }
 
     public function edit($id)
 {
+  $categories = Category::orderBy('id', 'desc')->get();
 
-   $advertisement = CategoryType::all($id);
+   $advertisement = CategoryType::findOrFail($id);
 
-   return view('advertisement.edit', compact('advertisement'));
+   return view('advertisement.edit', compact('advertisement','categories'));
 }
 public function show($id)
 {
@@ -161,8 +162,27 @@ public function update($id, EditImageRequest $request)
 
    }
 
-   //flash()->success('image edited!');
-   return view('marketingimage.edit', compact('marketingImage'));
+   flash()->success('advert edited!');
+   return view('advertisement.edit', compact('advertisement'));
+}
+public function destroy($id)
+{
+   $advertisement = CategoryType::findOrFail($id);
+   $thumbPath = $advertisement->image_path.'thumbnails/';
+
+   File::delete(public_path($advertisement->image_path).
+                            $advertisement->ads_image . '.' .
+                            $advertisement->image_extension);
+   File::delete(public_path($thumbPath). 'thumb-' .
+                            $advertisement->ads_image . '.' .
+                            $advertisement->image_extension);
+
+    CategoryType::destroy($id);
+
+   flash()->success('advert deleted!');
+
+   return redirect()->route('/');
+
 }
 
     

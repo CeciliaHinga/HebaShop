@@ -9,34 +9,11 @@ class RolesTable extends Seeder
      *
      * @return void
      */
-    public function run()
+      public function run()
     {
-        //$role = new Role();{
-    /**$roleAdmin = $role->create([
-    'name' => 'Administrator',
-    'slug' => 'administrator',
-    'description' => 'manage administration privileges'
-]);
-
-$role = new Role();
-$roleShopkeeper = $role->create([
-    'name' => 'Shopkeeper',
-    'slug' => 'shopkeeper',
-    'description' => 'manage shopkeeping privileges'
-]);
-
-$role = new Role();
-$roleCustomer = $role->create([
-    'name' => 'Customer',
-    'slug' => 'customer',
-    'description' => 'manage customer privileges'
-]);
-
-$role = new Role();
-$roleGuest = $role->create([
-    'name' => 'Guest',
-    'slug' => 'guest',
-    'description' => 'manage guest privileges'
-]);
-}*/
+        //delete categories table records
+        DB::table('roles')->delete();
+        //insert dummy data
+        DB::table('roles')->insert(array(array('name'=>'Admin','display_name'=>'SuperAdmin','description'=>'Manages the site'),array('name'=>'Shopkeeper','display_name'=>'ShopOwner','description'=>'Manages the shop'),array('name'=>'Customer','display_name'=>'Customer','description'=>'Buys Items'),array('name'=>'Guest','display_name'=>'Guest','description'=>'Views Site'),));
     }
+}
