@@ -1,9 +1,9 @@
-extends('layouts.master')
+@extends('layouts.master')
 
 @section('title','Roles|Edit')
 @section('content')
 	<div class="row">
-	    <div class="col-lg-12 margin-tb">
+	    <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
 	            <h2>Edit Role</h2>
 	        </div>
@@ -12,16 +12,7 @@ extends('layouts.master')
 	        </div>
 	    </div>
 	</div>
-	@if (count($errors) > 0)
-		<div class="alert alert-danger">
-			<strong>Whoops!</strong> There were some problems with your input.<br><br>
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
+	<div class="col-sm-10 col-sm-offset-2" >
 	{!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
@@ -52,4 +43,6 @@ extends('layouts.master')
         </div>
 	</div>
 	{!! Form::close() !!}
+	</div>
+	<hr>
 @endsection

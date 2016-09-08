@@ -1,10 +1,10 @@
-extends('layouts.master')
+@extends('layouts.master')
 
 @section('title','Roles')
 
 @section('content')
 	<div class="row">
-	    <div class="col-lg-12 margin-tb">
+	    <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
 	            <h2>Role Management</h2>
 	        </div>
@@ -20,6 +20,7 @@ extends('layouts.master')
 			<p>{{ $message }}</p>
 		</div>
 	@endif
+	<div class="col-sm-10 col-sm-offset-2">
 	<table class="table table-bordered">
 		<tr>
 			<th>No</th>
@@ -47,4 +48,5 @@ extends('layouts.master')
 	@endforeach
 	</table>
 	{!! $roles->render() !!}
+	</div>
 @endsection

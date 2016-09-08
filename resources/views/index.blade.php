@@ -17,7 +17,7 @@
             </div>
             <div class="pull-right">
                 @permission('item-create')
-                <a class="btn btn-success" href="{{ route('advertisement') }}"> Create New Advert</a>
+                <a class="btn btn-success" href="{{ url('advertisement') }}"> Create New Advert</a>
                 @endpermission
             </div>
         </div>

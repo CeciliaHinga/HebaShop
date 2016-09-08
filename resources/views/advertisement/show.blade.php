@@ -14,12 +14,12 @@
    "$advertisement->ads_title"
    ]) !!}
    <div class="row">
-        <div class="col-lg-12 margin-tb">
+        <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
             <div class="pull-left">
                 <h2> Advert</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('advertisement') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ url('advertisement') }}"> Back</a>
             </div>
         </div>
     </div>

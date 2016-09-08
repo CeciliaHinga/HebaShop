@@ -1,9 +1,9 @@
-extends('layouts.master')
+@extends('layouts.master')
 
 @section('title','Roles|Show')
 @section('content')
 	<div class="row">
-	    <div class="col-lg-12 margin-tb">
+	    <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
 	            <h2> Show Role</h2>
 	        </div>
@@ -12,6 +12,7 @@ extends('layouts.master')
 	        </div>
 	    </div>
 	</div>
+	<div class="col-sm-10 col-sm-offset-2">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -35,5 +36,6 @@ extends('layouts.master')
 				@endif
             </div>
         </div>
+	</div>
 	</div>
 @endsection
