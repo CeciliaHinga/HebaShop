@@ -15,7 +15,7 @@
 	            <h2>Create New User</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('users') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>

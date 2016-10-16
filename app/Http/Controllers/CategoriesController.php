@@ -17,6 +17,10 @@ use Illuminate\Pagination\Paginator;
 
 class CategoriesController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
 public function index()
 {
     $categories = CategoryType::paginate(15);

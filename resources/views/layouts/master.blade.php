@@ -103,9 +103,8 @@
 <div class="row">
 @section('sidebar')
 @show
-<div id="sidebar">
- <nav class="hidden-xs col-sm-1 navbar" >
-<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
+<div class="hidden-xs col-sm-1 sidenav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
+<!--<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">-->
 <ul class="nav nav-pills nav-stacked">
 <li class="dropdown bg-1"><a href="/categories/1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
@@ -129,8 +128,7 @@
   </ul>
   </li>
   </ul>
-  </div>
-  </nav>
+  <!--</div>-->
   </div>
 @yield('content')
 </div>

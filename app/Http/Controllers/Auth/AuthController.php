@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Auth;
 use App\Permission;
 use App\Role;
 use Validator;
@@ -28,12 +29,27 @@ class AuthController extends Controller
     //protected $advertPath = '/advertise';
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after login / registration.=
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = "roles/create";
     protected $redirectAfterLogout = '/auth/login';
+    public function redirectPath()
+    {
+        $redir_path;
+        if (Auth::user()->hasRole('Admin')){
+            return $redir_path = route('admin');
+        }
+        elseif (Auth::user()->hasRole('Shopkeeper')){
+         return $redir_path = route('owners');
+        }
+        elseif (Auth::user()->hasRole('Customer')){
+            return $redir_path = route('customers');
+        }else{
+        return $redir_path = 'roles/create';
+    }   }
+
 
     /**
      * Create a new authentication controller instance.
@@ -72,12 +88,21 @@ class AuthController extends Controller
         return $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role_id' => $data['roles'],
             'password' => bcrypt($data['password']),
+            'role_id' => $data['roles'],
         ]);
-        foreach ($data->input('roles') as $key => $value) {
-            $user->attachRole($value);
-        }
-
+        
     }
+    public function showRegistrationForm()
+    {
+
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+        $roles = Role::orderBy('id','DESC')->get();
+
+        return view('auth.register', compact('roles'));
+    }
+
+
 }

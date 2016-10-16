@@ -1,4 +1,3 @@
-@if (Auth::user()->$role->role_id)
 @extends('layouts.master')
 
 @section('title','Roles')
@@ -11,7 +10,7 @@
 	        </div>
 	        <div class="pull-right">
 	        	@permission('role-create')
-	            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+	            <a class="btn btn-success" href="{{ route('roles.newrole') }}"> Create New Role</a>
 	            @endpermission
 	        </div>
 	    </div>
@@ -51,4 +50,3 @@
 	{!! $roles->render() !!}
 	</div>
 @endsection
-@endif

@@ -1,4 +1,3 @@
-@if (Auth::user())
 @extends('layouts.master')
 
 @section('title','Role')
@@ -21,11 +20,11 @@
 		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group"><select type="dropdown" class="form-control dropdown dropdown-toggle" id="roles" name="roles" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" required>
         <option value="">Select A Role</option>
-        @foreach($roles as $role)
+@foreach($roles as $role)       
         @if ($role->id==2 || $role->id==3)
             <option value="{{ $role->name }}"> {{ $role->display_name }} </option>
         @endif
-        @endforeach
+       @endforeach
         </select>
             </div>
         </div>
@@ -36,4 +35,3 @@
 	{!! Form::close() !!}
     </div>
 @endsection
-@endif

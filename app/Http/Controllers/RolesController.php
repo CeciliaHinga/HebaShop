@@ -44,15 +44,44 @@ class RolesController extends Controller
     */
      public function create()
     {
+        $user = User::find(Auth::user()->id);
         $roles = Role::orderBy('id','desc')->get();
-        return view('roles.create',compact('roles'));
+        return view('roles.create',compact('roles','user'));
+        
+    }
+
+    public function newrole()
+    {
+         $permission = Permission::get();
+         return view('roles.createrole',compact('permission'));
     }
     /**
-    *Store a newly created user in storage
+    *Store a newly created role in storage
     *
     *@param \App\User $user
     * @return Response
     */
+    public function createRole(Request $request){
+     $this->validate($request, [
+            'name' => 'required|unique:roles,name',
+            'display_name' => 'required',
+            'description' => 'required',
+            'permission' => 'required',
+        ]);
+
+        $role = new Role();
+        $role->name = $request->input('name');
+        $role->display_name = $request->input('display_name');
+        $role->description = $request->input('description');
+        $role->save();
+
+        foreach ($request->input('permission') as $key => $value) {
+            $role->attachPermission($value);
+        }
+
+        return redirect()->route('roles.index')
+                        ->with('success','Role created successfully');
+    }
     public function assignRole(Request $request)
     {
         $this->validate($request, [
@@ -62,6 +91,7 @@ class RolesController extends Controller
 
         $role = Role::where('name', '=', $request->input('roles'))->first();
         //$user->attachRole($request->input('role'));
+        
         $user->roles()->attach($role->id);
 
         return redirect()->route('roles.show', compact('role'))

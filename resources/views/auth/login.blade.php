@@ -3,7 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+        <div class="col-sm-4 col-xs-12">
+        <div class="btn-block">
+        <div class="col-sm-12 col-xs-5">
+        <a href="redirect/facebook" class="btn btn-facebook btn-lg">Login with Facebook  <i class="fa fa-btn fa-facebook"></i></a></div>
+        <div class="col-sm-12  col-xs-1" style="padding:40px 10px;"></div>
+        <div class="col-sm-12  col-xs-1"  style="padding:40px 10px;"></div>
+        <div class="col-sm-12 col-xs-5">
+         <a href="redirect/google" class="btn btn-google-plus btn-lg">Login with Google  <i class="fa fa-btn fa-google"></i></a>
+                      </div>
+                      </div>
+                      </div>
+        <div class="col-sm-8 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
@@ -49,21 +61,17 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-3 col-md-offset-3">
+                            <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
-                                <a href="redirect/facebook">Login with Facebook</a>
-                                <a href="redirect/google">Login with Google Account</a>
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
-                                                        <div class="col-md-3 col-md-offset-3">
-                                <a href="/auth/register" class="btn btn-link">
-                                    <i class="fa fa-btn fa-user"></i> Register
-                                </a>
+                            <div class="col-md-3 col-md-offset-3"><a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a></div><div class="col-md-3 col-md-offset-3">
+                                <a href="/auth/register" class="btn btn-link">Register</a>
                             </div>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
