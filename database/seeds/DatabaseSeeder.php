@@ -17,6 +17,7 @@ public function run()
 		$this->call('TypesTableSeeder');
 		$this->call('RolesTable');
 		$this->call('PermissionTableSeeder');
+		$this->call('UserTableSeeder');
 		//message shown in your terminal after running db:seed command
 		$this->command->info("Users table seeded:");
 	}  

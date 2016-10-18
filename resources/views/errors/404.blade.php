@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Permission Denied')
+@section('title','Page Not Found')
 
 @section('sidebar')
 

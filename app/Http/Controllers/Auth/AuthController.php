@@ -35,6 +35,8 @@ class AuthController extends Controller
      */
     //protected $redirectTo = "roles/create";
     protected $redirectAfterLogout = '/auth/login';
+
+    
     public function redirectPath()
     {
         $redir_path;

@@ -151,7 +151,7 @@
     <br>
     
       <div class="notice">
-            @if (count($errors) > 0)
+            @if (isset($errors) && $errors -> any())
             <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><b>
             <ul>
@@ -161,8 +161,7 @@
             </ul></b>
             </div>
         @endif
-    
-      </div>
+        </div>
       @yield('content')
   </div>
 </div>

@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 <li class="active"><a href="/admin">Dashboard</a></li>
-        <li class="bg-1 dropdown"><a  data-toggle="dropdown" data-target="#roles" aria-haspopup="true" aria-expanded="false">Roles</a>  <ul class="collapse" id="roles" role="menu">
+        <li class="bg-1 dropdown"><a data-toggle="dropdown" data-target="#roles" aria-haspopup="true" aria-expanded="false">Roles</a>  <ul class="collapse" id="roles" role="menu">
     <li><a href="/roles">View</a></li>
     <li><a href="/roles/createrole"></a>New</li> 
   </ul></li>
@@ -143,18 +143,24 @@
 </div>
 </div>
 </nav>
-<div class="col-sm-3 sidenav hidden-xs">
+<div class="col-sm-3 sidenav hidden-xs"> 
+<div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active bg-1"><a href="/admin">Dashboard</a></li>
-        <li class="bg-1"><a href="#roles">Roles</a></li>
-        <li class="bg-1"><a href="#permission">Permission</a></li>
-        <li class="bg-1"><a href="#users">Users</a></li>
-      </ul><br>
+<li class="active"><a href="/admin">Dashboard</a></li>
+         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Roles<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="roles">View</a></li>
+    <li><a href="admin/roles/createrole">New</a></li> 
+  </ul> </li>
+        <li class="bg-1"><a href="/permissions">Permission</a></li>
+        <li class="bg-1"><a href="/users">Users</a></li>        
+      </ul>
+    </div>
     </div>
     <br>
     
-      <div class="notice">
-            @if (count($errors) > 0)
+<div class="notice">
+            @if (isset($errors) && $errors -> any())
             <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><b>
             <ul>
@@ -164,9 +170,8 @@
             </ul></b>
             </div>
         @endif
-    
-      </div>
-      @yield('content')
+        </div>
+    @yield('content')
   </div>
 </div>
 <script type="text/javascript" src="/js/jquery-1.9.1.js"></script>

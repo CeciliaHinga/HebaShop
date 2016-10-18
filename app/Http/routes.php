@@ -1,6 +1,5 @@
 <?php
 use App\CategoryType;
-use App;
 use Illuminate\Pagination\Paginator;
 /*
 |--------------------------------------------------------------------------
@@ -12,20 +11,15 @@ use Illuminate\Pagination\Paginator;
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('500',function(){
-	abort(500);
-});
-App::missing(function($exception){
-	return Redirect::route('errors');
-});
-Route::group(['middleware' => ['guest']], function(){ 
-		Route::get('/', function () {
+Route::group(['middleware' => ['guest']],function(){
+
+	Route::get('/', function () {
 	$advertisement = CategoryType::orderBy('id','DESC')->paginate(10);
     		return view('index',compact('advertisement'));
 
 });
-
 });
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -82,7 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
     Route::get('users/create',['as'=>'users.create','uses'=>'UsersController@create']);
     Route::post('users/create',['as'=>'users.store','uses'=>'UsersController@store']);
     Route::get('/',['as'=>'admin','uses'=>'AdminController@index']);	
-	Route::get('roles',['as'=>'roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+	Route::get('roles',['as'=>'roles','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('roles/createrole',['as'=>'roles.newrole','uses'=>'RolesController@newrole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::post('roles/createrole',['as'=>'roles.createrole','uses'=>'RolesController@createRole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('permissions',['as'=>'permissions.index','uses'=>'PermissionsController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
@@ -94,7 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	Route::group(['prefix' => 'owners', 'middleware' => ['role:Shopkeeper']], function()
 	{
 	Route::get('/',['as'=>'owners','uses'=>'ShopOwnerController@index']);
-	Route::get('advertisement',['as'=>'advertisement','uses'=>'AdvertisesController@create']);
+	Route::get('advertisement',['as'=>'advertise.ad','uses'=>'AdvertisesController@create']);
 	Route::get('advertisement',['as'=>'advertisement.index','uses'=>'AdvertisesController@create','middleware' => ['permission:item-create']]);
 	Route::post('advertisement',['as'=>'advertisement.store','uses'=>'AdvertisesController@store','middleware' => ['permission:item-create']]);
 	Route::get('advertisement/{id}/edit',['as'=>'advertisement.edit','uses'=>'AdvertisesController@edit','middleware' => ['permission:item-edit']]);
