@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     "name": "heba/hebashop",
     "description": "The Shopping Point of Choice.",
     "keywords": ["marketing", "heba", "shopping", "digital"],
+=======
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     "license": "MIT",
     "type": "project",
     "require": {
@@ -13,12 +19,16 @@
         "doctrine/dbal": "^2.5",
         "intervention/image": "~2.2",
          "patricktalmadge/bootstrapper": "~5",
+<<<<<<< HEAD
         "intervention/imagecache": "^2.3",
         "laravelista/ekko": "~1.2",
         "zizaco/entrust": "5.2.x-dev",
         "laracasts/flash": "^2.0",
         "predis/predis": "^1.1",
         "laravel/socialite": "^2.0"
+=======
+        "intervention/imagecache": "^2.3"
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

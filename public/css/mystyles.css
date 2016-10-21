@@ -14,6 +14,7 @@ min-height:150px;
 .row-footer{
 background-color:#AfAfAf;
 margin:0px auto;
+<<<<<<< HEAD
 padding:0px auto;
 }
 .jumbotron{
@@ -22,6 +23,15 @@ margin:0px 0px 20px 0px;
 background:#2196F3;
 color: #fff;
 /*max-height: 50px;*/
+=======
+padding:20px 0px 20px 0px;
+}
+.jumbotron{
+padding:0px;
+margin:0px auto;
+background:#7986CB;
+color:florawhite;
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }
 address{
 font-size:80%;
@@ -59,9 +69,12 @@ color:#eeeeee;
 .navbar-inverse .navbar-nav .open .dropdown-menu> li > a:hover{
 color:#000000;
 }
+<<<<<<< HEAD
 .sidenav{
     padding-top: 20px;
 }
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 .tab-content{
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
@@ -69,8 +82,12 @@ color:#000000;
     padding: 10px;
 }
 .affix{
+<<<<<<< HEAD
     top:355px;
 
+=======
+    top:100px;
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }
 .carousel{
     background: #1A237E;
@@ -84,12 +101,15 @@ color:#000000;
     left: 0;
     min-height: 300px;
 }
+<<<<<<< HEAD
 #section2{
 background-color: #1A237E;
 }
 #section3{
 
 }
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 #label{
 /*    background-color:azure;*/
     text-align: center;
@@ -98,11 +118,14 @@ background-color: #1A237E;
     font-size: 30px;
 	padding:0px;
 }
+<<<<<<< HEAD
 .image{
     position: relative;
     height:300px;
     width:400px;
 }
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 #service{
     /*background-color:floralwhite;*/
 }
@@ -120,8 +143,14 @@ background-color: #1A237E;
     position: relative;
 	color:#2A9FFF;
 }
+<<<<<<< HEAD
 .icon300pxfont-size: 60px;
     400px;-right: 0px;
+=======
+.icon{
+   font-size: 60px;
+    padding-right: 0px;
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     position: relative;
 	color:#f4511e;
 	/*text-align:left;*/
@@ -137,9 +166,15 @@ border: 2px solid transparent;
 .portfolio:hover{
 	 border-color: #f1f1f1;
 }
+<<<<<<< HEAD
 .bg-1{
     background: #1abc9c;
     bottom: 8px;
+=======
+.bg-1 {
+    background: #1abc9c;
+    color: #bdbdbd;
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }
 .bg-1 h3 {color: #fff;}
 .bg-1 p {font-style: italic;}
@@ -154,7 +189,11 @@ border: 2px solid transparent;
 	background:#00DFFF;
 	padding-bottom:10px;
 }
+<<<<<<< HEAD
 .bg-4 a  h3{
+=======
+.bg-4 h3{
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 	color:#FFF;
 }
 .col-sm-4 .col-sm-3{
@@ -191,6 +230,7 @@ border: 2px solid transparent;
     color: #fff;
 }
 .nav-pills li a{
+<<<<<<< HEAD
 	color:#fff;
 	font:20px "Montserrat", sans-serif;
     padding: 8px 4px 6px 4px;
@@ -220,4 +260,11 @@ border: 2px solid transparent;
 }
 .well{
     border-radius: 12px;
+=======
+	color:#000;
+	font:20px "Montserrat", sans-serif;;
+}
+.panel-heading h1{
+	font-size:40px;
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }

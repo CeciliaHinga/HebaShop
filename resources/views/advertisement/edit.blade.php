@@ -1,6 +1,10 @@
  @extends('layouts.master')
 
+<<<<<<< HEAD
 @section('title','Edit')
+=======
+@section('title','Home')
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @section('sidebar')
 
@@ -9,6 +13,7 @@
     
 @endsection
 @section('content')
+<<<<<<< HEAD
  {!! Breadcrumb::withLinks(['Home'   => '/',
                                'Advertisement' => '/advertisement',
                                "edit $advertisement->image_name.$advertisement->image_extension"
@@ -29,12 +34,16 @@
 <div>
     Note: name and path values for the image cannot be changed.  If you wish to change these, then delete and create a new image:
 </div>
+=======
+
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 {!! Form::model($advertisement, ['route' => ['advertisement.update', $advertisement->id],
 'method' => 'PATCH',
 'class' => 'form',
 'files' => true]
 ) !!}
 
+<<<<<<< HEAD
     <!-- image name Form Input -->
     <div class="form-group">
     <div class="col-sm-6">
@@ -172,4 +181,6 @@
 
     </script>
 
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 @endsection

@@ -49,8 +49,12 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+<<<<<<< HEAD
         'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+=======
+         'acl' => \Kodeine\Acl\Middleware\HasPermission::class,
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     ];
 }

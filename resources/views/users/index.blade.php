@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 @extends('layouts.admin')
+=======
+@extends('layouts.master')
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @section('title','Users')
 
 @section('sidebar')
 
 	@parent
+<<<<<<< HEAD
     
 @endsection
 
@@ -59,3 +64,12 @@
 	{!! $data->render() !!}
 	</div>
 @endsection
+=======
+    <p>This is freaky!!</p>
+    
+@endsection
+
+@section('content')
+  
+@endsection  
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2

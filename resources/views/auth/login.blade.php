@@ -1,4 +1,5 @@
 @extends('layouts.master')
+<<<<<<< HEAD
 @section('title','Login')
 @section('content')
 <div class="container">
@@ -16,6 +17,15 @@
                       </div>
                       </div>
         <div class="col-sm-8 col-xs-12">
+=======
+
+@section('title','Login')
+
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
@@ -57,6 +67,10 @@
                                         <input type="checkbox" name="remember"> Remember Me
                                     </label>
                                 </div>
+<<<<<<< HEAD
+=======
+                               
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
                             </div>
                         </div>
 
@@ -64,15 +78,24 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
+<<<<<<< HEAD
                                 </button>
                             </div>
                             <div class="col-md-3 col-md-offset-3"><a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a></div><div class="col-md-3 col-md-offset-3">
                                 <a href="/auth/register" class="btn btn-link">Register</a>
+=======
+                                </button>&nbspOR&nbsp<a class="fa btn btn-primary fa-user" href="{{ url('/auth/register') }}">&nbspRegister</a>
+
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
                             </div>
                         </div>
                     </form>
                 </div>
+<<<<<<< HEAD
                 </div>
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             </div>
         </div>
     </div>

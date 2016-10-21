@@ -20,6 +20,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
+<<<<<<< HEAD
 <a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/h.jpg" height="30" width="41"></a>
 </div>
 @role('Admin')
@@ -67,13 +68,28 @@
 </li>
 </ul>
 </li>
+=======
+<a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/heba.jpg" height="30" width="41"></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li class="active"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+<li ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 <li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
 <li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
 </ul>
 
+<<<<<<< HEAD
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
 <li><a href="/users/show/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+=======
+
+<ul class="nav navbar-nav navbar-right">
+@if (Auth::user())
+<li><a href="#" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
 <li>
@@ -85,6 +101,7 @@
     @endif
 </ul>
 </div>
+<<<<<<< HEAD
 </div>
 </nav>
 @role('Admin')<br><br>@endrole
@@ -112,6 +129,11 @@
 
     <div class="notice">
             @if (isset($errors) && $errors -> any())
+=======
+</nav>
+    <div class="notice">
+            @if (count($errors) > 0)
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><b>
             <ul>
@@ -122,6 +144,7 @@
             </div>
         @endif
         </div>
+<<<<<<< HEAD
         <div class="container">
 <div class="row">
 @section('sidebar')
@@ -195,6 +218,17 @@
     </footer>
 <script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+=======
+@section('sidebar')
+
+ 
+@show
+<div>
+@yield('content')
+</div>
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     @yield('scripts')
     </body>
 </html>

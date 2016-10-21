@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Permission;
 
 use App\Role;
@@ -21,11 +22,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth;
 
 use Illuminate\Pagination\Paginator;
+=======
+use App\User;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth;
+
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 /**
 * 
 */
 class UsersController extends Controller
 {
+<<<<<<< HEAD
      public function __construct()
     {
         $this->middleware('auth');
@@ -44,6 +56,21 @@ class UsersController extends Controller
         if (Auth::attempt(array('email' => $email, 'password' => $password)))
 {
 return Redirect::intended('roles.create',compact('roles'));
+=======
+    
+    public function index()
+    {
+        # code...
+        #$users = User::all()
+        #return view('users.index',compact('users'));
+    }
+    public function create()
+    {
+        return view('users.create');
+        if (Auth::attempt(array('email' => $email, 'password' => $password)))
+{
+return Redirect::intended('/index');
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }
     }
     /**
@@ -51,6 +78,7 @@ return Redirect::intended('roles.create',compact('roles'));
     *
     * @return Response
     */
+<<<<<<< HEAD
 public function store(Request $request)
     {
         $this->validate($request, [
@@ -80,15 +108,28 @@ public function store(Request $request)
         return view('users.edit',compact('user','roles','userRole'));
     }
         /**
+=======
+    public function Store()
+    {
+
+    }
+    /**
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     *Display the specified user
     *
     *@param \App\User $user
     * @return Response
     */
+<<<<<<< HEAD
     public function show($id)
     {
         $users = User::find($id);
         return view('users.show',compact('users'));
+=======
+    public function show(User $user)
+    {
+        return view('users.show',compact('user'));
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     }
     /**
     *Show the form for editing the specified user
@@ -102,6 +143,7 @@ public function store(Request $request)
     *@param \App\User $user
     * @return Response
     */
+<<<<<<< HEAD
      public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -177,4 +219,21 @@ public function store(Request $request)
 
         return response()->json("created");
     }*/
+=======
+    public function update(user $user)
+    {
+
+    }
+    /**
+    *Remove the specified user in storage
+    *
+    *@param \App\User $user
+    * @return Response
+    */
+    public function destroy(User $user)
+    {
+        
+    }
+ 
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }

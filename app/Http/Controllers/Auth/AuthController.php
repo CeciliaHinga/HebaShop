@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+<<<<<<< HEAD
 use Auth;
 use App\Permission;
 use App\Role;
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -29,6 +32,7 @@ class AuthController extends Controller
     //protected $advertPath = '/advertise';
 
     /**
+<<<<<<< HEAD
      * Where to redirect users after login / registration.=
      *
      * @var string
@@ -52,6 +56,15 @@ class AuthController extends Controller
         return $redir_path = 'roles/create';
     }   }
 
+=======
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    protected $redirectAfterLogout = '/auth/login';
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
     /**
      * Create a new authentication controller instance.
@@ -75,7 +88,10 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+<<<<<<< HEAD
             'roles' => 'required',
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
         ]);
     }
 
@@ -87,6 +103,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+<<<<<<< HEAD
         return $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -107,4 +124,12 @@ class AuthController extends Controller
     }
 
 
+=======
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }

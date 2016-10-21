@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,20 @@
     </style>
 </head>
 <body id="app-layout">
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Heba:@yield('title')</title>
+{!!Html::style('css/bootstrap.min.css')!!}
+{!!Html::style('css/font-awesome.min.css')!!}
+{!!Html::style('css/bootstrap-social.css')!!}
+{!!Html::style('css/bootstrap-theme.min.css')!!}
+{!!Html::style('css/mystyles.css')!!}
+</head>
+<body>
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -40,7 +55,11 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
                     Laravel
+=======
+                    Heba
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
                 </a>
             </div>
 
@@ -74,9 +93,12 @@
 
     @yield('content')
 
+<<<<<<< HEAD
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+=======
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 </body>
 </html>

@@ -12,12 +12,19 @@ use Illuminate\Pagination\Paginator;
 |
 */
 
+<<<<<<< HEAD
 	Route::get('/', function () {
 	$advertisement = CategoryType::orderBy('id','DESC')->paginate(10);
     		return view('index',compact('advertisement'));
 
 });
 
+=======
+Route::get('/', function () {
+	$advertisement = CategoryType::all()->pagination(5);
+    		return view('index',compact('advertisement'));
+});
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -35,6 +42,7 @@ Route::get('auth/logout', 'Auth\AuthController@logout', function(){
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+<<<<<<< HEAD
 Route::get('auth/redirect/{provider}', 'SocialAuthController@redirect');
 Route::get('/callback/{provider}', 'SocialAuthController@callback');
 /*Route::controllers([
@@ -51,10 +59,25 @@ Route::post('authenticate', 'AuthController@authenticate');
 
 //use slugs rather than IDs in URLs
 /*Route::bind('users', function($value, $route) {
+=======
+/*Route::controllers([
+   'password' => 'Auth\PasswordController',
+]);*/
+// Provide controller methods with object instead of ID
+
+Route::model('users', 'Users');
+Route::model('roles', 'Roles');
+Route::model('categories', 'Categories');
+Route::model('types', 'types');
+
+//use slugs rather than IDs in URLs
+Route::bind('users', function($value, $route) {
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 	return App\User::whereSlug($value)->first();
 });
 Route::bind('roles', function($value, $route) {
 	return App\Role::whereSlug($value)->first();
+<<<<<<< HEAD
 });*/
 //Route::bind('categories', function($value, $route) {
 //	return App\Category::whereSlug($value)->first();
@@ -119,3 +142,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 //Route::get('index', 'HomeController@index');
 Route::get('advertisement/{id}',['as'=>'advertisement.show','uses'=>'AdvertisesController@show']);
 Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');
+=======
+});
+Route::bind('categories', function($value, $route) {
+	return App\Category::whereSlug($value)->first();
+});
+Route::bind('types', function($value, $route) {
+	return App\Types::whereSlug($value)->first();
+});
+
+Route::resource('users','UsersController');
+Route::resource('users.roles','RolesController');
+Route::resource('categories','CategoriesController');
+Route::resource('categories.types','TypesController');
+
+
+Route::auth();
+
+//Route::get('index', 'HomeController@index');
+Route::resource ('advertisement', 'AdvertisesController');
+Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');
+>>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
