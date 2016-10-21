@@ -98,6 +98,11 @@ background-color: #1A237E;
     font-size: 30px;
 	padding:0px;
 }
+.image{
+    position: relative;
+    height:300px;
+    width:400px;
+}
 #service{
     /*background-color:floralwhite;*/
 }
@@ -115,9 +120,8 @@ background-color: #1A237E;
     position: relative;
 	color:#2A9FFF;
 }
-.icon{
-   font-size: 60px;
-    padding-right: 0px;
+.icon300pxfont-size: 60px;
+    400px;-right: 0px;
     position: relative;
 	color:#f4511e;
 	/*text-align:left;*/
@@ -213,4 +217,7 @@ border: 2px solid transparent;
     margin: 0px auto;
     padding: 0px 0px 20px 0px;
     position: absolute;
+}
+.well{
+    border-radius: 12px;
 }

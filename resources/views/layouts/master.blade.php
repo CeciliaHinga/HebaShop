@@ -73,7 +73,7 @@
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
-<li><a href="/users/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+<li><a href="/users/show/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
 <li>

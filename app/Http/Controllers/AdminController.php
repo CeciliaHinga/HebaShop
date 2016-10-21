@@ -23,6 +23,7 @@ class AdminController extends Controller
     public function index()
     {
     	$user=User::count();
-    	return view('admin/index',compact('user'));
+        $role=Role::join("permissions","permissions.id","=","roles.id")->where('roles.id','=','2')->count();
+    	return view('admin/index',compact('user','role'));
     }
 }
