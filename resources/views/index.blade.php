@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @extends('layouts.master')
-=======
- @extends('layouts.master')
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @section('title','Home')
 
@@ -14,7 +10,6 @@
 @endsection
 @section('content')
 
-<<<<<<< HEAD
         <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -32,17 +27,12 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Home</div>
-                <div class="pagination">{{ $advertisement->links() }}</div>
-=======
+    <div class="pagination">{{ $advertisement->links() }}</div>
 <div class="container">
 <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Home</div>
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
                 <div class="panel-body">
                 @foreach($advertisement as $advert)
 <div class="row row-content">
@@ -74,7 +64,6 @@
                 ${{ $advert->ads_price }}</span>
                 </h4></div>
                 <p>{{ $advert->ads_content }}</p>
-<<<<<<< HEAD
                 <p><a class="btn btn-primary btn-xs" href="#" id="advert">More &raquo;</a></p>
             </div>
         </div>
@@ -82,21 +71,16 @@
                 </div>                
                 @endforeach
                 <div class="pagination">{{ $advertisement->links() }}</div>
-=======
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
             </div>
         </div>
                 </div>
                 </div>
-                @endforeach
                 </div>
                 </div>
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
                 </div>
                 </div>
                 </div>
 @endsection
-<<<<<<< HEAD
 @section('scripts')
     <script>
 
@@ -110,5 +94,3 @@
     </script>
 
 @endsection
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2

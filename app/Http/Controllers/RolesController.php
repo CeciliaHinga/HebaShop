@@ -6,15 +6,12 @@ use App\User;
 
 use App\Role;
 
-<<<<<<< HEAD
 use App\Permission;
 
 use DB;
 
 use Auth;
 
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,30 +20,21 @@ use App\Http\Controllers\Controller;
 
 class RolesController extends Controller
 {
-<<<<<<< HEAD
         public function __construct()
     {
         $this->middleware('auth');
     }
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     /**
     *Display a listing of the roles
     *
     *@param \App\User $user
     *@return Response
     */
-<<<<<<< HEAD
      public function index(Request $request)
     {
         $roles = Role::orderBy('id','DESC')->paginate(5);
         return view('roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
-=======
-    public function index(User $user)
-    {
-    	return view('roles.index',compact('user'));
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     }
     /**
     *Show the form for creating a new resource
@@ -54,7 +42,6 @@ class RolesController extends Controller
     *@param \App\User $user
     * @return Response
     */
-<<<<<<< HEAD
      public function create()
     {
         $user = User::find(Auth::user()->id);
@@ -69,20 +56,11 @@ class RolesController extends Controller
          return view('roles.createrole',compact('permission'));
     }
     /**
-    *Store a newly created role in storage
-=======
-    public function create(User $user)
-    {
-    	return view('roles.create',compact('user'));
-    }
-    /**
     *Store a newly created user in storage
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     *
     *@param \App\User $user
     * @return Response
     */
-<<<<<<< HEAD
     public function createRole(Request $request){
      $this->validate($request, [
             'name' => 'required|unique:roles,name',
@@ -118,12 +96,7 @@ class RolesController extends Controller
 
         return redirect()->route('roles.show', compact('role'))
                         ->with('success','Role created successfully');
-                            
-=======
-    public function Store()
-    {
-    	//
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
+  
     }
     /**
     *Display the specified resource
@@ -132,7 +105,6 @@ class RolesController extends Controller
     *@param \App\Role $role
     * @return Response
     */
-<<<<<<< HEAD
     public function show($id)
     {
         $role = Role::findOrFail($id);
@@ -141,11 +113,6 @@ class RolesController extends Controller
             ->get();
 
         return view('roles.show',compact('role','rolePermissions'));
-=======
-    public function show(User $user, Role $role)
-    {
-    	return view('roles.show',compact('user','role'));
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     }
     /**
     *Show the form for editing the specified resource
@@ -154,7 +121,6 @@ class RolesController extends Controller
     *@param \App\Role $role
     * @return Response
     */
-<<<<<<< HEAD
      public function edit($id)
     {
         $role = Role::find($id);
@@ -164,13 +130,6 @@ class RolesController extends Controller
 
         return view('roles.edit',compact('role','permission','rolePermissions'));
     }
-
-=======
-    public function edit(User $user, Role $role)
-    {
-    	return view('roles.edit', compact('user', 'role'));
-    }
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     /**
     *Update the specified resource in storage
     *
@@ -178,7 +137,6 @@ class RolesController extends Controller
     *@param \App\Role $role
     * @return Response
     */
-<<<<<<< HEAD
  public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -202,29 +160,16 @@ class RolesController extends Controller
         return redirect()->route('roles.index')
                         ->with('success','Role updated successfully');
     }    /**
-=======
-    public function update(User $user, Role $role)
-    {
-    	//
-    }
-    /**
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     *Remove the specified user role in storage
     *
     *@param \App\User $user
     *@param \App\Role role
     * @return Response
     */
-<<<<<<< HEAD
      public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
         return redirect()->route('roles.index')
                         ->with('success','Role deleted successfully');
-=======
-    public function destroy(User $user, Role $role)
-    {
-    	//
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     }
 }

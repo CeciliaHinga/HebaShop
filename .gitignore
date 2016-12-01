@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 /vendor
 /node_modules
 /public/storage
 Homestead.yaml
 Homestead.json
 .env
-=======
 vendor/
 node_modules/
 
@@ -21,4 +19,3 @@ bootstrap/cache/
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
->>>>>>> 3f0902a43f7ff429dee8bf55cc13343a45dffe41

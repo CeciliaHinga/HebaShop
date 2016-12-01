@@ -2,13 +2,14 @@
 
 @section('title','Roles|Edit')
 @section('content')
+<div class="col-sm-9">
 	<div class="row">
 	    <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
 	            <h2>Edit Role</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('roles') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
@@ -45,4 +46,5 @@
 	{!! Form::close() !!}
 	</div>
 	<hr>
+    </div>
 @endsection

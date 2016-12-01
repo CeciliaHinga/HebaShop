@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('title','Profile')
 
@@ -9,7 +9,7 @@
     
 @endsection
 @section('content')
-<div class="col-md-10 col-md-offset-2">
+<div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading">User Profile</div>
                 <div class="panel-body">

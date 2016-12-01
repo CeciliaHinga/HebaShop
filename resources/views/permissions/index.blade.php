@@ -3,6 +3,7 @@
 @section('title','Pemissions')
 
 @section('content')
+<div class="col-sm-9 ">
 	<div class="row">
 	    <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
@@ -48,5 +49,6 @@
 	@endforeach
 	</table>
 	{!! $permissions->render() !!}
+	</div>
 	</div>
 @endsection

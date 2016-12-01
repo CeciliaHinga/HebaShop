@@ -1,23 +1,13 @@
 @extends('layouts.master')
 
-<<<<<<< HEAD
 @section('title','Categories')
-=======
-@section('title','Page Title')
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @section('sidebar')
 
 	@parent
-<<<<<<< HEAD
-=======
-    <p>This is me not freaking out!</p>
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
-    
 @endsection
 
 @section('content')
-<<<<<<< HEAD
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'categories'])!!}
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
@@ -65,8 +55,4 @@
                 </div>
                 </div>
                 </div>
-@endsection
-=======
-<p>This is my body content</p>  
 @endsection  
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2

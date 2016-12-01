@@ -4,13 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "61cfb6608a4d0d6ec335b55b2810aa39",
-    "content-hash": "74a9b910f0da7c6af948ee0333e23384",
-=======
     "hash": "83ca6f1b909747136aa50af5b4819a16",
     "content-hash": "9ec6b6730385d8e2d9024115ac4f56c9",
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -569,7 +564,6 @@
             "time": "2014-09-09 13:34:57"
         },
         {
-<<<<<<< HEAD
             "name": "guzzlehttp/guzzle",
             "version": "6.2.1",
             "source": {
@@ -683,8 +677,6 @@
             "time": "2016-05-18 16:56:05"
         },
         {
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             "name": "guzzlehttp/psr7",
             "version": "1.3.1",
             "source": {
@@ -1097,7 +1089,6 @@
             "time": "2016-06-21 16:02:11"
         },
         {
-<<<<<<< HEAD
             "name": "laracasts/flash",
             "version": "2.0.1",
             "source": {
@@ -1141,9 +1132,7 @@
             "time": "2016-07-11 20:46:02"
         },
         {
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
-            "name": "laravel/framework",
+           "name": "laravel/framework",
             "version": "v5.2.45",
             "source": {
                 "type": "git",
@@ -1273,7 +1262,6 @@
             "time": "2016-08-26 11:44:52"
         },
         {
-<<<<<<< HEAD
             "name": "laravel/socialite",
             "version": "v2.0.18",
             "source": {
@@ -1328,8 +1316,6 @@
             "time": "2016-06-22 12:40:16"
         },
         {
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             "name": "laravelcollective/html",
             "version": "v5.2.4",
             "source": {
@@ -1384,7 +1370,6 @@
             "time": "2016-01-27 22:29:54"
         },
         {
-<<<<<<< HEAD
             "name": "laravelista/ekko",
             "version": "1.2.3",
             "source": {
@@ -1433,8 +1418,6 @@
             "time": "2016-04-23 21:46:15"
         },
         {
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             "name": "league/flysystem",
             "version": "1.0.27",
             "source": {
@@ -1518,7 +1501,6 @@
             "time": "2016-08-10 08:55:11"
         },
         {
-<<<<<<< HEAD
             "name": "league/oauth1-client",
             "version": "1.7.0",
             "source": {
@@ -1582,8 +1564,6 @@
             "time": "2016-08-17 00:36:58"
         },
         {
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             "name": "monolog/monolog",
             "version": "1.21.0",
             "source": {
@@ -1912,7 +1892,6 @@
             "time": "2016-08-31 21:53:43"
         },
         {
-<<<<<<< HEAD
             "name": "predis/predis",
             "version": "v1.1.1",
             "source": {
@@ -1963,8 +1942,6 @@
             "time": "2016-06-16 16:22:20"
         },
         {
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -2296,11 +2273,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-<<<<<<< HEAD
-            "version": "v3.1.4",
-=======
             "version": "v3.1.3",
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3060,7 +3033,6 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
-<<<<<<< HEAD
         },
         {
             "name": "zizaco/entrust",
@@ -3129,8 +3101,6 @@
                 "roles"
             ],
             "time": "2016-03-24 15:24:42"
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
         }
     ],
     "packages-dev": [
@@ -4408,7 +4378,6 @@
         },
         {
             "name": "symfony/yaml",
-<<<<<<< HEAD
             "version": "v3.1.4",
             "source": {
                 "type": "git",
@@ -4419,7 +4388,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/f291ed25eb1435bddbe8a96caaef16469c2a092d",
                 "reference": "f291ed25eb1435bddbe8a96caaef16469c2a092d",
-=======
             "version": "v3.1.3",
             "source": {
                 "type": "git",
@@ -4430,7 +4398,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/1819adf2066880c7967df7180f4f662b6f0567ac",
                 "reference": "1819adf2066880c7967df7180f4f662b6f0567ac",
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
                 "shasum": ""
             },
             "require": {
@@ -4466,11 +4433,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
             "time": "2016-09-02 02:12:52"
-=======
-            "time": "2016-07-17 14:02:08"
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
         },
         {
             "name": "webmozart/assert",
@@ -4526,12 +4489,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-<<<<<<< HEAD
         "kodeine/laravel-acl": 20,
         "zizaco/entrust": 20
-=======
-        "kodeine/laravel-acl": 20
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -1,15 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-<<<<<<< HEAD
 use App\User;
 use App\Role;
 use Zizaco\Entrust\EntrustPermission;
 use Zizaco\Entrust\EntrustRole;
 //use Zizaco\Entrust\Role;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 class RolesTable extends Seeder
 {
@@ -18,7 +15,6 @@ class RolesTable extends Seeder
      *
      * @return void
      */
-<<<<<<< HEAD
       public function run()
     {
         //delete categories table records
@@ -29,36 +25,3 @@ class RolesTable extends Seeder
         $user->attachRole(Role::where('name','=','Admin')->first());
     }
 }
-=======
-    public function run()
-    {
-        //$role = new Role();{
-    /**$roleAdmin = $role->create([
-    'name' => 'Administrator',
-    'slug' => 'administrator',
-    'description' => 'manage administration privileges'
-]);
-
-$role = new Role();
-$roleShopkeeper = $role->create([
-    'name' => 'Shopkeeper',
-    'slug' => 'shopkeeper',
-    'description' => 'manage shopkeeping privileges'
-]);
-
-$role = new Role();
-$roleCustomer = $role->create([
-    'name' => 'Customer',
-    'slug' => 'customer',
-    'description' => 'manage customer privileges'
-]);
-
-$role = new Role();
-$roleGuest = $role->create([
-    'name' => 'Guest',
-    'slug' => 'guest',
-    'description' => 'manage guest privileges'
-]);
-}*/
-    }
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2

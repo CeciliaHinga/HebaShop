@@ -3,6 +3,7 @@
 @section('title','Role|Create')
  
 @section('content')
+<div class="col-sm-9 ">
 	<div class="row">
         <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
@@ -49,4 +50,5 @@
         </div>
 	</div>
 	{!! Form::close() !!}
+    </div>
 @endsection

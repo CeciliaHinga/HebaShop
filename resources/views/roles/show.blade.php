@@ -1,14 +1,15 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('title','Roles|Show')
 @section('content')
+<div class="col-sm-9">
 	<div class="row">
 	    <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
 	        <div class="pull-left">
 	            <h2> Show Role</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('roles') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
@@ -36,6 +37,7 @@
 				@endif
             </div>
         </div>
+	</div>
 	</div>
 	</div>
 @endsection

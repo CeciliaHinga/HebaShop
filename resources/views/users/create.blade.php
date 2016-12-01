@@ -8,7 +8,7 @@
   
 @endsection    
 @section('content')
-<div class="col-sm-10 col-sm-offset-2">
+<div class="col-sm-9">
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">

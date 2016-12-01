@@ -151,18 +151,15 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
-<<<<<<< HEAD
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
         Laravelista\Ekko\EkkoServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-=======
         Kodeine\Acl\AclServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
         /*
          * Application Service Providers...
@@ -205,18 +202,15 @@ return [
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DropdownButton' => Bootstrapper\Facades\DropdownButton::class,
         'DB' => Illuminate\Support\Facades\DB::class,
-<<<<<<< HEAD
         'Ekko' => Laravelista\Ekko\Facades\Ekko::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Flash' => Laracasts\Flash\Flash::class,
-=======
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
         //'Form' => Bootstrapper\Facades\Form::class,
 		'Form' => Collective\Html\FormFacade::class,
         'Helpers' => Bootstrapper\Facades\Helpers::class,
@@ -246,10 +240,7 @@ return [
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
-<<<<<<< HEAD
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'Tabbable' => Bootstrapper\Facades\Tabbable::class,
         'Table' => Bootstrapper\Facades\Table::class,

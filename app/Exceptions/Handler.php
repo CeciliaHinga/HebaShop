@@ -46,9 +46,5 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         return parent::render($request, $e);
-<<<<<<< HEAD
-
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
     }
 }

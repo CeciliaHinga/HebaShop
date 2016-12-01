@@ -3,7 +3,6 @@
     @section('title','Advertise')
 
         @section('content')
-<<<<<<< HEAD
         {!! Breadcrumb::withLinks(['Home' => '/', 'create' => '/advertisement', 'My Adverts']) !!}
     <div class="row">
         <div class="col-lg-10 col-lg-offset-2 col-xs-12 margin-tb">
@@ -60,7 +59,6 @@
     {!! $advertisement  ->render() !!}
     </div>
 @endsection
-=======
         {!! Breadcrumb::withLinks(['Home' => '/', 'edit' => '/advertisement/edit', 'create']) !!}
 
         <div class="container">
@@ -173,4 +171,3 @@
             });
             </script>
     @endsection
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2

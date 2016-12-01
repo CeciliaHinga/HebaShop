@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\File;
-=======
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 use App\Category;
 use App\CategoryType;
 use Intervention\Image\Facades\Image;
@@ -15,12 +12,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Requests\AdvertiserRequest;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use Illuminate\Pagination\Paginator;
-=======
-
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
-
 class AdvertisesController extends Controller
 {
 	public function __construct()
@@ -29,11 +21,7 @@ class AdvertisesController extends Controller
     }
 	public function index()
 	{
-<<<<<<< HEAD
-		$categories = Category::orderBy('id', 'desc')->get();
-=======
 		$categories = Category::orderBy('id', 'asc')->get();
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 		//$advertisement = Advertise::all();
 		//$categories = Category::lists('name');
 		//$types = Type::pluck('ads_type');
@@ -50,21 +38,12 @@ class AdvertisesController extends Controller
 		
 		return View('advertisement.index',compact('categories'));
 	}
-<<<<<<< HEAD
 	public function create(Request $request)
 	{
 		$advertisement = CategoryType::orderBy('id', 'DESC')->paginate(5);
         return view('advertisement.create',compact('advertisement'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-=======
-	public function create()
-	{
-		//$categories = Category::orderBy('name', 'asc')->get();
-		
-		//return View('advertisement.create',compact('categories'));
-	}
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 	public function formatCheckboxValue($advertisement)
 {
 
@@ -125,30 +104,22 @@ public function store(AdvertiserRequest $request)
        ->save(public_path() . $destinationThumbnail . 'thumb-' . $imageName . '.' . $extension);
 
    // Process the uploaded image, add $model->attribute and folder name
-
-<<<<<<< HEAD
    flash()->success('Advert Created!');
-=======
    //flash()->success('Advert Created!');
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
-
    return redirect()->route('advertisement.show', [$advertisement]);
 }
 
     public function edit($id)
 {
-<<<<<<< HEAD
   $categories = Category::orderBy('id', 'desc')->get();
 
    $advertisement = CategoryType::findOrFail($id);
 
    return view('advertisement.edit', compact('advertisement','categories'));
-=======
 
    $advertisement = CategoryType::all($id);
 
    return view('advertisement.edit', compact('advertisement'));
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }
 public function show($id)
 {
@@ -193,8 +164,6 @@ public function update($id, EditImageRequest $request)
            ->save(public_path() . $destinationThumbnail . 'thumb-' . $imageName . '.' . $extension);
 
    }
-
-<<<<<<< HEAD
    flash()->success('advert edited!');
    return view('advertisement.edit', compact('advertisement'));
 }
@@ -215,11 +184,8 @@ public function destroy($id)
    flash()->success('advert deleted!');
 
    return redirect()->route('advertisement.create');
-
-=======
    //flash()->success('image edited!');
    return view('marketingimage.edit', compact('marketingImage'));
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 }
 
     

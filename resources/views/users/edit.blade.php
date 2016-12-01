@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
-<<<<<<< HEAD
 @section('title','Edit|Profile')
-=======
-@section('title','Register')
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @section('sidebar')
 
@@ -13,7 +9,6 @@
     
 @endsection
 @section('content')
-<<<<<<< HEAD
     <div class="col-sm-10 col-sm-offset-2"> 
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
@@ -65,10 +60,8 @@
 	{!! Form::close() !!}
     </div>
 @endsection
-=======
 {!!Form::show}
 
 
 
 @endsection
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2

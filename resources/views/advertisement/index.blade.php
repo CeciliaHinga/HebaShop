@@ -3,16 +3,12 @@
     @section('title','Advertise')
 
         @section('content')
-<<<<<<< HEAD
         {!! Breadcrumb::withLinks(['Home' => '/', 'My Adverts' => '/advertisement/create', 'create']) !!}       
     <a class="btn btn-primary" href="{{ url('/') }}"> Back</a>
-=======
         {!! Breadcrumb::withLinks(['Home' => '/', 'edit' => '/advertisement/edit', 'create']) !!}
 
         <div class="container">
         <div class="row">
-        
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
         <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
         <div class="panel-heading">ADVERTISE</div>
@@ -92,12 +88,9 @@
 </div>
 </div>
 
-<<<<<<< HEAD
-=======
 </div>
 </div>
 
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 @endsection
     @section('scripts')
     <script>

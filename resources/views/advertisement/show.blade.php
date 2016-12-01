@@ -10,7 +10,6 @@
 @endsection
 @section('content')
  {!! Breadcrumb::withLinks(['Home'   => '/',
-<<<<<<< HEAD
    'My Adverts' => '/advertisement/create',
    "$advertisement->ads_title"
    ]) !!}
@@ -25,14 +24,12 @@
         </div>
     </div>
         <div class="col-md-10 col-md-offset-2">
-=======
    'My Adverts' => '/advertisement',
    "show $advertisement->ads_title"
    ]) !!}
    <div class="container">
 <div class="row">
         <div class="col-md-10 col-md-offset-1">
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
             <div class="panel panel-default">
                 <div class="panel-heading">Advert</div>
                 <div class="panel-body">
@@ -73,10 +70,7 @@
                 </div>
                 </div>
                 </div>
-<<<<<<< HEAD
-=======
                 </div>
                 </div>
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @endsection

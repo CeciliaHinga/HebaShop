@@ -1,21 +1,16 @@
-<<<<<<< HEAD
 @extends('layouts.admin')
-=======
-@extends('layouts.master')
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
 
 @section('title','Users')
 
 @section('sidebar')
 
 	@parent
-<<<<<<< HEAD
     
 @endsection
 
  
 @section('content')
-<div class="col-sm-10 col-sm-offset-2">
+<div class="col-sm-9">
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">
@@ -64,12 +59,3 @@
 	{!! $data->render() !!}
 	</div>
 @endsection
-=======
-    <p>This is freaky!!</p>
-    
-@endsection
-
-@section('content')
-  
-@endsection  
->>>>>>> 216c04375f6980c3d2ee420ff3a50081e5c5a1c2
