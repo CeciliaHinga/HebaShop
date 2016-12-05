@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -40,8 +40,9 @@ class AdvertisesController extends Controller
 	}
 	public function create(Request $request)
 	{
+    $categories = Category::orderBy('id', 'asc')->get();
 		$advertisement = CategoryType::orderBy('id', 'DESC')->paginate(5);
-        return view('advertisement.create',compact('advertisement'))
+        return view('advertisement.create',compact('advertisement','categories'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 	public function formatCheckboxValue($advertisement)
@@ -69,7 +70,7 @@ public function store(AdvertiserRequest $request)
        'is_featured'       => $request->get('is_featured'),
 
    ]);
-
+   $advertisement ->user_id=$request->input('user_id');
    //define the image paths
 
    $destinationFolder = '/uploadedimage/Advertising/';
@@ -123,11 +124,11 @@ public function store(AdvertiserRequest $request)
 }
 public function show($id)
 {
-
-   //$ads = CategoryType::all();
+      
    $advertisement = CategoryType::findOrFail($id);
+   $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$id)->get();
 
-   return view('advertisement.show', compact('advertisement'));	
+   return view('advertisement.show', compact('advertisement','users'));	
 }
 public function update($id, EditImageRequest $request)
 {
@@ -140,7 +141,7 @@ public function update($id, EditImageRequest $request)
    $advertisement->ads_price = $request->get('ads_price');
    $advertisement->is_active = $request->get('is_active');
    $advertisement->is_featured = $request->get('is_featured');
-
+   $advertisement ->user_id=$request->input('user_id');
    $this->formatCheckboxValue($advertisement);
    $advertisement->save();
 

@@ -21,8 +21,8 @@
 </button>
 <a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/h.jpg" height="30" width="41"></a>
 </div>
-@role('Admin')
-<div class="collapse navbar-collapse" id="myNavbar">
+@if (Entrust::hasRole('Admin'))
+<div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
 <li><a href="/admin">Dashboard</a></li>
          <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Roles<span class="caret"></span></a>  
@@ -39,15 +39,111 @@
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('users') }}">View Users</a></li>
     <li><a href="{{route('users.create') }}">New Users</a></li> 
-  </ul> </li>        
+  </ul> </li>
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
+<li><a href="/types/1">Toys</a></li>
+<li><a href="/types/2">Electronics</a></li>
+</li><li role="separator" class="divider"></li>
+<li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
+<li><a href="/types/3">Land</a></li>
+<li><a href="/types/4">Mortgages</a></li>
+</li><li role="separator" class="divider"></li>
+<li><a href="/categories/3" class="dropdown-header">Jobs</a><li role="separator" class="divider"></li>
+<li><a href="/types/5">Blue Collar</a></li>
+<li><a href="/types/6">White Collar</a></li>
+</li><li role="separator" class="divider"></li>
+<li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
+<li><a href="/types/7">Bikes</a></li>
+<li><a href="/types/8">Cars</a></li>
+</li>
+</ul>
+</li>        
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+@if (Auth::user())
+<li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+@else
+<li>
+    <a href="/auth/login">
+    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+    </li>
+<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+    </li>
+    @endif
+</ul>
     </div>
-@endrole
+@elseif (Entrust::hasRole('Shopkeeper'))
+<div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+<li><a href="/owners">Dashboard</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
+<li><a href="/types/1">Toys</a></li>
+<li><a href="/types/2">Electronics</a></li>
+</li><li role="separator" class="divider"></li>
+<li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
+<li><a href="/types/3">Land</a></li>
+<li><a href="/types/4">Mortgages</a></li>
+</li><li role="separator" class="divider"></li>
+<li><a href="/categories/3" class="dropdown-header">Jobs</a><li role="separator" class="divider"></li>
+<li><a href="/types/5">Blue Collar</a></li>
+<li><a href="/types/6">White Collar</a></li>
+</li><li role="separator" class="divider"></li>
+<li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
+<li><a href="/types/7">Bikes</a></li>
+<li><a href="/types/8">Cars</a></li>
+</li>
+</ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Advertisements<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/advertisement') }}" class="dropdown-header">Post Advert</a><li role="separator" class="divider"></li>
+<li><a href="/">View ADs</a></li>
+<li><a href="/advertisement/create">My Adverts</a></li>
+</li></ul></li>
+         <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Customers<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('roles') }}">View Roles</a></li>
+    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Products<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
+    <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
+  </ul> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Sales<span class="caret"></span></a>  
+       <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="{{route('users') }}">View Users</a></li>
+    <li><a href="{{route('users.create') }}">New Users</a></li> 
+  </ul> </li>
+</ul>
+</li>        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+@if (Auth::user())
+<li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+@else
+<li>
+    <a href="/auth/login">
+    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+    </li>
+<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+    </li>
+    @endif
+</ul>
+    </div>
+@else
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
 <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('advertise.ad') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
+@if(Auth::user())<li  class="{{ Request::path() =='/advertisement' ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>@endif
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
+<ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
 <li><a href="/types/1">Toys</a></li>
 <li><a href="/types/2">Electronics</a></li>
@@ -72,7 +168,7 @@
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
-<li><a href="#" class="btn btn-link">{{ Auth::user()->name }}</a></li>
+<li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
 <li>
@@ -84,9 +180,10 @@
     @endif
 </ul>
 </div>
+@endif
 </div>
 </nav>
-@role('Admin')<br><br>@endrole
+@yield('modal')
 <header class="jumbotron">
         <!-- Main component for a primary marketing message or call to action -->
 
@@ -99,11 +196,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-2">
                 <p style="padding:20px;"></p>
-                <img src="/pics/heba.jpg" id="pic" class="img-responsive">
+                <img src="/pics/ads.jpg" class="img-responsive" style="position:relative">
+                <img src="/pics/heba.jpg" class="img-responsive pic">
                 </div>
                 <div class="col-xs-12 col-sm-2">
                 <p style="padding:20px"></p>
-                <img src="/pics/ads.jpg" class="img-responsive">
                 </div>
             </div>
         </div>
@@ -128,7 +225,7 @@
 <div class="hidden-xs col-sm-1 sidenav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
 <!--<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">-->
 <ul class="nav nav-pills nav-stacked">
-<li class="dropdown bg-1"><a href="/categories/1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
+<li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
     <li><a href="/types/1">Toys</a></li>
     <li><a href="/types/2">Electronics</a></li> 
@@ -152,6 +249,22 @@
   </ul>
   <!--</div>-->
   </div>
+  <div class="col-sm-6">
+  <br><br>
+<div class="input-group">
+        <input class="form-control" id="search" value="{{ Session::get('product_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('/')}}?ok=1&search='+this.value)"
+               placeholder="Search..."
+               type="text">
+
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    onclick="ajaxLoad('{{url('/')}}?ok=1&search='+$('#search').val())"><i
+                        class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div><br>
+    </div>
 @yield('content')
 </div>
 </div>
@@ -162,7 +275,7 @@
                     <h5>Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/advertisement">Advertise</a></li>
+                     @if(Auth::user())   <li><a href="/advertisement">Advertise</a></li>@endif
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -192,8 +305,8 @@
             </div>
         </div>
     </footer>
-<script src="js/jquery-1.9.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
+{!!Html::script('js/jquery-1.9.1.js')!!}
+{!!Html::script('js/bootstrap.min.js')!!}
 @yield('scripts')
     </body>
 </html>

@@ -54,7 +54,7 @@
     <li><a href="{{route('users') }}">View Users</a></li>
     <li><a href="{{route('users.create') }}">New Users</a></li> 
   </ul> </li>   <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
+<li  class="{{ Request::path() == '/advertisement' ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
 <li><a href="/types/1">Toys</a></li>
@@ -94,6 +94,7 @@
     </div>
   </div>
 </nav>
+@yield('modal')
 @section('sidebar')
 @show
 <div class="container-fluid">
@@ -112,7 +113,6 @@
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
 <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>View Site</a></li>
-<!--<li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>-->
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
 <li><a href="/types/1">Toys</a></li>
@@ -188,6 +188,22 @@
             </div>
         @endif
         </div>
+  <div class="col-sm-6">
+  <br><br>
+<div class="input-group">
+        <input class="form-control" id="search" value="{{ Session::get('product_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('/')}}?ok=1&search='+this.value)"
+               placeholder="Search..."
+               type="text">
+
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    onclick="ajaxLoad('{{url('/')}}?ok=1&search='+$('#search').val())"><i
+                        class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div><br>
+    </div>
     @yield('content')
   </div>
 </div>

@@ -79,7 +79,7 @@ class RolesController extends Controller
             $role->attachPermission($value);
         }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('roles')
                         ->with('success','Role created successfully');
     }
     public function assignRole(Request $request)
@@ -157,7 +157,7 @@ class RolesController extends Controller
             $role->attachPermission($value);
         }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('roles')
                         ->with('success','Role updated successfully');
     }    /**
     *Remove the specified user role in storage
@@ -169,7 +169,7 @@ class RolesController extends Controller
      public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles.index')
+        return redirect()->route('roles')
                         ->with('success','Role deleted successfully');
     }
 }

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 use App\Http\Requests;
-
+use App\Role;
 use App\Http\Controllers\Controller;
 
 use App\SocialAccountService;
@@ -26,7 +27,18 @@ class SocialAuthController extends Controller
         $user = $service->createOrGetUser(Socialite::driver($provider));
 
         auth()->login($user);
+        $redir_path;
+        if (Auth::user()->hasRole('Admin')){
+            return redirect()->route('admin');
+        }
+        elseif (Auth::user()->hasRole('Shopkeeper')){
+         return redirect()->route('owners');
+        }
+        elseif (Auth::user()->hasRole('Customer')){
+            return redirect()->route('customers');
+        }else{
 
-        return redirect()->to('roles.create',compact('roles'));
+        return redirect()-> route('roles.create',compact('roles'));
     }
+}
 }

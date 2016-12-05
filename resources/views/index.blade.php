@@ -1,6 +1,48 @@
 @extends('layouts.master')
 
 @section('title','Home')
+@section('modal')
+<!-- Modal -->
+@foreach($advertisement as $advert)
+  <div class="modal fade" id="admodal" role="dialog" aria-labelledby="admodallabel">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+        <div class="modal-body">
+<div class="col-xs-12 col-sm-12"><div class="col-sm-6 col-xs-12">
+<img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
+</div>
+<div class="col-sm-6 col-xs-12"><h3>Description
+          <span class="badge">{{ $advert->ads_price }}</span></h3>
+          {{ $advert->ads_content }}  </div>        
+        </div> </div></div>
+        <div class="modal-footer">
+<div>          @if ($advert->is_featured==0)
+                <span class="label label-primary label-xs">Not Featured
+                </span>@elseif($advert->is_featured==1)
+                <span class="label label-danger label-xs">Featured
+                </span>
+                @endif&puncsp;
+                @if ($advert->is_active==0)
+                <span class="label label-info label-xs">Not Active
+                </span>@elseif($advert->is_active==1)
+                <span class="label label-success label-xs">Active
+                </span>
+                @endif</div><br>
+<div          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endforeach
+
+@endsection
 
 @section('sidebar')
 
@@ -12,8 +54,8 @@
 
         <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2></h2>
+            <div class="col-sm-6 pull-left">
+                
             </div>
             <div class="pull-right">
                 @permission('item-create')
@@ -28,69 +70,67 @@
         </div>
     @endif
     <div class="pagination">{{ $advertisement->links() }}</div>
-<div class="container">
+<div class="container" id="advert">
 <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Home</div>
                 <div class="panel-body">
                 @foreach($advertisement as $advert)
-<div class="row row-content">
-            <div class="col-xs-12 col-sm-3 col-sm-push-9">
-                <p style="padding:20px;"></p>
-                <h3 align=center>{{ $advert->ads_title }}</h3>
-            </div>
-            <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+<div class="col-xs-12 col-sm-4">
+<div class="row row-content"><br>
             <div class="media">
             <div class="media-left media-middle">
-            <a href="/advertisement/{{ $advert->id }}">
+            <a href="#admodal" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#admodal">
+            @if(Entrust::hasRole('Shopkeeper'))<a href="/advertisement/{{ $advert->id }}">@endif
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
-            </div>
-            <div class="media-body">
-                <div class="media-header"><h2>{{ $advert->ads_title }}</h2><h4>@if ($advert->is_featured==0)
-                <span class="label label-primary label-xs">Not Featured
-                </span>@elseif($advert->is_featured==1)
-                <span class="label label-danger label-xs">Featured
-                </span>
-                @endif&puncsp;
-                @if ($advert->is_active==0)
-                <span class="label label-info label-xs">Not Active
-                </span>@elseif($advert->is_active==1)
-                <span class="label label-success label-xs">Active
-                </span>
-                @endif
-                &puncsp;&puncsp;<span class="badge">
-                ${{ $advert->ads_price }}</span>
-                </h4></div>
-                <p>{{ $advert->ads_content }}</p>
-                <p><a class="btn btn-primary btn-xs" href="#" id="advert">More &raquo;</a></p>
-            </div>
-        </div>
+                <p style="padding:5px;"></p>
+                <h3 align=center>{{ $advert->ads_title }}</h3>
+                   </div>
                 </div>
-                </div>                
+                </div>          </div>      
                 @endforeach
+                
                 <div class="pagination">{{ $advertisement->links() }}</div>
             </div>
+            </div>
         </div>
                 </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
+                <div class="loader"></div>
                 </div>
 @endsection
 @section('scripts')
     <script>
-
-        $.(document).ready(function()
-        {
-                    $("#advert").click(function(){
-            $("#advertModal").modal();
+        function ajaxLoad(filename, content) {
+        content = typeof content !== 'undefined' ? content : 'content';
+        $('.loading').show();
+        $.ajax({
+            type: "GET",
+            url: filename,
+            contentType: false,
+            success: function (data) {
+                $("#" + content).html(data);
+                $('.loading').hide();
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
         });
+    }
+    $(document).ready(function () {
+        ajaxLoad('/');
+    });
+    $('.pagination a').on('click', function (event) {
+        event.preventDefault();
+        ajaxLoad($(this).attr('href'));
+    });
+    $(function(){
+        $('#admodal').on("show.bs.modal",function(e){
+            $("#admodallabel").html($(e.relatedTarget).data('title'));
+            $("#fav-title").html($(e.relatedTarget).data('title'));
+            //$("#fav-title").html($(e.relatedTarget).data('title'));
         });
-
-    </script>
-
+    });
+            </script>
 @endsection

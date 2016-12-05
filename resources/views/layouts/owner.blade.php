@@ -38,12 +38,20 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-<li class="active bg-1"><a href="/admin">Dashboard</a></li>
-        <li class="bg-1"><a href="#roles">Customers</a></li>
-        <li class="bg-1"><a href="#permission">Products</a></li>
-        <li class="bg-1"><a href="#users">Sales</a></li>        <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
+<li class="active bg-1"><a href="/owners">Dashboard</a></li>
+<li class="bg-1"><a href="#roles">Customers</a></li>
+<li class="bg-1"><a href="#permission">Products</a></li>
+<li class="bg-1"><a href="#users">Sales</a></li>
+<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true">
+</span>View Site</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Advertisements<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/advertisement') }}" class="dropdown-header">Post Advert</a><li role="separator" class="divider"></li>
+<li><a href="/">View ADs</a></li>
+<li><a href="/advertisement/create">My Adverts</a></li>
+</li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
+<ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
 <li><a href="/types/1">Toys</a></li>
 <li><a href="/types/2">Electronics</a></li>
@@ -99,8 +107,13 @@
 </div>
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li  class="{{ Route::is('/advertisement.*') ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
+<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>View Site</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Advertisements<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/advertisement') }}" class="dropdown-header">Post Advert</a><li role="separator" class="divider"></li>
+<li><a href="/">View ADs</a></li>
+<li><a href="/advertisement/create">My Adverts</a></li>
+</li></ul></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
 <li><a href="/types/1">Toys</a></li>
@@ -140,9 +153,10 @@
 </div>
 </div>
 </nav>
+@yield('modal')
 <div class="col-sm-3 sidenav hidden-xs">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active bg-1"><a href="/admin">Dashboard</a></li>
+        <li class="active bg-1"><a href="/owners">Dashboard</a></li>
         <li class="bg-1"><a href="#roles">Customers</a></li>
         <li class="bg-1"><a href="#products">Products</a></li>
         <li class="bg-1"><a href="#sales">Sales</a></li>
@@ -162,6 +176,7 @@
             </div>
         @endif
         </div>
+
       @yield('content')
   </div>
 </div>

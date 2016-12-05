@@ -1,7 +1,6 @@
  @extends('layouts.master')
 
 @section('title','Edit')
-@section('title','Home')
 
 @section('sidebar')
 
@@ -12,7 +11,7 @@
 @section('content')
  {!! Breadcrumb::withLinks(['Home'   => '/',
                                'Advertisement' => '/advertisement',
-                               "edit $advertisement->image_name.$advertisement->image_extension"
+                               "$advertisement->ads_image.$advertisement->image_extension"
                                 ]) !!}
 
 <div class="row">

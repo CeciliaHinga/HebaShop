@@ -21,7 +21,7 @@
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
             <div class="media-left media-middle">
-            <a href="/categories/{{ $advert->id }}">
+            <a href="/advertisement/{{ $advert->id }}">
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
             </div>

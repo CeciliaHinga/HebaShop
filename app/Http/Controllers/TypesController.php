@@ -16,10 +16,7 @@ use App\Http\Controllers\Controller;
 
 class TypesController extends Controller
 {
- public function __construct()
-    {
-        $this->middleware('auth');
-    }
+ 
     /**
     *Display a listing of the resource
     *
@@ -28,10 +25,7 @@ class TypesController extends Controller
     */
     public function index(Type $category)
     {
-        //$categories = CategoryType::paginate(15);
-    	return ("No such Page Exists");
-    public function index(Category $category)
-    {
+        $categories = CategoryType::paginate(15);
     	return view('types.index',compact('category'));
     }
     /**

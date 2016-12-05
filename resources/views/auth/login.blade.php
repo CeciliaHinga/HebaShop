@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('title','Login')
+@section('sidebar')
+
+    @parent
+  
+    
+@endsection
 @section('content')
         <div class="col-md-8 col-md-offset-2 col-xs-12">
         <div class="col-sm-4 col-xs-12">
@@ -66,7 +72,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-3 col-md-offset-3"><a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a></div>
+                            <div class="col-md-3 col-md-offset-3"><a class="btn btn-link" href="{{ URL::to('/auth/passwords/reset') }}">Forgot Your Password?</a></div>
                             <div class="col-md-3 col-md-offset-3">
                                 <a href="/auth/register" class="btn btn-link">Register</a>
 

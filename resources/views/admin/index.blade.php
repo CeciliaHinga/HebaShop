@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="col-sm-9">
-      <div class="well bg-2">
+      <div class="well bg-4">
         <h4>Dashboard</h4>
         <p>Welcome {{ Auth::user()->name }}.</p>
       </div>

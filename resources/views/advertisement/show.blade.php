@@ -23,15 +23,11 @@
             </div>
         </div>
     </div>
-        <div class="col-md-10 col-md-offset-2">
-   'My Adverts' => '/advertisement',
-   "show $advertisement->ads_title"
-   ]) !!}
    <div class="container">
 <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Advert</div>
+                <div class="panel-heading"><b>{{ $advertisement->ads_title }}</b></div>
                 <div class="panel-body">
 <div class="row row-content">
             <div class="col-xs-12 col-sm-3 col-sm-push-9">
@@ -62,7 +58,7 @@
                 ${{ $advertisement->ads_price }}</span>
                 </h4></div>
                 <p>{{ $advertisement->ads_content }}</p>
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a>&puncsp;&puncsp;Posted by:@foreach($users as $user)<a href="/advertisement/create"> {{ $user->name}}</a>@endforeach</p>
             </div>
         </div>
                 </div>

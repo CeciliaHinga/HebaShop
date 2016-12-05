@@ -1,13 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.error')
 @section('title','Page Not Found')
-
-@section('sidebar')
-
-	@parent
-    
-@endsection
-
  
 @section('content')
-	<h1>Page not found</h1>
+	<div class="container"><h1>Page not found</h1></div>
 @endsection

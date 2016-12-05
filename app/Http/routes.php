@@ -1,5 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Input;
 use App\CategoryType;
+use App\Category;
 use Illuminate\Pagination\Paginator;
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,7 @@ use Illuminate\Pagination\Paginator;
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
+//Route::get('auth/passwods/reset', 'Auth\AuthCountroller');
 Route::get('auth/logout', 'Auth\AuthController@logout', function(){
 	return redirect($redirectAfterLogout);
 });
@@ -90,7 +93,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
     Route::get('users',['as'=>'users','uses'=>'UsersController@index']);
     Route::get('users/create',['as'=>'users.create','uses'=>'UsersController@create']);
     Route::post('users/create',['as'=>'users.store','uses'=>'UsersController@store']);
-    Route::get('/',['as'=>'admin','uses'=>'AdminController@index']);	
+    Route::get('/',['as'=>'admin','uses'=>'AdminController@index']);
+   // Route::get('/',['as'=>'index','uses'=>'HomeController@index']);	
 	Route::get('roles',['as'=>'roles','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('roles/createrole',['as'=>'roles.newrole','uses'=>'RolesController@newrole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::post('roles/createrole',['as'=>'roles.createrole','uses'=>'RolesController@createRole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);

@@ -28,5 +28,12 @@ class ApiController extends Controller
 
 
 }
-    //
+public function searchData()
+{
+	$type = Input::get('type');
+	$advertisement = CategoryType::where('type_id','=',$type)->orderBy('id','DESC')->paginate(10);
+   return Response::json($advertisement);
+
+   //
+}
 }

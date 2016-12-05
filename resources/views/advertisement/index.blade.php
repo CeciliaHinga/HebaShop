@@ -4,8 +4,7 @@
 
         @section('content')
         {!! Breadcrumb::withLinks(['Home' => '/', 'My Adverts' => '/advertisement/create', 'create']) !!}       
-    <a class="btn btn-primary" href="{{ url('/') }}"> Back</a>
-        {!! Breadcrumb::withLinks(['Home' => '/', 'edit' => '/advertisement/edit', 'create']) !!}
+    <div class="col-sm-3 col-sm-offset-3"><a class="btn btn-primary" href="{{ url('/') }}"> Back</a></div>
 
         <div class="container">
         <div class="row">
@@ -15,6 +14,7 @@
         <div class="panel-body">
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/advertisement') }}" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">{{ csrf_field() }}
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <div class="form-group">
         <label class="col-md-4 control-label">Title</label>
         <div class="col-md-6">
