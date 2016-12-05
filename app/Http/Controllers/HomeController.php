@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\CategoryType;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -13,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
     /**
      * Show the application dashboard.
@@ -25,7 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('/');
+    $advertisement = CategoryType::orderBy('id','DESC')->paginate(10);
+    $user = User::first();
+    $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$user->id)->get();
+
+            return View('/index',compact('advertisement','users','user'));
+
 //        return view('index');
     }
 }

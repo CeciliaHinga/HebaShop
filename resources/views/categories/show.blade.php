@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-{!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement',  'Category' ])!!}
+{!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'Categories' => '/categories', "$advertisement->name" ])!!}
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">@if ($categories)
@@ -22,7 +22,11 @@
 <div class="row row-content">
             <div class="col-xs-12 col-sm-3 col-sm-push-9">
                 <p style="padding:20px;"></p>
-                <h3 align=center>{{ $advert->ads_title }}</h3>
+                <div class="col-sm-12"><h3 align=center>{{ $advert->ads_title }}</h3></div>
+                &puncsp;&puncsp;
+                <div class="col-sm-12">
+                Posted by:@foreach($users as $user)
+                <a href="/advertisement/create"> {{ $user->name}}</a>@endforeach</div>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
@@ -48,7 +52,7 @@
                 ${{ $advert->ads_price }}</span>
                 </h4></div>
                 <p>{{ $advert->ads_content }}</p>
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+        <!--        <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>-->
             </div>
         </div>
                 </div>

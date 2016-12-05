@@ -25,8 +25,8 @@ class TypesController extends Controller
     */
     public function index(Type $category)
     {
-        $categories = CategoryType::paginate(15);
-    	return view('types.index',compact('category'));
+        $categories = Type::paginate(15);
+    	return view('types.index',compact('categories'));
     }
     /**
     *Show the form for creating a new resource

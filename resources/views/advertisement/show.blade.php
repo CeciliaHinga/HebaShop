@@ -58,7 +58,7 @@
                 ${{ $advertisement->ads_price }}</span>
                 </h4></div>
                 <p>{{ $advertisement->ads_content }}</p>
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a>&puncsp;&puncsp;Posted by:@foreach($users as $user)<a href="/advertisement/create"> {{ $user->name}}</a>@endforeach</p>
+                <p><!--<a class="btn btn-primary btn-xs" href="#">More &raquo;</a>-->&puncsp;&puncsp;Posted by:@foreach($users as $user)<a href="/advertisement/create"> {{ $user->name}}</a>@endforeach</p>
             </div>
         </div>
                 </div>

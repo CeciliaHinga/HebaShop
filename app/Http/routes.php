@@ -14,11 +14,7 @@ use Illuminate\Pagination\Paginator;
 |
 */
 
-	Route::get('/', function () {
-	$advertisement = CategoryType::orderBy('id','DESC')->paginate(10);
-    		return view('index',compact('advertisement'));
-
-});
+	Route::get('/', 'HomeController@index');
 
 /*Route::get('/', function () {
 	$advertisement = CategoryType::all()->paginate(5);

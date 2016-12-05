@@ -16,7 +16,7 @@
                 </div>
                 <div class="pagination">{{ $categories->links() }}</div>
                 <div class="panel-body">
-                @if ($categories->type_id)
+                @if ($categories->id)
                 @foreach($categories as $advert)
 <div class="row row-content">
             <div class="col-xs-12 col-sm-3 col-sm-push-9">

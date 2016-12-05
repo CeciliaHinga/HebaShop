@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>
+          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:@foreach($users as $user)<a href="/advertisement/create"> {{ $user->name}}</a>@endforeach
         </div>
         <div class="col-sm-12 col-xs-12">
         <div class="modal-body">

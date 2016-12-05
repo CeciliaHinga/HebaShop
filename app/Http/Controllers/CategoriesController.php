@@ -6,9 +6,13 @@ use App\CategoryType;
 
 use App\Category;
 
+use App\Type;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use App\User;
 
 use App\Http\Controllers\Controller;
 
@@ -19,8 +23,13 @@ class CategoriesController extends Controller
 {
 public function index()
 {
+    $user = User::first();
+    $type = Type::first();
     $categories = CategoryType::paginate(15);
-	return view('categories.index',compact('categories'));
+    $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$user->id)->get();
+    $category = Category::join("types","types.id","=","categories.id")->where('types.id','=',$type->id)->get();
+
+	return view('categories.index',compact('categories','users','category'));
 }
 public function create()
 { 
@@ -43,10 +52,12 @@ public function create()
     public function show($id)
     {
          $advertisement = Category::findOrFail($id);
+        $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$id)->get();
+
 
         $categories = CategoryType::where('category_id','=',$id)->paginate(15);
 
-        return view('categories.show',compact('categories', 'advertisement'));
+        return view('categories.show',compact('categories', 'advertisement','users'));
     }
     /**
     *Show the form for editing the specified resource
