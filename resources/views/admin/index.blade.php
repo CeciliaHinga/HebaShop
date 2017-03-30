@@ -3,10 +3,9 @@
 @section('title','Dashboard')
 
 @section('content')
-<div class="col-sm-9">
       <div class="well bg-4">
         <h4>Dashboard</h4>
-        <p>Welcome {{ Auth::user()->name }}.</p>
+        <p> Welcome<a href="/users/{{Auth::user()->id}}"> {{ Auth::user()->name }}.</a></p>
       </div>
       <div class="row">
         <div class="col-sm-3">
@@ -60,6 +59,5 @@
             <p>Text</p>
           </div>
         </div>
-      </div>
       </div>
       @endsection

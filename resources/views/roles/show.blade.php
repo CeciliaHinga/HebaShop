@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
 
 @section('title','Roles|Show')
 @section('content')
@@ -9,7 +9,7 @@
 	            <h2> Show Role</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('roles') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>

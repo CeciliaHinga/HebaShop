@@ -5,15 +5,15 @@
 @section('modal')
 <!-- Modal -->
 @foreach($categories as $advert)
-  <div class="modal fade" id="admodal" role="dialog" aria-labelledby="admodallabel">
+  <div class="modal fade" id="{{ $advert->id }}" role="dialog" aria-labelledby="admodallabel">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:@foreach($users as $user)<a href="/advertisement/create"> {{ $user->name}}</a>@endforeach
-          &puncsp;&puncsp;Category:@foreach($category as $cat)<a href="/categories/{{$cat->id}}"> {{ $cat->name}}</a>@endforeach
+          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:<a href="/advertisement/create"> {{ $advert->name}}</a>
+<!--          &puncsp;&puncsp;Category:<a href="/categories/{{$advert->id}}"> {{ $advert->name}}</a>-->
         </div>
         <div class="col-sm-12 col-xs-12">
         <div class="modal-body">
@@ -84,13 +84,13 @@
 <div class="row row-content"><br>
             <div class="media">
             <div class="media-left media-middle">
-            <a href="#admodal" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#admodal">
+            <a href="#{{ $advert->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#{{ $advert->id }}">
             @if(Entrust::hasRole('Shopkeeper'))<a href="/advertisement/{{ $advert->id }}">@endif
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
                 <p style="padding:5px;"></p>
                 <h3 align=center>{{ $advert->ads_title }}  {{ $advert->ads_type }}</h3>
-                   &puncsp;&puncsp;Category:@foreach($category as $cat)<a href="/categories/{{$cat->id}}"> {{ $cat->name}}</a>@endforeach
+<!--                   &puncsp;&puncsp;Category:<a href="/categories/{{$advert->id}}"> {{ $advert->name}}</a>-->
                    </div>
                 </div>
                 </div>          </div>      
@@ -130,7 +130,7 @@
         ajaxLoad($(this).attr('href'));
     });
     $(function(){
-        $('#admodal').on("show.bs.modal",function(e){
+        $('#{{ $advert->id }}').on("show.bs.modal",function(e){
             $("#admodallabel").html($(e.relatedTarget).data('title'));
             $("#fav-title").html($(e.relatedTarget).data('title'));
             //$("#fav-title").html($(e.relatedTarget).data('title'));

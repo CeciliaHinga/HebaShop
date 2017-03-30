@@ -1,0 +1,14 @@
+{
+    "js": {
+        "outputFolder": "public/js"
+    },
+    "css": {
+        "outputFolder": "public/css",
+        
+        "lteSkin": "skin-*.css"
+    },
+    "fonts": {
+        "outputFolder": "public/fonts"
+    },
+    "buildPath": "public/build"
+}

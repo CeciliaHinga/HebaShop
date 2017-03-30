@@ -15,7 +15,8 @@ use Illuminate\Pagination\Paginator;
 */
 
 	Route::get('/', 'HomeController@index');
-
+	Route::get('/contact','HomeController@contact');
+	Route::get('/aboutus','HomeController@about');
 /*Route::get('/', function () {
 	$advertisement = CategoryType::all()->paginate(5);
     		return view('index',compact('advertisement'));
@@ -24,7 +25,7 @@ use Illuminate\Pagination\Paginator;
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 //Route::get('auth/passwods/reset', 'Auth\AuthCountroller');
-Route::get('auth/logout', 'Auth\AuthController@logout', function(){
+Route::get('auth/logout', ['as' => 'auth.logout','uses' => 'Auth\AuthController@logout'], function(){
 	return redirect($redirectAfterLogout);
 });
 
@@ -59,11 +60,11 @@ Route::post('authenticate', 'AuthController@authenticate');
 ]);*/
 // Provide controller methods with object instead of ID
 
-/*Route::model('users', 'Users');
-Route::model('roles', 'Roles');
-Route::model('categories', 'Categories');
-Route::model('types', 'types');
-
+//Route::model('users', 'Users');
+//Route::model('roles', 'Roles');
+//Route::model('categories', 'Categories');
+//Route::model('types', 'types');
+/*
 //use slugs rather than IDs in URLs
 Route::bind('users', function($value, $route) {
 	return App\User::whereSlug($value)->first();
@@ -77,7 +78,7 @@ Route::bind('roles', function($value, $route) {
 //Route::bind('types', function($value, $route) {
 //	return App\Types::whereSlug($value)->first();
 //});
-//Route::resource('users.roles','RolesController');
+Route::resource('users.roles','RolesController');
 Route::resource('categories','CategoriesController');
 Route::resource('types','TypesController');
 
@@ -87,11 +88,13 @@ Route::group(['middleware' => ['auth']], function()
 Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 {
     Route::get('users',['as'=>'users','uses'=>'UsersController@index']);
+	Route::get('users/{id}/edit',['as'=>'users.edit','uses'=>'UsersController@edit']);
     Route::get('users/create',['as'=>'users.create','uses'=>'UsersController@create']);
     Route::post('users/create',['as'=>'users.store','uses'=>'UsersController@store']);
     Route::get('/',['as'=>'admin','uses'=>'AdminController@index']);
+	Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
    // Route::get('/',['as'=>'index','uses'=>'HomeController@index']);	
-	Route::get('roles',['as'=>'roles','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+	Route::get('roles',['as'=>'roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('roles/createrole',['as'=>'roles.newrole','uses'=>'RolesController@newrole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::post('roles/createrole',['as'=>'roles.createrole','uses'=>'RolesController@createRole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('permissions',['as'=>'permissions.index','uses'=>'PermissionsController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
@@ -102,7 +105,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	/*Route::get('/',['as'=>'index','uses'=>'AdvertisesController@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);*/
 	Route::group(['prefix' => 'owners', 'middleware' => ['role:Shopkeeper']], function()
 	{
+	Route::get('users/{id}/edit',['as'=>'users.edit','uses'=>'UsersController@edit']);
 	Route::get('/',['as'=>'owners','uses'=>'ShopOwnerController@index']);
+	//
 	Route::get('advertisement',['as'=>'advertise.ad','uses'=>'AdvertisesController@create']);
 	Route::get('advertisement',['as'=>'advertisement.index','uses'=>'AdvertisesController@create','middleware' => ['permission:item-create']]);
 	Route::post('advertisement',['as'=>'advertisement.store','uses'=>'AdvertisesController@store','middleware' => ['permission:item-create']]);
@@ -118,12 +123,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 
 	Route::get('users/{id}',['as'=>'users.show','uses'=>'UsersController@show']);
 	Route::patch('users/{id}',['as'=>'users.update','uses'=>'UsersController@update']);
-	Route::get('user/{id}/edit',['as'=>'users.edit','uses'=>'UsersController@edit']);
+	Route::get('users/{id}/edit',['as'=>'users.edit','uses'=>'UsersController@edit','middleware' => ['permission:edit-profile']]);
 	Route::delete('users/{id}',['as'=>'users.destroy','uses'=>'UsersController@destroy']);
 	Route::get('roles/create',['as'=>'roles.create','uses'=>'RolesController@create']);
 	Route::post('roles/create',['as'=>'roles.store','uses'=>'RolesController@assignRole']);
-
-	Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
+    Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
 	Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RolesController@edit','middleware' => ['permission:role-edit']]);
 	Route::get('permissions/{permission_id}',['as'=>'permissions.show','uses'=>'PermissionsController@show']);
 		Route::get('permissions/{id}/edit',['as'=>'permissions.edit','uses'=>'PermissionsController@edit','middleware' => ['permission:role-edit']]);

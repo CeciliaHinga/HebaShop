@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
 
 @section('title','Profile')
 
@@ -11,7 +11,7 @@
 @section('content')
 <div class="col-md-9">
             <div class="panel panel-default">
-                <div class="panel-heading">User Profile</div>
+                <div class="panel-heading">User Profile <div class="pull-right"><a href="{{ route('users.edit',$users->id)}}">Edit</a></div>
                 <div class="panel-body">
         
 	<div class="row row-content">

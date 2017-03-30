@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
 		"illuminate/html": "5.*",
 		"laravelcollective/html": "5.*",
         "kodeine/laravel-acl": "~1.0@dev",
@@ -18,14 +17,17 @@
         "zizaco/entrust": "5.2.x-dev",
         "laracasts/flash": "^2.0",
         "predis/predis": "^1.1",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "laravel/framework": "5.2.*",
+        "mmanos/laravel-search": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "squizlabs/php_codesniffer": "^2.8"
     },
     "autoload": {
         "classmap": [

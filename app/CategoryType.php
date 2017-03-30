@@ -18,5 +18,9 @@ class CategoryType extends Model
 	'image_path',
     'image_extension',
 	];
-   //
+   
+   public function user()
+   {
+   	return $this->belongsTo('App\User');
+   }
 }

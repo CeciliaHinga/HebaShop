@@ -8,11 +8,14 @@ use App\Category;
 
 use App\Type;
 
+use App\User;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 
 class TypesController extends Controller
 {
@@ -23,10 +26,16 @@ class TypesController extends Controller
     *@param \App\Category $category
     *@return Response
     */
-    public function index(Type $category)
+    public function index()
     {
-        $categories = Type::paginate(15);
-    	return view('types.index',compact('categories'));
+        $user = User::first();
+        $type = Type::first();
+        $categories = CategoryType::paginate(15);
+        $category = CategoryType::paginate(15);
+        $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
+        $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
+
+    	return view('types.index',compact('categories','users','category'));
     }
     /**
     *Show the form for creating a new resource

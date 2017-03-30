@@ -21,7 +21,7 @@
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
             <div class="media-left media-middle">
-            <a href="/advertisement/{{ $advert->id }}">
+@if(Auth::user())            <a href="/advertisement/{{ $advert->id }}">@endif
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
             </div>
@@ -42,7 +42,7 @@
                 ${{ $advert->ads_price }}</span>
                 </h4></div>
                 <p>{{ $advert->ads_content }}</p>
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+      <!--          <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>-->
             </div>
         </div>
                 </div>

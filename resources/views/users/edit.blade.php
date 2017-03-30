@@ -1,5 +1,4 @@
-@extends('layouts.master')
-
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
 @section('title','Edit|Profile')
 
 @section('sidebar')
@@ -16,7 +15,7 @@
 	            <h2>Edit New User</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('users.show',$user->id) }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
@@ -50,18 +49,18 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Role:</strong>
-                {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+                {!! Form::select('roles[]',$userRole, array('class' => 'form-control','multiple')) !!}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-				<button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col-xs-12 col-sm-6 col-md-6 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-	</div>
+	
 	{!! Form::close() !!}
-    </div>
-@endsection
-{!!Form::show}
-
-
-
+        <div class="col-xs-12 col-sm-6 col-md-6 text-center">
+    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            {!! Form::close() !!}
+                </div>
+    </div></div>
 @endsection

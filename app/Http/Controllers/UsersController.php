@@ -10,6 +10,8 @@ use App\User;
 
 use Hash;
 
+use Auth;
+
 use DB;
 
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ use App\Http\Requests;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\Auth;
+//use App\Http\Controllers\Auth;
 
 use Illuminate\Pagination\Paginator;
 
@@ -79,13 +81,15 @@ public function store(Request $request)
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
     }
-     public function edit($id)
+     public function edit()
     {
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
+    
         $roles = Role::lists('display_name','id');
-        $userRole = $user->roles->lists('id','id')->toArray();
+        $userRole = $user->roles->lists('display_name','id')->toArray();
 
         return view('users.edit',compact('user','roles','userRole'));
+    
     }
         /**
     *Display the specified user
@@ -95,8 +99,9 @@ public function store(Request $request)
     */
     public function show($id)
     {
-        $users = User::find($id);
+        $users = User::find(Auth::user()->id);
         return view('users.show',compact('users'));
+    
     }
     /**
     *Show the form for editing the specified user
@@ -135,7 +140,7 @@ public function store(Request $request)
             $user->attachRole($value);
         }
 
-        return redirect()->route('users.index')
+        return redirect()->route('users')
                         ->with('success','User updated successfully');
     }
 
@@ -147,8 +152,10 @@ public function store(Request $request)
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('users.index')
+        //User::find($id);
+        User::join("category_types","category_types.user_id","=","users.id")->where('category_types.user_id','=',$id)->delete();
+
+        return redirect()->route('auth.logout')
                         ->with('success','User deleted successfully');
     }
     /*public function createRole(Request $request){

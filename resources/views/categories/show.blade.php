@@ -25,13 +25,13 @@
                 <div class="col-sm-12"><h3 align=center>{{ $advert->ads_title }}</h3></div>
                 &puncsp;&puncsp;
                 <div class="col-sm-12">
-                Posted by:@foreach($users as $user)
-                <a href="/advertisement/create"> {{ $user->name}}</a>@endforeach</div>
+                Posted by:
+                <a href="/advertisement/create"> {{ $advert->name }}</a></div>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
             <div class="media-left media-middle">
-            <a href="/advertisement/{{ $advert->id }}">
+            @if(Auth::user())<a href="/advertisement/{{ $advert->id }}">@endif
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
             </div>

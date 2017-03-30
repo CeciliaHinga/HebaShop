@@ -10,7 +10,7 @@
 	            <h2>Create New Role</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('roles') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>

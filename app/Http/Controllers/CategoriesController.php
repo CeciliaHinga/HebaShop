@@ -26,8 +26,9 @@ public function index()
     $user = User::first();
     $type = Type::first();
     $categories = CategoryType::paginate(15);
-    $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$user->id)->get();
-    $category = Category::join("types","types.id","=","categories.id")->where('types.id','=',$type->id)->get();
+    $category = CategoryType::paginate(15);
+    $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
+    $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
 
 	return view('categories.index',compact('categories','users','category'));
 }
@@ -52,10 +53,10 @@ public function create()
     public function show($id)
     {
          $advertisement = Category::findOrFail($id);
-        $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$id)->get();
+        
+        $categories = CategoryType::join("users","users.id","=","category_types.user_id")->where('category_types.category_id','=',$id)->paginate(15);
+       // $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
 
-
-        $categories = CategoryType::where('category_id','=',$id)->paginate(15);
 
         return view('categories.show',compact('categories', 'advertisement','users'));
     }

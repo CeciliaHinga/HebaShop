@@ -1,181 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Heba&nbsp;:&nbsp;@yield('title')</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {!!Html::style('css/bootstrap.min.css')!!}
-{!!Html::style('css/font-awesome.min.css')!!}
-{!!Html::style('css/bootstrap-social.css')!!}
-{!!Html::style('css/bootstrap-theme.min.css')!!}
-{!!Html::style('css/mystyles.css')!!}
-  <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 550px}
+    <meta charset="UTF-8">
+    <title>Heba&nbsp;:&nbsp;@yield('title')</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<link rel="stylesheet" href="{!! elixir('css/final.css') !!}">
+    <!-- Bootstrap 3.3.2 
+    <link href="{{ asset("/bower_components/admin-lte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
+     Font Awesome Icons 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+     Ionicons 
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+     Theme style
+    <link href="{{ asset("/bower_components/admin-lte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
+     AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
     
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-        
-    /* On small screens, set height to 'auto' for the grid */
-    @media screen and (max-width: 767px) {
-      .row.content {height: auto;}
-    }
-  </style>
+    <link href="{{ asset("/bower_components/admin-lte/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-<nav class="navbar navbar-inverse visible-xs">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-<a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/h.jpg" height="30" width="41"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-<li class="active"><a href="/admin">Dashboard</a></li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Roles<span class="caret"></span></a>  
-       <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('roles') }}">View Roles</a></li>
-    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
-  </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Permission<span class="caret"></span></a>  
-       <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
-    <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
-  </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Users<span class="caret"></span></a>  
-       <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('users') }}">View Users</a></li>
-    <li><a href="{{route('users.create') }}">New Users</a></li> 
-  </ul> </li>   <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li  class="{{ Request::path() == '/advertisement' ? 'active' : '' }}" ><a href="{{ url('/advertisement') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Advertise</a></li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
-<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
-<li><a href="/types/1">Toys</a></li>
-<li><a href="/types/2">Electronics</a></li>
-</li><li role="separator" class="divider"></li>
-<li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
-<li><a href="/types/3">Land</a></li>
-<li><a href="/types/4">Mortgages</a></li>
-</li><li role="separator" class="divider"></li>
-<li><a href="/categories/3" class="dropdown-header">Jobs</a><li role="separator" class="divider"></li>
-<li><a href="/types/5">Blue Collar</a></li>
-<li><a href="/types/6">White Collar</a></li>
-</li><li role="separator" class="divider"></li>
-<li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
-<li><a href="/types/7">Bikes</a></li>
-<li><a href="/types/8">Cars</a></li>
-</li>
-</ul>
-</li>
-<li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
-<li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
-</ul>
+<body class="skin-green-light">
+<div class="wrapper">
 
-<ul class="nav navbar-nav navbar-right">
-@if (Auth::user())
-<li><a href="{{ url('/users/show/',Auth::user()->id ) }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
-@else
-<li>
-    <a href="/auth/login">
-    <span class="glyphicon glyphicon-log-in"></span> Login</a>
-    </li>
-<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
-    </li>
-    @endif
-      </ul>
-    </div>
-  </div>
-</nav>
-@yield('modal')
-@section('sidebar')
-@show
-<div class="container-fluid">
-  <div class="row content">
-    <nav class="navbar navbar-inverse navbar-fixed-top  hidden-xs" role="navigation">
-<div class="container">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="{{ url('/admin') }}"><img src="/pics/h.jpg" height="30" width="41"></a>
-</div>
-<div id="navbar" class="navbar-collapse collapse">
-<ul class="nav navbar-nav">
-<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>View Site</a></li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a><ul class="dropdown-menu">
-<li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
-<li><a href="/types/1">Toys</a></li>
-<li><a href="/types/2">Electronics</a></li>
-</li><li role="separator" class="divider"></li>
-<li><a href="/categories/2" class="dropdown-header">Real Estates</a><li role="separator" class="divider"></li>
-<li><a href="/types/3">Land</a></li>
-<li><a href="/types/4">Mortgages</a></li>
-</li><li role="separator" class="divider"></li>
-<li><a href="/categories/3" class="dropdown-header">Jobs</a><li role="separator" class="divider"></li>
-<li><a href="/types/5">Blue Collar</a></li>
-<li><a href="/types/6">White Collar</a></li>
-</li><li role="separator" class="divider"></li>
-<li><a href="/categories/4" class="dropdown-header">Vehicles</a><li role="separator" class="divider"></li>
-<li><a href="/types/7">Bikes</a></li>
-<li><a href="/types/8">Cars</a></li>
-</li>
-</ul>
-</li>
-<li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
-<li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
-</ul>
+    <!-- Header -->
+    @include('header')
 
-<ul class="nav navbar-nav navbar-right">
-@if (Auth::user())
-<li><a href="/users/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
-@else
-<li>
-    <a href="/auth/login">
-    <span class="glyphicon glyphicon-log-in"></span> Login</a>
-    </li>
-<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
-    </li>
-    @endif
-</ul>
-</div>
-</div>
-</nav>
-<div class="col-sm-3 sidenav hidden-xs"> 
-<div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav nav-pills nav-stacked">
-<li class="active"><a href="/admin" class="bg-4">Dashboard</a></li>
-         <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Roles<span class="caret"></span></a>  
-       <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('roles') }}">View Roles</a></li>
-    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
-  </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Permission<span class="caret"></span></a>  
-       <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
-    <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
-  </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle bg-4" data-toggle="dropdown">Users<span class="caret"></span></a>  
-       <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('users') }}">View Users</a></li>
-    <li><a href="{{route('users.create') }}">New Users</a></li> 
-  </ul> </li>        
-      </ul>
-    </div>
-    </div>
-    <br>
-    
+    <!-- Sidebar -->
+    @include('sidebar')
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>@yield('title')
+                <small>{{ $page_description or null }}</small>
+            </h1>
+            <!-- You can dynamically generate breadcrumbs here -->
+            <ol class="breadcrumb">
+                <li><a href="/admin"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
 <div class="notice">
             @if (isset($errors) && $errors -> any())
             <div class="alert alert-danger">
@@ -188,27 +59,30 @@
             </div>
         @endif
         </div>
-  <div class="col-sm-6">
-  <br><br>
-<div class="input-group">
-        <input class="form-control" id="search" value="{{ Session::get('product_search') }}"
-               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('/')}}?ok=1&search='+this.value)"
-               placeholder="Search..."
-               type="text">
 
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('/')}}?ok=1&search='+$('#search').val())"><i
-                        class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </div><br>
-    </div>
-    @yield('content')
-  </div>
-</div>
-<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    @yield('scripts')
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+            @yield('content')
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+    <!-- Footer -->
+    @include('footer')
+
+</div><!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.1.3 
+<script src="{{ asset ("/bower_components/admin-lte/plugins/jQuery/jQuery-2.1.3.min.js") }}"></script>
+ Bootstrap 3.3.2 JS
+<script src="{{ asset ("/bower_components/admin-lte/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
+ AdminLTE App
+<script src="{{ asset ("/bower_components/admin-lte/dist/js/app.min.js") }}" type="text/javascript"></script>-->
+<script src="{!! elixir('js/final.js') !!}" async defer></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+      Both of these plugins are recommended to enhance the
+      user experience -->
 </body>
 </html>

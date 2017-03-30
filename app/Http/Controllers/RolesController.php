@@ -79,7 +79,7 @@ class RolesController extends Controller
             $role->attachPermission($value);
         }
 
-        return redirect()->route('roles')
+        return redirect()->route('roles.index')
                         ->with('success','Role created successfully');
     }
     public function assignRole(Request $request)
@@ -111,8 +111,8 @@ class RolesController extends Controller
         $rolePermissions = Permission::join("permission_role","permission_role.permission_id","=","permissions.id")
             ->where("permission_role.role_id",$id)
             ->get();
-
-        return view('roles.show',compact('role','rolePermissions'));
+ 
+        return view('roles.show',compact('role','rolePermissions'));   
     }
     /**
     *Show the form for editing the specified resource
@@ -157,7 +157,7 @@ class RolesController extends Controller
             $role->attachPermission($value);
         }
 
-        return redirect()->route('roles')
+        return redirect()->route('roles.index')
                         ->with('success','Role updated successfully');
     }    /**
     *Remove the specified user role in storage
@@ -169,7 +169,7 @@ class RolesController extends Controller
      public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles')
+        return redirect()->route('roles.index')
                         ->with('success','Role deleted successfully');
     }
 }

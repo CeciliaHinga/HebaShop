@@ -4,11 +4,7 @@
   <title>Heba&nbsp;:&nbsp;@yield('title')</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {!!Html::style('css/bootstrap.min.css')!!}
-{!!Html::style('css/font-awesome.min.css')!!}
-{!!Html::style('css/bootstrap-social.css')!!}
-{!!Html::style('css/bootstrap-theme.min.css')!!}
-{!!Html::style('css/mystyles.css')!!}
+  <link rel="stylesheet" href="{!! elixir('css/final.css') !!}">
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 550px}
@@ -70,14 +66,14 @@
 </li>
 </ul>
 </li>
-<li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
-<li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
+<li><a  class="{{ Request::path() == '/categories/1' ? 'active' : '' }}" href="/aboutus"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
+<li><a href="/contact"><span class="fa fa-envelope-o">Contact</span></a></li>
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
 <li><a href="/users/{{ Auth::user()->id }}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+<li>{!! Html::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
 <li>
     <a href="/auth/login">
@@ -133,8 +129,8 @@
 </li>
 </ul>
 </li>
-<li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
-<li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
+<li><a href="/aboutus"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
+<li><a href="/contact"><span class="fa fa-envelope-o">Contact</span></a></li>
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
@@ -180,8 +176,7 @@
       @yield('content')
   </div>
 </div>
-<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script src="{!! elixir('js/final.js') !!}" async defer></script>
     @yield('scripts')
 </body>
 </html>

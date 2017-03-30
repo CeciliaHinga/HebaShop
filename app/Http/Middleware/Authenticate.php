@@ -22,7 +22,8 @@ class Authenticate
                 return response('Unauthorized.', 401);
             }
 
-            return redirect()->guest('/');
+            return redirect()->guest('auth/login')
+                             ->with('success','Login To advertise');
         }
 
         return $next($request);

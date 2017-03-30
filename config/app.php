@@ -160,6 +160,7 @@ return [
         Kodeine\Acl\AclServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
+        Mmanos\Search\SearchServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -248,6 +249,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Search' => Mmanos\Search\Facade::class,
 
     ],
 

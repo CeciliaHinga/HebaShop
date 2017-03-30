@@ -3,11 +3,9 @@
 <head>
 <title>Heba&nbsp;:&nbsp;@yield('title')</title>
 <meta http-equiv = "Content-Type" name="csrf-token" content="{{ csrf_token() }}" charset="utf-8">
-{!!Html::style('css/bootstrap.min.css')!!}
-{!!Html::style('css/font-awesome.min.css')!!}
+<link rel="stylesheet" href="{!! elixir('css/final.css') !!}">
 {!!Html::style('css/bootstrap-social.css')!!}
-{!!Html::style('css/bootstrap-theme.min.css')!!}
-{!!Html::style('css/mystyles.css')!!}
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -24,11 +22,11 @@
 @if (Entrust::hasRole('Admin'))
 <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-<li><a href="/admin">Dashboard</a></li>
+<li  class="{{ url()->current()==url('/admin')?'active':'' }}" ><a href="/admin">Dashboard</a></li>
          <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Roles<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('roles') }}">View Roles</a></li>
-    <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
+    <li class="{{ url()->current()==url('/admin/roles')?'active':'' }}" ><a href="{{route('roles.index') }}">View Roles</a></li>
+    <li class="{{ url()->current()==url('/admin/roles/createrole')?'active':'' }}" ><a href="{{route('roles.createrole') }}">New Role</a></li> 
   </ul> </li>
         <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Permission<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
@@ -64,13 +62,13 @@
       <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
 <li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+<li>{!! Html::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
-<li>
+<li class="{{ url()->current()==url('/auth/login')?'active':'' }}">
     <a href="/auth/login">
     <span class="glyphicon glyphicon-log-in"></span> Login</a>
     </li>
-<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+<li class="{{ url()->current()==url('/auth/register')?'active':'' }}"> <a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
     </li>
     @endif
 </ul>
@@ -107,7 +105,7 @@
 </li></ul></li>
          <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Customers<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
-    <li><a href="{{route('roles') }}">View Roles</a></li>
+    <li><a href="{{route('roles.index') }}">View Roles</a></li>
     <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
   </ul> </li>
         <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Products<span class="caret"></span></a>  
@@ -162,8 +160,8 @@
 </li>
 </ul>
 </li>
-<li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
-<li><a href="contactus.html"><span class="fa fa-envelope-o">Contact</span></a></li>
+<li  class="{{ url()->current()==url('/aboutus')?'active':'' }}" ><a href="/aboutus"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
+<li class="{{ url()->current()==url('/contact')?'active':'' }}" ><a href="/contact"><span class="fa fa-envelope-o">Contact</span></a></li>
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
@@ -171,11 +169,11 @@
 <li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
 <li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
 @else
-<li>
+<li class="{{ url()->current()==url('/auth/login')?'active':'' }}">
     <a href="/auth/login">
     <span class="glyphicon glyphicon-log-in"></span> Login</a>
     </li>
-<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+<li class="{{ url()->current()==url('/auth/register')?'active':'' }}"><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
     </li>
     @endif
 </ul>
@@ -222,8 +220,8 @@
 <div class="row">
 @section('sidebar')
 @show
-<div class="hidden-xs col-sm-1 sidenav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
-<!--<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">-->
+<!--<div class="hidden-xs col-sm-1 sidenav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
+<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
 <ul class="nav nav-pills nav-stacked">
 <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
   <ul class="dropdown-menu dropdown-menu-right" role="menu">
@@ -247,8 +245,8 @@
   </ul>
   </li>
   </ul>
-  <!--</div>-->
   </div>
+  </div>-->
   <div class="col-sm-6">
   <br><br>
 <div class="input-group">
@@ -276,8 +274,8 @@
                     <ul class="list-unstyled">
                         <li><a href="/">Home</a></li>
                      @if(Auth::user())   <li><a href="/advertisement">Advertise</a></li>@endif
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="/aboutus">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-6 col-sm-5">
@@ -290,11 +288,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="nav navbar-nav" style="padding: 40px 10px;">
-                        <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
-                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
-                        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                        <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id=" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a>
                         <a class="btn btn-social-icon" href="mailto:ceciliahinga@gmail.com"><i class="fa fa-envelope-o"></i></a>
                     </div>
                 </div>
@@ -305,8 +303,9 @@
             </div>
         </div>
     </footer>
-{!!Html::script('js/jquery-1.9.1.js')!!}
-{!!Html::script('js/bootstrap.min.js')!!}
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="{!! elixir('js/final.js') !!}" async defer></script>
+
 @yield('scripts')
     </body>
 </html>

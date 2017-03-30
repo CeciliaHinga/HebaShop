@@ -4,14 +4,14 @@
 @section('modal')
 <!-- Modal -->
 @foreach($advertisement as $advert)
-  <div class="modal fade" id="admodal" role="dialog" aria-labelledby="admodallabel">
+  <div class="modal fade" id="{{ $advert->id }}" role="dialog" aria-labelledby="admodallabel">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:@foreach($users as $user)<a href="/advertisement/create"> {{ $user->name}}</a>@endforeach
+          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:<a href="/advertisement/create"> {{ $advert->name }}</a>
         </div>
         <div class="col-sm-12 col-xs-12">
         <div class="modal-body">
@@ -23,7 +23,14 @@
           {{ $advert->ads_content }}  </div>        
         </div> </div></div>
         <div class="modal-footer">
-<div>          @if ($advert->is_featured==0)
+<div class="col-sm-6 col-xs-12"> <div>Related:</div> @foreach($advertisement as $rel) @if($rel->user_id == $advert->user_id && $advert->id !== $rel->id)
+<a href="#{{ $advert->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-dismiss="modal" data-target="#{{ $rel->id }}">
+<img class="img-thumbnail" width="60" height="60" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $rel->ads_image. '.' . $rel->image_extension . '?'. 'time='. time() }}"></a>
+
+ @endif
+@endforeach
+</div>       
+<div class="col-sm-3 col-xs-12">          @if ($advert->is_featured==0)
                 <span class="label label-primary label-xs">Not Featured
                 </span>@elseif($advert->is_featured==1)
                 <span class="label label-danger label-xs">Featured
@@ -35,13 +42,12 @@
                 <span class="label label-success label-xs">Active
                 </span>
                 @endif</div><br>
-<div          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+<div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div>
       </div>
     </div>
   </div>
 @endforeach
-
 @endsection
 
 @section('sidebar')
@@ -81,7 +87,7 @@
 <div class="row row-content"><br>
             <div class="media">
             <div class="media-left media-middle">
-            <a href="#admodal" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#admodal">
+            <a href="#{{ $advert->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#{{ $advert->id }}">
             @if(Entrust::hasRole('Shopkeeper'))<a href="/advertisement/{{ $advert->id }}">@endif
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
@@ -92,13 +98,14 @@
                 </div>          </div>      
                 @endforeach
                 
-                <div class="pagination">{{ $advertisement->links() }}</div>
+                
             </div>
             </div>
         </div>
                 </div>
                 <div class="loader"></div>
                 </div>
+                <div class="pagination">{{ $advertisement->links() }}</div>
 @endsection
 @section('scripts')
     <script>
@@ -125,12 +132,15 @@
         event.preventDefault();
         ajaxLoad($(this).attr('href'));
     });
+                @foreach($advertisement as $advert)
+
     $(function(){
-        $('#admodal').on("show.bs.modal",function(e){
+        $('#{{ $advert->id }}').on("show.bs.modal",function(e){
             $("#admodallabel").html($(e.relatedTarget).data('title'));
             $("#fav-title").html($(e.relatedTarget).data('title'));
             //$("#fav-title").html($(e.relatedTarget).data('title'));
         });
-    });
+    });@endforeach
+
             </script>
 @endsection

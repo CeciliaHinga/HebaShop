@@ -127,7 +127,7 @@ public function show($id)
       
    $advertisement = CategoryType::findOrFail($id);
    $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$id)->get();
-
+   
    return view('advertisement.show', compact('advertisement','users'));	
 }
 public function update($id, EditImageRequest $request)
