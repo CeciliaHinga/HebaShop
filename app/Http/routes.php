@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Input;
+use App\User;
 use App\CategoryType;
 use App\Category;
 use Illuminate\Pagination\Paginator;
@@ -14,7 +15,19 @@ use Illuminate\Pagination\Paginator;
 |
 */
 
-	Route::get('/', 'HomeController@index');
+	Route::get('/', ['as' => 'search', 'uses' => function(){
+	if($query = Input::get('query', false))
+	{
+		$advertisement = CategoryType::search($query)->paginate(15);
+//		$advertisement = User::join("category_types","category_types.user_id","=","users.id")->search($query)->paginate(15);
+    
+	} else {
+		$advertisement = CategoryType::orderBy('id','DESC')->paginate(15);
+		$advertisement = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
+    
+	} 
+	return View::make('/index', compact('advertisement'));
+}]);
 	Route::get('/contact','HomeController@contact');
 	Route::get('/aboutus','HomeController@about');
 /*Route::get('/', function () {
@@ -116,8 +129,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	Route::delete('advertisement/{id}',['as'=>'advertisement.destroy','uses'=>'AdvertisesController@destroy','middleware' => ['permission:item-delete']]);
 
 });
-	Route::group(['prefix' => 'customer', 'middleware' => ['role:Customer']], function()
+	Route::group(['prefix' => 'customers', 'middleware' => ['role:Customer']], function()
 	{
+	Route::get('/',['as'=>'customers','uses'=>'CustomerController@index']);
 
 });
 
@@ -130,11 +144,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
     Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
 	Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RolesController@edit','middleware' => ['permission:role-edit']]);
 	Route::get('permissions/{permission_id}',['as'=>'permissions.show','uses'=>'PermissionsController@show']);
-		Route::get('permissions/{id}/edit',['as'=>'permissions.edit','uses'=>'PermissionsController@edit','middleware' => ['permission:role-edit']]);
+	Route::get('permissions/{id}/edit',['as'=>'permissions.edit','uses'=>'PermissionsController@edit','middleware' => ['permission:role-edit']]);
 	Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RolesController@update','middleware' => ['permission:role-edit']]);
 	Route::patch('permissions/{id}',['as'=>'permissions.update','uses'=>'PermissionsController@update','middleware' => ['permission:role-edit']]);
 	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RolesController@destroy','middleware' => ['permission:role-delete']]);
 	Route::delete('permissions/{id}',['as'=>'permissions.destroy','uses'=>'PermissionsController@destroy','middleware' => ['permission:role-delete']]);
+	Route::post('advertisement/cart',['as'=>'advertisement.cart','uses'=>'AdvertisesController@cart','middleware' => ['permission:add-cart']]);
 });
 
 //Route::get('index', 'HomeController@index');

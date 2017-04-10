@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.owner')
 
     @section('title','Advertise')
 
@@ -21,7 +21,6 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class="col-sm-10 col-sm-offset-2">
     <table class="table table-bordered">
         <tr>
             <th></th>
@@ -59,6 +58,5 @@
     @endforeach
     </table>
     {!! $advertisement  ->render() !!}
-    </div>
 @endsection
         

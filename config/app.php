@@ -160,7 +160,8 @@ return [
         Kodeine\Acl\AclServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
-        Mmanos\Search\SearchServiceProvider::class,
+        Elasticquent\ElasticquentServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -219,6 +220,7 @@ return [
         'Icon' => Bootstrapper\Facades\Icon::class,
         //'Image' => Bootstrapper\Facades\Image::class,
         'Image'=>Intervention\Image\Facades\Image::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
         'InputGroup' => Bootstrapper\Facades\InputGroup::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
@@ -249,7 +251,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Search' => Mmanos\Search\Facade::class,
+        'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 

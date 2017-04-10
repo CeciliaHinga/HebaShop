@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Elasticquent\ElasticquentTrait;
 
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 //use Kodeine\Acl\Traits\HasRole;
@@ -10,7 +11,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait;
+    use EntrustUserTrait, ElasticquentTrait;
     //use Authenticatable, CanResetPassword, HasRole;
 
     /**
@@ -30,9 +31,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function advertisements()
-    {
-        return $this->hasMany('App\CategoryType');
-    }
+        protected $mappingProperties = array(
+    'name' => [
+      'type' => 'string',
+      "analyzer" => "standard",
+    ],
+    );
+        protected $dates = ['created_at','updated_at'];
+
+        public function advertisements()
+        {
+            return $this->hasMany('App\CategoryType');
+        }
 
 }

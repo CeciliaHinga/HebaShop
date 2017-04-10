@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
 @section('title','Permission Denied')
 
 @section('sidebar')

@@ -1,4 +1,4 @@
-@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner')
 @section('title','Edit|Profile')
 
 @section('sidebar')

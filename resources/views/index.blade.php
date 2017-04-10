@@ -11,7 +11,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:<a href="/advertisement/create"> {{ $advert->name }}</a>
+          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;
+          Posted by:@foreach($advertisement as $rel) 
+          @if($advert->user_id == $rel->user_id && $rel->id == $advert->id )
+          <a href="{{ route('search', Input::get('query',"query=$advert->ads_title")) }}"> {{ $advert->name }}</a>
+          @endif @endforeach
         </div>
         <div class="col-sm-12 col-xs-12">
         <div class="modal-body">
@@ -26,11 +30,19 @@
 <div class="col-sm-6 col-xs-12"> <div>Related:</div> @foreach($advertisement as $rel) @if($rel->user_id == $advert->user_id && $advert->id !== $rel->id)
 <a href="#{{ $advert->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-dismiss="modal" data-target="#{{ $rel->id }}">
 <img class="img-thumbnail" width="60" height="60" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $rel->ads_image. '.' . $rel->image_extension . '?'. 'time='. time() }}"></a>
-
  @endif
 @endforeach
-</div>       
-<div class="col-sm-3 col-xs-12">          @if ($advert->is_featured==0)
+</div>
+<div class="col-sm-3 col-xs-12">
+<form method="POST" action="{{route('advertisement.cart')}}">
+                                            <input type="hidden" name="product_id" value="{{$advert->id}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                        </form>
+<!--           @if ($advert->is_featured==0)
                 <span class="label label-primary label-xs">Not Featured
                 </span>@elseif($advert->is_featured==1)
                 <span class="label label-danger label-xs">Featured
@@ -41,7 +53,8 @@
                 </span>@elseif($advert->is_active==1)
                 <span class="label label-success label-xs">Active
                 </span>
-                @endif</div><br>
+
+                @endif --></div><br>
 <div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div>
       </div>

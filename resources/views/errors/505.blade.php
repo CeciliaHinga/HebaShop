@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
 @section('title','Problem loading page')
 
 @section('sidebar')

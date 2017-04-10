@@ -72,8 +72,8 @@
                                 </button>
                         </div>
                             <div class="col-md-3 col-md-offset-3">
-                                <a href="/auth/login" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                <a href="/auth/login">
+                                    Already Have an Account?
                                 </a>
                         </div>
                     </form>

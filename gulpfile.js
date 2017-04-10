@@ -35,7 +35,6 @@ elixir(function (mix) {
     ],
     scripts = [
       './public/js/vendor.js',
-      './public/js/circleMenu.js',
       './public/js/app.js',
       './public/dist/js/app.js'
     ],
@@ -46,7 +45,6 @@ elixir(function (mix) {
     karmaJsDir = [
       jsOutputFolder + '/vendor.js',
       jsOutputFolder + '/app.js',
-      jsOutputFolder + '/circleMenu.js'
   ]
 
     mix

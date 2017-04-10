@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.owner')
 
     @section('title','Advertise')
 
         @section('content')
         {!! Breadcrumb::withLinks(['Home' => '/', 'My Adverts' => '/advertisement/create', 'create']) !!}       
-    <div class="col-sm-3 col-sm-offset-3"><a class="btn btn-primary" href="{{ url('/') }}"> Back</a></div>
+    <div class="col-sm-3 col-sm-offset-9"><a class="btn btn-primary" href="{{ url('/') }}"> Back</a></div>
 
         <div class="container">
         <div class="row">

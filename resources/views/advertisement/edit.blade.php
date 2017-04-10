@@ -1,13 +1,7 @@
- @extends('layouts.master')
+ @extends('layouts.owner')
 
 @section('title','Edit')
 
-@section('sidebar')
-
-	@parent
-  
-    
-@endsection
 @section('content')
  {!! Breadcrumb::withLinks(['Home'   => '/',
                                'Advertisement' => '/advertisement',
@@ -25,7 +19,6 @@
 	    </div>
 	</div>
 <hr>
-<div class="col-sm-10 col-sm-offset-2">
 <div>
     Note: name and path values for the image cannot be changed.  If you wish to change these, then delete and create a new image:
 </div>
@@ -96,7 +89,7 @@
 <div class="form-group"><label for="is_active" class="col-md-4 control-label">Is Active:</label>
 <div class="col-md-1">
     <input type="checkbox" class="checkbox" name="is_active" value="1" id="is_active">
-</div></div>
+</div> </div>
 <!--is_featured form input -->
 <div class="form-group"><label for="is_featured" class="col-md-4 control-label">Featured:</label>
 <div class="col-md-1">

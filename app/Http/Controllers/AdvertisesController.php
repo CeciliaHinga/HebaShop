@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use App\Category;
 use App\CategoryType;
 use Intervention\Image\Facades\Image;
 use Auth;
+use Cart;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\AdvertiserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
@@ -128,7 +131,7 @@ public function show($id)
    $advertisement = CategoryType::findOrFail($id);
    $users = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.id','=',$id)->get();
    
-   return view('advertisement.show', compact('advertisement','users'));	
+   return view('advertisement.show', compact('advertisement','users','cart'));	
 }
 public function update($id, EditImageRequest $request)
 {
@@ -189,5 +192,15 @@ public function destroy($id)
    return view('marketingimage.edit', compact('marketingImage'));
 }
 
-    
+public function cart() {
+    if (Request::isMethod('post')) {
+        $product_id = Request::get('product_id');
+        $product = CategoryType::find($product_id);
+        Cart::add(array('id' => $product_id, 'name' => $product->ads_title, 'qty' => 1, 'price' => $product->ads_price));
+    }
+
+    $cart = Cart::content();
+
+    return view('cart', array('cart' => $cart, 'title' => 'Welcome', 'description' => '', 'page' => 'home'));
+}    
 }

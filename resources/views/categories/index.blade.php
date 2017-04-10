@@ -25,7 +25,14 @@
           {{ $advert->ads_content }}  </div>        
         </div> </div></div>
         <div class="modal-footer">
-<div>          @if ($advert->is_featured==0)
+<div class="col-sm-6 col-xs-12"> <div>Related:</div> @foreach($categories as $rel) @if($rel->user_id == $advert->user_id && $advert->id !== $rel->id)
+<a href="#{{ $advert->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-dismiss="modal" data-target="#{{ $rel->id }}">
+<img class="img-thumbnail" width="60" height="60" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $rel->ads_image. '.' . $rel->image_extension . '?'. 'time='. time() }}"></a>
+
+ @endif
+@endforeach
+</div>       
+<div class="col-sm-3 col-xs-12">          @if ($advert->is_featured==0)
                 <span class="label label-primary label-xs">Not Featured
                 </span>@elseif($advert->is_featured==1)
                 <span class="label label-danger label-xs">Featured
@@ -37,7 +44,7 @@
                 <span class="label label-success label-xs">Active
                 </span>
                 @endif</div><br>
-<div          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+<div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div>
       </div>
     </div>

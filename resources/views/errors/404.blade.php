@@ -1,4 +1,4 @@
-@extends('layouts.error')
+@extends(Entrust::hasRole('Admin') ? 'layouts.admin' :'layouts.owner' )
 @section('title','Page Not Found')
  
 @section('content')

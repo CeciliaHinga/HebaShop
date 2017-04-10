@@ -2014,28 +2014,16 @@ margin:0px auto;
 padding:0px auto;
 }
 .jumbotron{
-padding:0px;
 margin:0px 0px 20px 0px;
 background:#2196F3;
 color: #fff;
 /*max-height: 50px;*/
 padding:20px 0px 20px 0px;
 }
-.jumbotron{
-padding:0px;
-margin:0px auto;
-background:#7986CB;
-color:florawhite;
-}
 address{
 font-size:80%;
 margin:0px;
 color:#0f0f0f;
-}
-body{
-align:center;
-padding:50px 0px 0px 0px;
-z-index:0;
 }
 textarea{
     resize: none;
@@ -2177,8 +2165,8 @@ border: 2px solid transparent;
 
 .panel-footer .btn:hover {
 	border: 1px solid #f4511e;
-    background-color: #fff !important;
-    color: #f4511e;
+    /*background-color: #fff !important;
+    color: #f4511e;*/
 }
 .panel-heading h1{
     color: #FFF !important;

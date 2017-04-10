@@ -19,7 +19,10 @@
         "predis/predis": "^1.1",
         "laravel/socialite": "^2.0",
         "laravel/framework": "5.2.*",
-        "mmanos/laravel-search": "dev-master"
+        "elasticquent/elasticquent": "dev-master",
+        "ext-json": "^1.2",
+        "elasticsearch/elasticsearch": "2.*",
+        "gloudemans/shoppingcart": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

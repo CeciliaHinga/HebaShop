@@ -1,18 +1,25 @@
 <!-- Main Header -->
 <header class="main-header">
     <!-- Logo -->
-<a href="{{ url('/admin') }}" class="logo navbar-fixed-top"><img src="/pics/h.jpg" height="30" width="41"></a>
+@if (Entrust::hasRole('Admin'))
+<a href="{{ url('/admin') }}" class="logo"><span class="logo-lg"><img src="/pics/h.jpg" height="30" width="41"></span></a>
+@elseif (Entrust::hasRole('Shopkeeper'))
+<a href="{{ url('/owners') }}" class="logo navbar-static-top"><span class="logo-lg"><img src="/pics/h.jpg" height="30" width="41"><span></a>
+@else
+<a href="{{ url('/customers') }}" class="logo navbar-fixed-top"><span class="logo-lg"><img src="/pics/h.jpg" height="30" width="41"></span></a>
+@endif
 
 
     <!-- Header Navbar -->
-    <nav class="navbar navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+            <li><a href="/">View Site</a></li>
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
                     <!-- Menu toggle button -->
@@ -118,11 +125,12 @@
                             <img src="/pics/user5-128x128.jpg" class="img-circle" alt="User Image" />
                             <p>
                                 {{ Auth::user()->name }} - @foreach (Auth::user()->roles as $role) {{ $role->display_name }}@endforeach 
-                                <small>Member since {{ Auth::user()->created_at }}</small>
+                                <small>Member since {{ Auth::user()->created_at->format('j F, Y') }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
+                           @if (Entrust::hasRole('Admin'))
                             <div class="col-xs-4 text-center">
                                 <a href="{{route('users') }}">Users</a>
                             </div>
@@ -132,6 +140,27 @@
                             <div class="col-xs-4 text-center">
                                 <a href="{{route('roles.index') }}">Roles</a>
                             </div>
+                            @elseif (Entrust::hasRole('Shopkeeper'))
+                            <div class="col-xs-4 text-center">
+                                <a href="{{route('users') }}">Customers</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="{{route('permissions.index') }}">Products</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="{{route('roles.index') }}">Sales</a>
+                            </div>
+                            @else
+                            <div class="col-xs-4 text-center">
+                                <a href="{{route('users') }}">Shops</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="{{route('permissions.index') }}">Purchases</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="{{route('roles.index') }}">Followers</a>
+                            </div>
+                            @endif
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">

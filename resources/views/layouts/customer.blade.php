@@ -25,7 +25,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="skin-blue">
+<body class="skin-red">
 <div class="wrapper">
 
     <!-- Header -->
@@ -43,7 +43,7 @@
             </h1>
             <!-- You can dynamically generate breadcrumbs here -->
             <ol class="breadcrumb">
-                <li><a href="/owners"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li><a href="/customers"><i class="fa fa-dashboard"></i> Level</a></li>
                 <li class="active">Here</li>
             </ol>
         </section>
