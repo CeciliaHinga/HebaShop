@@ -36,7 +36,7 @@
             <div class="media">
             <div class="media-left media-middle">
             @if(Auth::user())<a href="/advertisement/{{ $advert->id }}">@endif
-            <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
+            <!-- <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}"> -->
             </a>
             </div>
             <div class="media-body">
