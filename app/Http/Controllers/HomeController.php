@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Category;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\CategoryType;
@@ -40,5 +41,13 @@ class HomeController extends Controller
     public function about()
     {
         return View('/aboutus');
+    }
+    public function shop($id)
+    {
+    $categories = CategoryType::paginate(15);
+    $category = CategoryType::paginate(15);
+    $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
+    $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
+        return view('shops.show',compact('category','categories'));
     }
 }

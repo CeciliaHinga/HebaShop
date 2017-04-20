@@ -22,8 +22,9 @@ class AdminController extends Controller
     //v
     public function index()
     {
-    	$user=User::count();
-        $role=Role::join("role_user","role_user.role_id","=","roles.id")->where('roles.id','=','2')->count();
-    	return view('admin/index',compact('user','role'));
+    	$users=User::count();
+        $members = User::orderBy('id','DESC')->paginate(5);
+        $role=Role::join("role_user","role_user.role_id","=","roles.id")->where('role_user.role_id','=',2)->count();
+    	return view('admin/index',compact('users','role','members'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.owner')
+@extends(Entrust::hasRole('Shopkeeper') ? 'layouts.owner' :'layouts.master' )
 
     @section('title','Advertise')
 

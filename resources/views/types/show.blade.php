@@ -3,7 +3,11 @@
 @section('title','Types')
 
 @section('content')
+@if(Entrust::hasRole('Shopkeeper'))
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement',  'Type' ])!!}
+@else
+{!! Breadcrumb::withLinks(['Home' => '/', 'Type' => '/types',"$advertisement->ads_type" ])!!}
+@endif
  <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">@if ($categories)

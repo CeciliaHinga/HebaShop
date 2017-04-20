@@ -22,7 +22,7 @@ class ShopOwnerController extends Controller
     //v
     public function index()
     {
-    	$user=User::count();
-    	return view('owner/index',compact('user'));
+    	$users=User::count();
+    	return view('owner/index',compact('users'));
     }
 }

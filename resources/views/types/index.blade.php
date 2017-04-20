@@ -60,8 +60,11 @@
     
 @endsection
 @section('content')
+@if(Entrust::hasRole('Shopkeeper'))
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'categories'])!!}
-
+@else
+{!! Breadcrumb::withLinks(['Home' => '/', 'Types'])!!}
+@endif
         <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="col-sm-6 pull-left">
@@ -84,7 +87,7 @@
 <div class="row">
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Categories</div>
+                <div class="panel-heading">Types</div>
                 <div class="panel-body">
                 @foreach($categories as $advert)
 <div class="col-xs-12 col-sm-4">
@@ -136,6 +139,7 @@
         event.preventDefault();
         ajaxLoad($(this).attr('href'));
     });
+    @foreach($categories as $advert)
     $(function(){
         $('#{{ $advert->id }}').on("show.bs.modal",function(e){
             $("#admodallabel").html($(e.relatedTarget).data('title'));
@@ -143,5 +147,6 @@
             //$("#fav-title").html($(e.relatedTarget).data('title'));
         });
     });
+    @endforeach
             </script>
 @endsection

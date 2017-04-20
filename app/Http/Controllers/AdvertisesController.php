@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use App\Category;
@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 use Auth;
 use Cart;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Request;
+//use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\AdvertiserRequest;
 use App\Http\Controllers\Controller;
@@ -24,6 +24,7 @@ class AdvertisesController extends Controller
     }
 	public function index()
 	{
+      $users=User::count();
 		$categories = Category::orderBy('id', 'asc')->get();
 		//$advertisement = Advertise::all();
 		//$categories = Category::lists('name');
@@ -43,6 +44,7 @@ class AdvertisesController extends Controller
 	}
 	public function create(Request $request)
 	{
+      $users=User::count();
     $categories = Category::orderBy('id', 'asc')->get();
 		$advertisement = CategoryType::orderBy('id', 'DESC')->paginate(5);
         return view('advertisement.create',compact('advertisement','categories'))

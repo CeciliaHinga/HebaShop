@@ -24,7 +24,7 @@
 </div>
 {!! Form::model($advertisement, ['route' => ['advertisement.update', $advertisement->id],
 'method' => 'PATCH',
-'class' => 'form',
+'class' => 'form form-horizontal',
 'files' => true]
 ) !!}
 
@@ -108,7 +108,6 @@
         Edit
     </button>
 </div>
-</div>
   {!! Form::close() !!}
     <div>
         {!! Form::model($advertisement, ['route' => ['advertisement.destroy', $advertisement->id],
@@ -117,17 +116,9 @@
         'files' => true]
         ) !!}
 
-        <div class="form-group">
-
             {!! Form::submit('Delete Advertisement', array('class'=>'btn btn-danger', 'Onclick' => 'return ConfirmDelete();')) !!}
 
-        </div>
-
         {!! Form::close() !!}
-
-
-
-    </div>
 </div>
 <br><br>
 @endsection

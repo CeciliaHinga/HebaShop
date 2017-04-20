@@ -38,7 +38,9 @@ Elixir.extend('bower', function (jsOutputFile, jsOutputFolder, cssOutputFile, cs
         },
         AdminLTE: {
           main: [
-          './dist/js/app.min.js'
+          './dist/js/app.min.js',
+          './plugins/fastclick/fastclick.min.js',
+          './dist/js/demo.js'
           ]
         },
         jquery: {

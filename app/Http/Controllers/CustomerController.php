@@ -19,7 +19,7 @@ class CustomerController extends Controller
     //v
     public function index()
     {
-    	$user=User::count();
-    	return view('customer/index',compact('user'));
+    	$users=User::count();
+    	return view('customer/index',compact('users'));
     }
 }

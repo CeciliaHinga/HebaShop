@@ -60,7 +60,11 @@
     
 @endsection
 @section('content')
+@if(Entrust::hasRole('Shopkeeper'))
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'categories'])!!}
+@else
+{!! Breadcrumb::withLinks(['Home' => '/', 'categories'])!!}
+@endif
 
         <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -136,12 +140,13 @@
         event.preventDefault();
         ajaxLoad($(this).attr('href'));
     });
+    @foreach($categories as $advert)
     $(function(){
         $('#{{ $advert->id }}').on("show.bs.modal",function(e){
             $("#admodallabel").html($(e.relatedTarget).data('title'));
             $("#fav-title").html($(e.relatedTarget).data('title'));
             //$("#fav-title").html($(e.relatedTarget).data('title'));
         });
-    });
+    });@endforeach
             </script>
 @endsection

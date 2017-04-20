@@ -2,5 +2,5 @@
 @section('title','Page Not Found')
  
 @section('content')
-	<div class="container"><h1>Page not found</h1></div>
+	<section class="container"><div class="error-page"><h2 class="headline text-red">Page not found</h2></div></section>
 @endsection

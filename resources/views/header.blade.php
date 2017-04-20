@@ -36,7 +36,11 @@
                                     <a href="#">
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            <img src="/pics/user5-128x128.jpg" class="img-circle" alt="User Image"/>
+                                            @if(!Auth::user()->name || !Auth::user()->image_extension)
+                                            <img class="label-danger img-circle" alt="No Avatar"/>
+                                            @else
+                                            <img src="/uploadedimage/avatar/thumbnails/{{'thumb-' . Auth::user()->name. '.' . Auth::user()->image_extension . '?'. 'time='. time() }}" class="img-circle" alt="User Image"/>
+                                        @endif
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -115,15 +119,23 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="/pics/user5-128x128.jpg" class="user-image" alt="User Image"/>
-                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                            @if(!Auth::user()->name || !Auth::user()->image_extension)
+                                            <img class="label-danger img-circle" alt="No Avatar"/>
+                                            @else
+                                            <img src="/uploadedimage/avatar/thumbnails/{{'thumb-' . Auth::user()->name. '.' . Auth::user()->image_extension . '?'. 'time='. time() }}" class="user-image img-circle" alt="User Image"/>
+                                        @endif
+                                                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="/pics/user5-128x128.jpg" class="img-circle" alt="User Image" />
-                            <p>
+                                            @if(!Auth::user()->name || !Auth::user()->image_extension)
+                                            <img class="label-danger img-circle" alt="No Avatar"/>
+                                            @else
+                                            <img src="/uploadedimage/avatar/thumbnails/{{'thumb-' . Auth::user()->name. '.' . Auth::user()->image_extension . '?'. 'time='. time() }}" class="img-circle" alt="User Image"/>
+                                        @endif
+                                                                    <p>
                                 {{ Auth::user()->name }} - @foreach (Auth::user()->roles as $role) {{ $role->display_name }}@endforeach 
                                 <small>Member since {{ Auth::user()->created_at->format('j F, Y') }}</small>
                             </p>

@@ -2029,7 +2029,7 @@ textarea{
     resize: none;
 }
 .navbar-inverse{
-background:#303F9F;
+background: #303F9F;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
@@ -2165,8 +2165,8 @@ border: 2px solid transparent;
 
 .panel-footer .btn:hover {
 	border: 1px solid #f4511e;
-    /*background-color: #fff !important;
-    color: #f4511e;*/
+    background-color: #fff !important;
+    color: #f4511e;
 }
 .panel-heading h1{
     color: #FFF !important;

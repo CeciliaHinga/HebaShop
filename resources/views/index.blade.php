@@ -14,7 +14,8 @@
           <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;
           Posted by:@foreach($advertisement as $rel) 
           @if($advert->user_id == $rel->user_id && $rel->id == $advert->id )
-          <a href="{{ route('search', Input::get('query',"query=$advert->ads_title")) }}"> {{ $advert->name }}</a>
+          <!-- <a href="{{ route('search', Input::get('query',"query=$advert->ads_title")) }}"> {{ $advert->name }}</a> -->
+          <a href="{{ route('shops.show',$rel->user_id) }}">{{$advert->name}}</a>
           @endif @endforeach
         </div>
         <div class="col-sm-12 col-xs-12">
@@ -92,7 +93,7 @@
 <div class="container" id="advert">
 <div class="row">
         <div class="col-md-10 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Home</div>
                 <div class="panel-body">
                 @foreach($advertisement as $advert)

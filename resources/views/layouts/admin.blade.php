@@ -25,7 +25,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="skin-green-light">
+<body class="hold-transition skin-purple-light sidebar-mini">
 <div class="wrapper">
 
     <!-- Header -->
@@ -43,8 +43,8 @@
             </h1>
             <!-- You can dynamically generate breadcrumbs here -->
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Home </a></li>
+                <li class="active">@yield('title')</li>
             </ol>
         </section>
 <div class="notice">
@@ -69,6 +69,7 @@
 
     <!-- Footer -->
     @include('footer')
+    @include('control-sidebar')
 
 </div><!-- ./wrapper -->
 
@@ -80,7 +81,9 @@
 <script src="{{ asset ("/bower_components/admin-lte/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
  AdminLTE App
 <script src="{{ asset ("/bower_components/admin-lte/dist/js/app.min.js") }}" type="text/javascript"></script>-->
+<script src="js/jquery.js" type="text/javascript"></script>
 <script src="{!! elixir('js/final.js') !!}" async defer></script>
+@yield('scripts')
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->

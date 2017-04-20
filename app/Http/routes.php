@@ -94,6 +94,7 @@ Route::bind('roles', function($value, $route) {
 Route::resource('users.roles','RolesController');
 Route::resource('categories','CategoriesController');
 Route::resource('types','TypesController');
+Route::get('shops/{id}',['as'=>'shops.show','uses'=>'HomeController@shop']);
 
 Route::auth();
 Route::group(['middleware' => ['auth']], function() 
@@ -153,5 +154,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 });
 
 //Route::get('index', 'HomeController@index');
-Route::resource ('advertisement', 'AdvertisesController');
+ Route::resource('advertisement', 'AdvertisesController');
 Route::get('api/category-dropdown', 'ApiController@categoryDropDownData');

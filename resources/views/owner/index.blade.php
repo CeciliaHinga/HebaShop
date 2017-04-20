@@ -12,7 +12,7 @@
         <div class="col-sm-3">
           <div class="well">
             <h4>Users <i class="fa fa-user label-primary"></i></h4>
-            <p>{{ $user }}</p>
+            <p>{{ $users }}</p>
           </div>
         </div>
         <div class="col-sm-3">
