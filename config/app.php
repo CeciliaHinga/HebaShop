@@ -255,6 +255,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Reportico' => Reportico\Reportico::class,
         // 'Shop'      => Amsgames\LaravelShop\LaravelShopFacade::class,
     ],
 

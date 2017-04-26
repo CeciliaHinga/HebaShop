@@ -14,8 +14,8 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box"> <span class="info-box-icon bg-green"><i class="fa fa-home"></i></span>
           <div class="info-box-content">
-            <h4><span class="info-box-text">Customers</span></h4>
-            <p><span class="info-box-number"><small></small></span></p></div>
+            <h4><span class="info-box-text">Sales</span></h4>
+            <p><span class="info-box-number"><small>{{count($sales)}}</small></span></p></div>
           </div>
           </div>
           <div class="clearfix visible-sm-block"></div>
