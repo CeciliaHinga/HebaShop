@@ -8,8 +8,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container-fluid">
 <div class="navbar-header">
 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 <span class="sr-only">Toggle navigation</span>
@@ -20,20 +20,20 @@
 <a class="navbar-brand" href="{{ url('/') }}"><img src="/pics/h.jpg" height="30" width="41"></a>
 </div>
 @if (Entrust::hasRole('Admin'))
-<div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
+<div class="navbar-collapse collapse in" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
 <li  class="{{ url()->current()==url('/admin')?'active':'' }}" ><a href="/admin">Dashboard</a></li>
-         <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Roles<span class="caret"></span></a>  
+         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Roles<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li class="{{ url()->current()==url('/admin/roles')?'active':'' }}" ><a href="{{route('roles.index') }}">View Roles</a></li>
     <li class="{{ url()->current()==url('/admin/roles/createrole')?'active':'' }}" ><a href="{{route('roles.createrole') }}">New Role</a></li> 
   </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Permission<span class="caret"></span></a>  
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Permission<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
     <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
   </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Users<span class="caret"></span></a>  
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('users') }}">View Users</a></li>
     <li><a href="{{route('users.create') }}">New Users</a></li> 
@@ -58,25 +58,26 @@
 </li>
 </ul>
 </li>        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right">
 <li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! Html::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out')) !!}</li>
+</ul></li>
 @else
-<li class="{{ url()->current()==url('/auth/login')?'active':'' }}">
+<li>
     <a href="/auth/login">
     <span class="glyphicon glyphicon-log-in"></span> Login</a>
     </li>
-<li class="{{ url()->current()==url('/auth/register')?'active':'' }}"> <a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
     </li>
     @endif
 </ul>
     </div>
 @elseif (Entrust::hasRole('Shopkeeper'))
-<div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-<li><a href="/owners">Dashboard</a></li>
+<div class="navbar-collapse collapse in" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+<li><a href="/owners"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>Dashboard</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
 <ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a><li role="separator" class="divider"></li>
@@ -97,34 +98,33 @@
 </li>
 </ul>
 </li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Advertisements<span class="caret"></span></a>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>Advertisements<span class="caret"></span></a>
 <ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/advertisement') }}" class="dropdown-header">Post Advert</a><li role="separator" class="divider"></li>
 <li><a href="/">View ADs</a></li>
 <li><a href="/advertisement/create">My Adverts</a></li>
 </li></ul></li>
-         <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Customers<span class="caret"></span></a>  
+         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-users" aria-hidden="true"></span>Customers<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('roles.index') }}">View Roles</a></li>
     <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
   </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Products<span class="caret"></span></a>  
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>Products<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('permissions.index') }}">View Permissions</a></li>
     <li><a href="{{route('permissions.create') }}">New Permission</a></li> 
   </ul> </li>
-        <li class="dropdown"> <a href="#" class="dropdown-toggle dropdown-header" data-toggle="dropdown">Sales<span class="caret"></span></a>  
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>Sales<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('users') }}">View Users</a></li>
     <li><a href="{{route('users.create') }}">New Users</a></li> 
   </ul> </li>
-</ul>
-</li>        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-@if (Auth::user())
+   @if (Auth::user())
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Profile<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right">
 <li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'glyphicon glyphicon-log-out')) !!}</li>
+</ul></li>
 @else
 <li>
     <a href="/auth/login">
@@ -133,11 +133,11 @@
 <li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
     </li>
     @endif
-</ul>
+</ul>       
     </div>
 @else
-<div id="navbar" class="navbar-collapse collapse">
-<ul class="nav navbar-nav">
+<div id="navbar" class="navbar-collapse collapse in" id="navbar">
+<ul class="nav navbar-nav navbar-right">
 <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
 <ul class="dropdown-menu">
@@ -161,18 +161,18 @@
 </li>
 <li  class="{{ url()->current()==url('/aboutus')?'active':'' }}" ><a href="/aboutus"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>About</a></li> 
 <li class="{{ url()->current()==url('/contact')?'active':'' }}" ><a href="/contact"><span class="fa fa-envelope-o">Contact</span></a></li>
-</ul>
-
-<ul class="nav navbar-nav navbar-right">
 @if (Auth::user())
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right">
 <li><a href="/users/{{Auth::user()->id}}" class="btn btn-link">{{ Auth::user()->name }}</a></li>
-<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'fa fa-sign-out fa-fw')) !!}</li>
+<li>{!! HTML::link('/auth/logout', 'Logout', array('class' => 'glyphicon glyphicon-log-out')) !!}</li>
+</ul></li>
 @else
-<li class="{{ url()->current()==url('/auth/login')?'active':'' }}">
+<li>
     <a href="/auth/login">
     <span class="glyphicon glyphicon-log-in"></span> Login</a>
     </li>
-<li class="{{ url()->current()==url('/auth/register')?'active':'' }}"><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+<li><a href="/auth/register"> <span class="glyphicon glyphicon-registration-mark"></span> Register</a>
     </li>
     @endif
 </ul>
@@ -183,24 +183,54 @@
 @yield('modal')
 <header class="jumbotron">
         <!-- Main component for a primary marketing message or call to action -->
+<div class="box box-solid">
+            <div class="box-body" style="background: url('/uploadedimage/Screenshot 06.png') center center;">
+<div id="carousel" class="carousel fade-in" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                  @foreach($related as $i => $key)
+                  @if($i == 5)
+                  @break
+                  @endif
+                  <li data-target="#carousel" data-slide-to="{{$key}}" class=""></li>
+                  @endforeach
+                  </ol>
+                <div class="carousel-inner" role="listbox">
+                {{--*/ $isFirst = true; /*--}}
+                @foreach($related as $i => $advert)
+                @if($i == 5)
+                  @break
+                  @endif
+                  <div class="item {{{ $isFirst ? ' active' : '' }}}">
+                    <img src="/uploadedimage/advertising/slider/{{$advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}" data-color="firebrick" alt="First slide">
+                    <div class="carousel-caption">
+                      <h3>{{$advert->ads_title}}</h3>
+                    </div>
+                  </div>
+                  {{--*/ $isFirst = false; /*--}}
+                  @endforeach
+                </div>
+                <a class="left carousel-control" href="#carousel" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>
+            
+      <!-- END CAROUSEL-->
 
-        <div class="container">
-            <div class="row row-header">
-                <div class="col-xs-12 col-sm-8">
-                    <h1>Heba Online</h1>
-                    <p style="padding:40px;"></p>
-                    <p>We pride in making business as seamless as possible</p>
-                </div>
-                <div class="col-xs-12 col-sm-2">
-                <p style="padding:20px;"></p>
-                <img src="/pics/ads.jpg" class="img-responsive" style="position:relative">
-                <img src="/pics/heba.jpg" class="img-responsive pic">
-                </div>
-                <div class="col-xs-12 col-sm-2">
-                <p style="padding:20px"></p>
-                </div>
-            </div>
-        </div>
+</div>
+            <!-- Main component for a primary marketing message or call to action -->
+                     <div class="box-footer">
+                     <div class="row"><div class="col-sm-4 border-right"><div class="description-block">
+                      <h5 class="description-header"></h5><span class="description-text"></span>
+                     </div></div><div class="col-sm-4 border-right"><div class="description-block">
+                      <h5 class="description-header"></h5><span class="description-text"></span>
+                     </div></div><div class="col-sm-4 border-right"><div class="description-block">
+                      <h5 class="description-header"></h5><span class="description-text"></span>
+                     </div>
+                     </div> </div>
+</div> </div></div>
     </header>
 
     <div class="notice">
@@ -219,33 +249,6 @@
 <div class="row">
 @section('sidebar')
 @show
-<!--<div class="hidden-xs col-sm-1 sidenav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
-<div class="nav navbar-nav navbar-collapse collapse" id="navbar" data-spy="affix">
-<ul class="nav nav-pills nav-stacked">
-<li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appliances</a>
-  <ul class="dropdown-menu dropdown-menu-right" role="menu">
-    <li><a href="/types/1">Toys</a></li>
-    <li><a href="/types/2">Electronics</a></li> 
-  </ul> </li>
-  <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Real Estates</a>
-  <ul class="dropdown-menu dropdown-menu-right" role="menu">
-    <li><a href="/types/3">Land</a></li>
-    <li><a href="/types/4">Mortgages</a></li>
-  </ul> </li>
-    <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jobs</a>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="/types/5">White Collar</a></li>
-    <li><a href="/types/6">Blue Collar</a></li>
-  </ul> </li>
-    <li class="dropdown bg-1"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vehicles</a>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="/types/7">Bikes</a></li>
-    <li><a href="/types/8">Cars</a></li>
-  </ul>
-  </li>
-  </ul>
-  </div>
-  </div>-->
   <div class="col-sm-6">
   <br>
 {{ Form::open(['method' => 'get', 'route' => 'search']) }}
@@ -301,5 +304,40 @@
     <script src="{!! elixir('js/final.js') !!}" async defer></script>
 
 @yield('scripts')
+<script>
+  var $item = $('.carousel .item');
+var $wHeight = $(window).height();
+
+$item.height($wHeight); 
+$item.addClass('full-screen');
+
+$('.carousel img').each(function() {
+  var $src = $(this).attr('src');
+  var $color = $(this).attr('data-color');
+  $(this).parent().css({
+    'background-image' : 'url(' + $src + ')',
+    'background-color' : $color
+  });
+  $(this).remove();
+});
+
+$(window).on('resize', function (){
+  $wHeight = $(window).height();
+  $item.height($wHeight);
+});
+var $numberofSlides = $('.item').length;
+var $currentSlide = Math.floor((Math.random() * $numberofSlides));
+
+$('.carousel-indicators li').each(function(){
+  var $slideValue = $(this).attr('data-slide-to');
+  if($currentSlide == $slideValue) {
+    $(this).addClass('active');
+    $item.eq($slideValue).addClass('active');
+  } else {
+    $(this).removeClass('active');
+    $item.eq($slideValue).removeClass('active');
+  }
+});
+</script>
     </body>
 </html>

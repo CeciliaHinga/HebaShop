@@ -12,6 +12,8 @@ use DB;
 
 use Auth;
 
+use App\CategoryType;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -45,8 +47,9 @@ class RolesController extends Controller
      public function create()
     {
         $user = User::find(Auth::user()->id);
+         $related = CategoryType::orderBy('id','desc')->paginate(15);
         $roles = Role::orderBy('id','desc')->get();
-        return view('roles.create',compact('roles','user'));
+        return view('roles.create',compact('roles','user','related'));
         
     }
 

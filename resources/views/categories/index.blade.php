@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title','Categories')
 
@@ -21,7 +21,7 @@
 <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
 </div>
 <div class="col-sm-6 col-xs-12"><h3>Description
-          <span class="badge">{{ $advert->ads_price }}</span></h3>
+          <span class="badge">Ksh&puncsp;{{ $advert->ads_price }}</span></h3>
           {{ $advert->ads_content }}  </div>        
         </div> </div></div>
         <div class="modal-footer">
@@ -32,7 +32,18 @@
  @endif
 @endforeach
 </div>       
-<div class="col-sm-3 col-xs-12">          @if ($advert->is_featured==0)
+<div class="col-sm-3 col-xs-12">@if(Entrust::hasRole(['Customer','Shopkeeper']) || !Auth::user())
+<form method="POST" action="{{route('advertisement.cart')}}">
+                                            <input type="hidden" name="product_id" value="{{$advert->id}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+ @if(Auth::user())                                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endif
+                                            <input type="hidden" name="ads_price" value="{{ $advert->ads_price }}">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                        </form>
+<!--           @if ($advert->is_featured==0)
                 <span class="label label-primary label-xs">Not Featured
                 </span>@elseif($advert->is_featured==1)
                 <span class="label label-danger label-xs">Featured
@@ -43,8 +54,10 @@
                 </span>@elseif($advert->is_active==1)
                 <span class="label label-success label-xs">Active
                 </span>
-                @endif</div><br>
-<div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+
+                @endif -->@endif</div><br>
+
+ <div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div>
       </div>
     </div>
@@ -59,12 +72,12 @@
   
     
 @endsection
-@section('content')
-@if(Entrust::hasRole('Shopkeeper'))
+@section('content')<br>
+<div class="container"><div class="row">@if(Entrust::hasRole('Shopkeeper'))
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'categories'])!!}
 @else
 {!! Breadcrumb::withLinks(['Home' => '/', 'categories'])!!}
-@endif
+@endif</div></div>
 
         <div class="row">
         <div class="col-lg-12 margin-tb">

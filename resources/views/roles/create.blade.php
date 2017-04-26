@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title','Role')
 
@@ -35,3 +35,4 @@
 	{!! Form::close() !!}
     </div>
 @endsection
+<br><br><br><br><br><br>

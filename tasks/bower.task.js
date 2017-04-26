@@ -40,6 +40,7 @@ Elixir.extend('bower', function (jsOutputFile, jsOutputFolder, cssOutputFile, cs
           main: [
           './dist/js/app.min.js',
           './plugins/fastclick/fastclick.min.js',
+          './plugins/iCheck/icheck.min.js',
           './dist/js/demo.js'
           ]
         },

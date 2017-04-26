@@ -27,8 +27,8 @@
             <th>Title</th>
             <th>Description</th>
             <th>Image</th>
-            <th>Featured</th>
-            <th>Active</th>
+            <!-- <th>Featured</th>
+            <th>Active</th> -->
             <th>Price</th>
             <th width="280px">Action</th>
         </tr>
@@ -39,17 +39,19 @@
         <td>{{ $advert->ads_title }}</td>
         <td>{{ $advert->ads_content}}</td>
         <td><img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}"></td>
-        <td>@if ($advert->is_featured==1) YES @else NO @endif</td>
-        <td>@if ($advert->is_active==1)  YES @else NO @endif</td>
-        <td>{{ $advert->ads_price}}</td>
+        <!-- <td>@if ($advert->is_featured==1) YES @else NO @endif</td>
+        <td>@if ($advert->is_active==1)  YES @else NO @endif</td> -->
+        <td>Ksh&puncsp;{{ $advert->ads_price}}</td>
         <td>
             <a class="btn btn-info" href="{{ route('advertisement.show',$advert->id) }}">Show</a>
             @permission('item-edit')
             <a class="btn btn-primary" href="{{ route('advertisement.edit',$advert->id) }}">Edit</a>
             @endpermission
             @permission('item-delete')
-            {!! Form::open(['method' => 'DELETE','route' => ['advertisement.destroy', $advert->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            {!! Form::model($advertisement,['route' => ['advertisement.destroy', $advert->id],'style'=>'display:inline',
+             'method' => 'DELETE'
+             ]) !!}
+            {!! Form::submit('Delete', array('class'=>'btn btn-danger', 'Onclick' => 'ConfirmDelete();')) !!}
             {!! Form::close() !!}
             @endpermission
         </td>
@@ -59,4 +61,16 @@
     </table>
     {!! $advertisement  ->render() !!}
 @endsection
-        
+@section('scripts')
+    <script>
+
+        function ConfirmDelete()
+        {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+        </script>
+@endsection        

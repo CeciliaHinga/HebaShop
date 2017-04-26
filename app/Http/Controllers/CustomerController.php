@@ -20,6 +20,7 @@ class CustomerController extends Controller
     public function index()
     {
     	$users=User::count();
-    	return view('customer/index',compact('users'));
+        $members = User::orderBy('id','DESC')->paginate(10);
+    	return view('customer/index',compact('users','members'));
     }
 }

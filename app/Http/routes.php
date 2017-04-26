@@ -19,14 +19,17 @@ use Illuminate\Pagination\Paginator;
 	if($query = Input::get('query', false))
 	{
 		$advertisement = CategoryType::search($query)->paginate(15);
+          $related = CategoryType::orderBy('id','desc')->paginate(15);
 //		$advertisement = User::join("category_types","category_types.user_id","=","users.id")->search($query)->paginate(15);
     
 	} else {
-		$advertisement = CategoryType::orderBy('id','DESC')->paginate(15);
+         // $related = CategoryType::count();
+		$related = CategoryType::orderBy('id','desc')->paginate(15);
 		$advertisement = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
     
 	} 
-	return View::make('/index', compact('advertisement'));
+	return View::make('/index', compact('advertisement','related'))
+	->with('i', 0);
 }]);
 	Route::get('/contact','HomeController@contact');
 	Route::get('/aboutus','HomeController@about');
@@ -37,7 +40,7 @@ use Illuminate\Pagination\Paginator;
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-//Route::get('auth/passwods/reset', 'Auth\AuthCountroller');
+Route::get('auth/passwords/reset', 'Auth\PasswordController@reset');
 Route::get('auth/logout', ['as' => 'auth.logout','uses' => 'Auth\AuthController@logout'], function(){
 	return redirect($redirectAfterLogout);
 });
@@ -58,7 +61,7 @@ Route::get('/callback/{provider}', 'SocialAuthController@callback');
    'password' => 'Auth\PasswordController',
 ]);*/
 // Authentication route
-Route::post('authenticate', 'AuthController@authenticate');
+Route::post('authenticate', 'Auth\AuthController@authenticate');
 // Provide controller methods with object instead of ID
 
 //Route::model('users', 'Users');
@@ -107,9 +110,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
     Route::post('users/create',['as'=>'users.store','uses'=>'UsersController@store']);
     Route::get('/',['as'=>'admin','uses'=>'AdminController@index']);
 	Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
-   // Route::get('/',['as'=>'index','uses'=>'HomeController@index']);	
-	Route::get('roles',['as'=>'roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-	Route::get('roles/createrole',['as'=>'roles.newrole','uses'=>'RolesController@newrole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+   // Route::resource('roles','RolesController');	
+	Route::get('/roles',['as'=>'roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+	Route::get('/createrole',['as'=>'roles.newrole','uses'=>'RolesController@newrole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::post('roles/createrole',['as'=>'roles.createrole','uses'=>'RolesController@createRole','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('permissions',['as'=>'permissions.index','uses'=>'PermissionsController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
 	Route::get('permissions/create',['as'=>'permissions.create','uses'=>'PermissionsController@create','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
@@ -150,6 +153,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	Route::patch('permissions/{id}',['as'=>'permissions.update','uses'=>'PermissionsController@update','middleware' => ['permission:role-edit']]);
 	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RolesController@destroy','middleware' => ['permission:role-delete']]);
 	Route::delete('permissions/{id}',['as'=>'permissions.destroy','uses'=>'PermissionsController@destroy','middleware' => ['permission:role-delete']]);
+	Route::get('advertisement/cart',['as'=>'advertisement.cart','uses'=>'AdvertisesController@cart','middleware' => ['permission:add-cart']]);
 	Route::post('advertisement/cart',['as'=>'advertisement.cart','uses'=>'AdvertisesController@cart','middleware' => ['permission:add-cart']]);
 });
 

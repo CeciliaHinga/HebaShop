@@ -30,12 +30,13 @@ class TypesController extends Controller
     {
         $user = User::first();
         $type = Type::first();
+        $related = CategoryType::orderBy('id','desc')->paginate(15);
         $categories = CategoryType::paginate(15);
         $category = CategoryType::paginate(15);
         $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
         $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
 
-    	return view('types.index',compact('categories','users','category'));
+    	return view('types.index',compact('categories','users','category','related'));
     }
     /**
     *Show the form for creating a new resource
@@ -66,10 +67,11 @@ class TypesController extends Controller
     */
     public function show($id)
     {
-        $advertisement = Type::findOrFail($id);
-
-        $categories = CategoryType::where('type_id','=',$id)->paginate(15);
-    	return view('types.show',compact('categories','advertisement'));
+          $advertisement = Type::findOrFail($id);
+        $related = CategoryType::orderBy('id','desc')->paginate(15);
+        
+       $categories = User::join("category_types","category_types.user_id","=","users.id")->where('category_types.type_id','=',$id)->paginate(15);
+   	return view('types.show',compact('categories','advertisement','related'));
     }
     /**
     *Show the form for editing the specified resource

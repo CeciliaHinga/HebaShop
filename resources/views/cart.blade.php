@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title','Cart')
 
@@ -7,7 +7,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
@@ -17,7 +17,7 @@
                 <thead>
                     <tr class="cart_menu">
                         <td class="image">Item</td>
-                        <td class="description"></td>
+                        <td class="description">Description</td>
                         <td class="price">Price</td>
                         <td class="quantity">Quantity</td>
                         <td class="total">Total</td>
@@ -26,33 +26,38 @@
                 </thead>
                 <tbody>
                     @foreach($cart as $item)
+                    @foreach($products as $product)
                     <tr>
-                        <td class="cart_product">
-                            <a href=""><img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $item->ads_image. '.' . $item->image_extension . '?'. 'time='. time() }}">
+                    @if($product->id == $item->id && $product->identifier == Auth::user()->id) 
+                      <td class="cart_product">
+                            <a href=""><img class="media-object img-thumbnail" 
+                            src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $product->ads_image. '.' . $product->image_extension . '?'. 'time='. time() }}"/>
 </a>
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$item->name}}</a></h4>
-                            <p>Web ID: {{$item->id}}</p>
+                            <p>{{$product->ads_content}}{{Auth::user()->id}}</p> 
+                            <p>Web ID: {{$item->id}}{{$product->id}}</p>
                         </td>
                         <td class="cart_price">
-                            <p>${{$item->price}}</p>
+                            <p>Ksh&puncsp;{{$item->price}}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
+                                <a class="cart_quantity_up" href='{{url("advertisement/cart?product_id=$item->id&increment=1")}}'> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                                <a class="cart_quantity_down" href='{{url("advertisement/cart?product_id=$item->id&decrease=1")}}'> - </a>
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">${{$item->subtotal}}</p>
+                            <p class="cart_total_price">Ksh&puncsp;{{$item->subtotal}}</p>
                         </td>
                         <td class="cart_delete">
                             <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
-                    @endforeach
+                    @endif
+                    @endforeach  @endforeach
                     @else
                 <p>You have no items in the shopping cart</p>
                 @endif
@@ -94,7 +99,7 @@
                                 <option>UK</option>
                                 <option>India</option>
                                 <option>Pakistan</option>
-                                <option>Ucrane</option>
+                                <option>Kenya</option>
                                 <option>Canada</option>
                                 <option>Dubai</option>
                             </select>
@@ -106,8 +111,8 @@
                                 <option>Select</option>
                                 <option>Dhaka</option>
                                 <option>London</option>
-                                <option>Dillih</option>
-                                <option>Lahore</option>
+                                <option>Mombasa</option>
+                                <option>Nairobi</option>
                                 <option>Alaska</option>
                                 <option>Canada</option>
                                 <option>Dubai</option>
@@ -126,10 +131,10 @@
             <div class="col-sm-6">
                 <div class="total_area">
                     <ul>
-                        <li>Cart Sub Total <span>$59</span></li>
-                        <li>Eco Tax <span>$2</span></li>
+                        <li>Cart Sub Total <span>Ksh&puncsp;59</span></li>
+                        <li>Tax <span>Ksh&puncsp;16</span></li>
                         <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span>${{Cart::total()}}</span></li>
+                        <li>Total <span>Ksh&puncsp;{{Cart::total()}}</span></li>
                     </ul>
                     <a class="btn btn-default update" href="{{url('clear-cart')}}">Clear Cart</a>
                     <a class="btn btn-default check_out" href="{{url('checkout')}}">Check Out</a>

@@ -23,9 +23,9 @@
 <div class="col-xs-12 col-sm-12"><div class="col-sm-6 col-xs-12">
 <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
 </div>
-<div class="col-sm-6 col-xs-12"><h3>Description
-          <span class="badge">{{ $advert->ads_price }}</span></h3>
-          {{ $advert->ads_content }}  </div>        
+<div class="col-sm-6 col-xs-12"><dl><dt><span class="badge">Ksh&puncsp;{{ $advert->ads_price }}</span></dt>
+<dt>Description</dt>
+        <dd>  {{ $advert->ads_content }} </dd> </dl>    </div>    
         </div> </div></div>
         <div class="modal-footer">
 <div class="col-sm-6 col-xs-12"> <div>Related:</div> @foreach($advertisement as $rel) @if($rel->user_id == $advert->user_id && $advert->id !== $rel->id)
@@ -35,10 +35,13 @@
 @endforeach
 </div>
 <div class="col-sm-3 col-xs-12">
+@if(Entrust::hasRole(['Customer','Shopkeeper']) || !Auth::user())
 <form method="POST" action="{{route('advertisement.cart')}}">
                                             <input type="hidden" name="product_id" value="{{$advert->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" class="btn btn-primary">
+ @if(Auth::user())                                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endif
+                                            <input type="hidden" name="ads_price" value="{{ $advert->ads_price }}">
+                                          <button type="submit" class="btn btn-primary">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart
                                             </button>
@@ -55,7 +58,7 @@
                 <span class="label label-success label-xs">Active
                 </span>
 
-                @endif --></div><br>
+                @endif -->@endif</div><br>
 <div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div>
       </div>
@@ -102,7 +105,7 @@
             <div class="media">
             <div class="media-left media-middle">
             <a href="#{{ $advert->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#{{ $advert->id }}">
-            @if(Entrust::hasRole('Shopkeeper'))<a href="/advertisement/{{ $advert->id }}">@endif
+            @if(Entrust::hasRole(['Shopkeeper','Admin']))<a href="/advertisement/{{ $advert->id }}">@endif
             <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
             </a>
                 <p style="padding:5px;"></p>

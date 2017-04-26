@@ -23,6 +23,8 @@ class ShopOwnerController extends Controller
     public function index()
     {
     	$users=User::count();
-    	return view('owner/index',compact('users'));
+        $members = User::orderBy('id','ASC')->paginate(8);
+        $sales = CategoryType::join('shoppingcart','shoppingcart.instance','=','category_types.id')->where('category_types.user_id','=',Auth::user()->id)->get();
+    	return view('owner/index',compact('users','members'.'sales'));
     }
 }

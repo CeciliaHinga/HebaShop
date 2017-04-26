@@ -60,20 +60,21 @@
 </div>
 </div>
 <!--is_active form input -->
-<div class="form-group"><label for="is_active" class="col-md-4 control-label">Is Active:</label>
+<!-- <div class="form-group"><label for="is_active" class="col-md-4 control-label">Is Active:</label>
 <div class="col-md-1">
     <input type="checkbox" class="checkbox" name="is_active" value="1" id="is_active">
 </div></div>
-<!--is_featured form input -->
-<div class="form-group"><label for="is_featured" class="col-md-4 control-label">Featured:</label>
+ --><!--is_featured form input -->
+<!-- <div class="form-group"><label for="is_featured" class="col-md-4 control-label">Featured:</label>
 <div class="col-md-1">
     <input type="checkbox" class="checkbox" name="is_featured" value="1" id="is_featured">
 </div>
-</div>
+</div> -->
 <!--Form field for file -->
 <div class="form-group"><label for="image" class="col-md-4 control-label">Primary Image</label>
 <div class="col-md-6">
     <input type="file" name="image" value="" id="image" required>
+    <span class="btn-info">For better image quality please use 1020x728 dimension</span>
 </div>
 </div>
 <div class="form-group">

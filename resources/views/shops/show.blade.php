@@ -1,10 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title','Categories')
 
 @section('modal')
 <!-- Modal -->
 @foreach($categories as $advert)
+
   <div class="modal fade" id="{{ $advert->id }}" role="dialog" aria-labelledby="admodallabel">
     <div class="modal-dialog">
     
@@ -12,7 +13,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by:<a href="/advertisement/create"> {{ $advert->name}}</a>
+          <h4 class="modal-title" id="fav-title">{{ $advert->ads_title }}</h4>&puncsp;&puncsp;Posted by: {{ $advert->name}}
 <!--          &puncsp;&puncsp;Category:<a href="/categories/{{$advert->id}}"> {{ $advert->name}}</a>-->
         </div>
         <div class="col-sm-12 col-xs-12">
@@ -32,7 +33,19 @@
  @endif
 @endforeach
 </div>       
-<div class="col-sm-3 col-xs-12">          @if ($advert->is_featured==0)
+<div class="col-sm-3 col-xs-12">
+@if(Entrust::hasRole(['Customer','Shopkeeper']) || !Auth::user())
+<form method="POST" action="{{route('advertisement.cart')}}">
+                                            <input type="hidden" name="product_id" value="{{$advert->id}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+ @if(Auth::user())                                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endif
+                                            <input type="hidden" name="ads_price" value="{{ $advert->ads_price }}">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                        </form>
+<!--           @if ($advert->is_featured==0)
                 <span class="label label-primary label-xs">Not Featured
                 </span>@elseif($advert->is_featured==1)
                 <span class="label label-danger label-xs">Featured
@@ -43,7 +56,8 @@
                 </span>@elseif($advert->is_active==1)
                 <span class="label label-success label-xs">Active
                 </span>
-                @endif</div><br>
+
+                @endif -->@endif</div><br>
 <div class="col-sm-3 col-xs-12">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div>
       </div>
@@ -53,20 +67,16 @@
 
 @endsection
 
-@section('sidebar')
+@include('profile')
 
-    @parent
-  
-    
-@endsection
 @section('content')
-@if(Entrust::hasRole('Shopkeeper'))
+<div class="container"><div class="row">@if(Entrust::hasRole('Shopkeeper'))
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'categories'])!!}
 @else
-{!! Breadcrumb::withLinks(['Home' => '/', 'categories'])!!}
+{!! Breadcrumb::withLinks(['Home' => '/', "$users->name"])!!}
 @endif
-
-        <div class="row">
+</div></div>
+<div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="col-sm-6 pull-left">
                 
@@ -88,9 +98,10 @@
 <div class="row">
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Categories</div>
+                <div class="panel-heading">{{ $users->name }}'s Products</div>
                 <div class="panel-body">
                 @foreach($categories as $advert)
+                @if($advert->user_id == $users->id)
 <div class="col-xs-12 col-sm-4">
 <div class="row row-content"><br>
             <div class="media">
@@ -105,6 +116,7 @@
                    </div>
                 </div>
                 </div>          </div>      
+                @endif
                 @endforeach
                 
                 <div class="pagination">{{ $categories->links() }}</div>

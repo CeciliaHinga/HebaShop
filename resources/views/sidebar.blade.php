@@ -54,7 +54,7 @@
                 <a href="javascript:void(0)"><i class="fa fa-check-square"></i><span>Roles</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
     <li><a href="{{route('roles.index') }}"><i class="fa fa-circle-o"></i><span>View Roles</span></a></li>
-    <li><a href="{{route('roles.create') }}"><i class="fa fa-circle-o"></i><span>New Roles</span></a></li> 
+    <li><a href="{{route('roles.newrole')}}"><i class="fa fa-circle-o"></i><span>New Roles</span></a></li> 
                 </ul>
             </li>
 <li class="treeview">
@@ -75,7 +75,7 @@
                 <a href="javascript:void(0)"><i class="fa fa-list"></i><span>Sales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
     <li></i><a href="{{route('permissions.index') }}"><i class="fa fa-circle-o"></i><span>My Sales</span></a></li>
-    <li></i><a href="{{route('permissions.create') }}"><i class="fa fa-circle-o"></i><span>Carts</span></a></li> 
+    <li></i><a href="{{route('advertisement.cart') }}"><i class="fa fa-circle-o"></i><span>Carts</span></a></li> 
                 </ul>
             </li>
             <li class="treeview">
@@ -96,7 +96,7 @@
                 <a href="javascript:void(0)"><i class="fa fa-cog"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i>
 </a>
                 <ul class="treeview-menu">
-    <li><a href="{{ route('users.edit',Auth::user()->id)}}"><i class="fa fa-circle-o"></i><span>Profile</span></a></li>
+    <li><a href="{{ route('users.show',Auth::user()->id)}}"><i class="fa fa-circle-o"></i><span>Profile</span></a></li>
     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Manage Products</span></a></li> 
     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Manage Customers</span></a></li> 
                 </ul>
@@ -112,7 +112,7 @@
                 <a href="javascript:void(0)"><i class="fa fa-th"></i><span>Purchases</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
     <li><a href="{{route('permissions.index') }}"><i class="fa fa-circle-o"></i><span>My Purchases</span></a></li>
-    <li><a href="{{route('permissions.create') }}"><i class="fa fa-circle-o"></i><span>Cart</span></a></li> 
+    <li><a href="{{route('advertisement.cart') }}"><i class="fa fa-circle-o"></i><span>Cart</span></a></li> 
                 </ul>
             </li>
             <li class="treeview">
@@ -125,7 +125,7 @@
 <li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-cog"></i><span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-    <li><a href="{{ route('users.edit',Auth::user()->id)}}"><i class="fa fa-circle-o"></i><span>Profile</span></a></li>
+    <li><a href="{{ route('users.show',Auth::user()->id)}}"><i class="fa fa-circle-o"></i><span>Profile</span></a></li>
     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Shops</span></a></li> 
                 </ul>
             </li>

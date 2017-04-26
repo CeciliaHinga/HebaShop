@@ -22,7 +22,9 @@
         "elasticquent/elasticquent": "dev-master",
         "ext-json": "^1.2",
         "elasticsearch/elasticsearch": "2.*",
-        "gloudemans/shoppingcart": "^2.3"
+        "gloudemans/shoppingcart": "^2.3",
+        "reportico/laravel-reportico": "~5.2",
+        "amsgames/laravel-shop": "^0.2.12"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

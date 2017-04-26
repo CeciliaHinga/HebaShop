@@ -30,13 +30,13 @@
                 @endif</p></div></div>
 </div>
 <div class="col-md-9"><div class="nav-tabs-custom"><ul class="nav nav-tabs">
-<li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+<!-- <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
               <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-              @if(Auth::user()->id == $users->id)
+ -->              @if(Auth::user()->id == $users->id)
               <li><a href="#settings" data-toggle="tab">Settings</a></li>
               @endif
 </ul><div class="tab-content">
-              <div class="active tab-pane" id="activity">
+              <div class="tab-pane" id="activity">
                 <!-- Post -->
                 <div class="post">
                   <div class="user-block">
@@ -247,9 +247,12 @@
               </div>
               <!-- /.tab-pane -->
 
-              <div class="tab-pane" id="settings">
-
+              <div class=" active tab-pane" id="settings">
+@if(Auth::user()->id == $users->id)
                 @include('users.edit')
+                @else
+                {{$users->name}}
+                @endif
               </div>
               <!-- /.tab-pane -->
             </div>

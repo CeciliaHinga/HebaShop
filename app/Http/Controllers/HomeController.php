@@ -28,9 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-    $advertisement = CategoryType::orderBy('id','DESC')->paginate(15);
-    $advertisement = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
-            return View('/index',compact('advertisement','related'));
+    $advertisement = CategoryType::orderBy('id','DESC')->paginate(5);
+    $advertisement = User::join("category_types","category_types.user_id","=","users.id")->paginate(5);
+            $related = CategoryType::count();
+
+            return View('/index',compact('advertisement','related','slides'));
 
 //        return view('index');
     }
@@ -44,10 +46,11 @@ class HomeController extends Controller
     }
     public function shop($id)
     {
+    $users = User::findOrFail($id);
     $categories = CategoryType::paginate(15);
-    $category = CategoryType::paginate(15);
+    $category = User::join("category_types","category_types.user_id","=","users.id")->where("users.id","=",$id)->count();
     $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
-    $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
-        return view('shops.show',compact('category','categories'));
+    // $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
+        return view('shops.show',compact('category','categories','users'));
     }
 }

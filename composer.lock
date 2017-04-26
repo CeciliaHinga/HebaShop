@@ -4,9 +4,119 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "95cb148b42e8630e963f8a30111ab07f",
-    "content-hash": "788871570e51053bf38a533ee9285d34",
+    "hash": "6cd601610d8c6102d656486c3b3ff3f0",
+    "content-hash": "4f4c1730136e57a16ac001f6255a116f",
     "packages": [
+        {
+            "name": "amsgames/laravel-shop",
+            "version": "v0.2.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amsgames/laravel-shop.git",
+                "reference": "883af2da405722f4eb0ca83ac78d039decef6d55"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amsgames/laravel-shop/zipball/883af2da405722f4eb0ca83ac78d039decef6d55",
+                "reference": "883af2da405722f4eb0ca83ac78d039decef6d55",
+                "shasum": ""
+            },
+            "require": {
+                "amsgames/laravel-shop-gateway-paypal": "1.0.*",
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Commands"
+                ],
+                "psr-4": {
+                    "Amsgames\\LaravelShop\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amsgames, LLC",
+                    "email": "support@amsgames.com"
+                },
+                {
+                    "name": "Alejandro Mostajo",
+                    "email": "amostajo@gmail.com"
+                }
+            ],
+            "description": "Package set to provide shop or e-commerce functionality (such as CART, ORDERS, TRANSACTIONS and ITEMS) to Laravel for customizable builds.",
+            "keywords": [
+                "cart",
+                "e-commerce",
+                "ecommerce",
+                "laravel",
+                "orders",
+                "paypal",
+                "shop",
+                "shopping",
+                "shopping cart",
+                "transactions"
+            ],
+            "time": "2015-11-18 00:03:41"
+        },
+        {
+            "name": "amsgames/laravel-shop-gateway-paypal",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amsgames/laravel-shop-gateway-paypal.git",
+                "reference": "c0ba041bda3fdcc696e4a01278647f386e9d8715"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amsgames/laravel-shop-gateway-paypal/zipball/c0ba041bda3fdcc696e4a01278647f386e9d8715",
+                "reference": "c0ba041bda3fdcc696e4a01278647f386e9d8715",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "paypal/rest-api-sdk-php": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Amsgames\\LaravelShopGatewayPaypal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amsgames, LLC",
+                    "email": "support@amsgames.com"
+                },
+                {
+                    "name": "Alejandro Mostajo",
+                    "email": "amostajo@gmail.com"
+                }
+            ],
+            "description": "PayPal gateway for Laravel Shop package.",
+            "keywords": [
+                "gateway",
+                "laravel shop",
+                "laravel-shop",
+                "paypal"
+            ],
+            "time": "2015-09-19 04:10:42"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.1.0",
@@ -2175,6 +2285,55 @@
             "time": "2017-01-31 14:48:14"
         },
         {
+            "name": "paypal/rest-api-sdk-php",
+            "version": "1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
+                "reference": "7e664f12be32b975575371e8ad3bc17b6b318851"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/7e664f12be32b975575371e8ad3bc17b6b318851",
+                "reference": "7e664f12be32b975575371e8ad3bc17b6b318851",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0",
+                "psr/log": "^1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PayPal": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "PayPal",
+                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
+                }
+            ],
+            "description": "PayPal's PHP SDK for REST APIs",
+            "homepage": "http://paypal.github.io/PayPal-PHP-SDK/",
+            "keywords": [
+                "payments",
+                "paypal",
+                "rest",
+                "sdk"
+            ],
+            "time": "2016-12-14 21:59:21"
+        },
+        {
             "name": "predis/predis",
             "version": "v1.1.1",
             "source": {
@@ -2438,6 +2597,49 @@
                 "promises"
             ],
             "time": "2017-03-25 12:08:31"
+        },
+        {
+            "name": "reportico/laravel-reportico",
+            "version": "5.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reportico-web/laravel-reportico.git",
+                "reference": "38b80d51875caf4dcc40f87d3be3a3a991b47a47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reportico-web/laravel-reportico/zipball/38b80d51875caf4dcc40f87d3be3a3a991b47a47",
+                "reference": "38b80d51875caf4dcc40f87d3be3a3a991b47a47",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations",
+                    "src/controllers"
+                ],
+                "files": [
+                    "src/Reportico/Reportico/reportico.php"
+                ],
+                "psr-0": {
+                    "Reportico\\Reportico\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Reportico",
+                    "email": "info@reportico.org"
+                }
+            ],
+            "time": "2017-04-10 17:00:17"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3595,12 +3797,12 @@
             "version": "0.9.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
                 "shasum": ""
             },

@@ -162,6 +162,8 @@ return [
         Bootstrapper\BootstrapperL5ServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Reportico\Reportico\ReporticoServiceProvider::class,
+        // Amsgames\LaravelShop\LaravelShopProvider::class,
 
         /*
          * Application Service Providers...
@@ -253,7 +255,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-
+        // 'Shop'      => Amsgames\LaravelShop\LaravelShopFacade::class,
     ],
 
 ];

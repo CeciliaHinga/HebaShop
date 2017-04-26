@@ -15,8 +15,8 @@ class CategoryType extends Model
 	'ads_content',
 	'ads_title',
 	'ads_price',
-	'is_active',
-	'is_featured',
+	// 'is_active',
+	// 'is_featured',
 	'image_path',
     'image_extension',
 	];

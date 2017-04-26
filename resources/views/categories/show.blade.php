@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title','Categories')
 
@@ -8,12 +8,14 @@
     
 @endsection
 
-@section('content')
-@if(Entrust::hasRole('Shopkeeper'))
+@section('content')<br>
+<div class="container"><div class="row">@if(Entrust::hasRole('Shopkeeper'))
 {!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'Categories' => '/categories', "$advertisement->name" ])!!}
 @else
 {!! Breadcrumb::withLinks(['Home' => '/', 'Categories' => '/categories', "$advertisement->name" ])!!}
 @endif
+</div></div>
+
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">@if ($categories)
@@ -30,17 +32,30 @@
                 &puncsp;&puncsp;
                 <div class="col-sm-12">
                 Posted by:
-                <a href="/advertisement/create"> {{ $advert->name }}</a></div>
-            </div>
+                <a href="{{ route('shops.show',$advert->user_id) }}"> {{ $advert->name }}</a></div>
+                  <p style="padding:20px;"></p>
+@if(Entrust::hasRole(['Customer','Shopkeeper']) || !Auth::user())
+<div class="col-sm-12"><form method="POST" action="{{route('advertisement.cart')}}">
+                                            <input type="hidden" name="product_id" value="{{$advert->id}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+ @if(Auth::user())                                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endif
+                                            <input type="hidden" name="ads_price" value="{{ $advert->ads_price }}">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                        </form>
+            </div>@endif           </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
             <div class="media-left media-middle">
+
             @if(Auth::user())<a href="/advertisement/{{ $advert->id }}">@endif
-            <!-- <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}"> -->
+<img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}"/>
             </a>
             </div>
             <div class="media-body">
-                <div class="media-header"><h2>{{ $advert->ads_title }}</h2><h4>@if ($advert->is_featured==0)
+                <div class="media-header"><h2>{{ $advert->ads_title }}</h2><h4><!-- @if ($advert->is_featured==0)
                 <span class="label label-primary label-xs">Not Featured
                 </span>@elseif($advert->is_featured==1)
                 <span class="label label-danger label-xs">Featured
@@ -51,10 +66,10 @@
                 </span>@elseif($advert->is_active==1)
                 <span class="label label-success label-xs">Active
                 </span>
-                @endif
+                @endif -->
                 &puncsp;&puncsp;<span class="badge">
-                ${{ $advert->ads_price }}</span>
-                </h4></div>
+                Ksh&puncsp;{{ $advert->ads_price }}</span>
+                <!-- </h4> --></div>
                 <p>{{ $advert->ads_content }}</p>
         <!--        <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>-->
             </div>
