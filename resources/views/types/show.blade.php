@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container"><div class="row">@if(Entrust::hasRole('Shopkeeper'))
-{!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement',  'Type' ])!!}
+{!! Breadcrumb::withLinks(['Home' => '/',  'Advertise' => '/advertisement', 'Type' => '/types',  'Type' ])!!}
 @else
 {!! Breadcrumb::withLinks(['Home' => '/', 'Type' => '/types',"$advertisement->ads_type" ])!!}
 @endif</div></div>
@@ -28,7 +28,20 @@
                 Posted by:
                 <a href="{{ route('shops.show',$advert->user_id) }}"> {{ $advert->name }}</a></div>
                 <p style="padding:20px;"></p>
-@if(Entrust::hasRole(['Customer','Shopkeeper']) || !Auth::user())
+                  @if(!Auth::user())
+                  <div class="col-sm-12"><form method="POST" action="{{route('advertisement.cart')}}">
+                                            <input type="hidden" name="product_id" value="{{$advert->id}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+ @if(Auth::user())                                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endif
+                                            <input type="hidden" name="ads_price" value="{{ $advert->ads_price }}">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                        </form>
+            </div> @elseif(Auth::user()->id == $advert->user_id)
+
+@else 
 <div class="col-sm-12"><form method="POST" action="{{route('advertisement.cart')}}">
                                             <input type="hidden" name="product_id" value="{{$advert->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -61,7 +74,7 @@
                 </span>
                 @endif -->
                 &puncsp;&puncsp;<span class="badge">
-                Ksh&puncsp;{{ $advert->ads_price }}</span>
+                Ksh&puncsp;{{ number_format($advert->ads_price, 2, '.', ',') }}</span>
                 </h4></div>
                 <p>{{ $advert->ads_content }}</p>
       <!--          <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>-->

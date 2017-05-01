@@ -45,11 +45,12 @@ class UsersController extends Controller
     }
     public function create()
     {
+        $users = User::find(Auth::user()->id);
          $roles = Role::lists('display_name','id');
         return view('users.create',compact('roles'));
         if (Auth::attempt(array('email' => $email, 'password' => $password)))
 {
-return Redirect::intended('roles.create',compact('roles'));
+return Redirect::intended('roles.create',compact('roles','users'));
     
     /*public function create()
     {
@@ -68,9 +69,9 @@ public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'image'   => 'mimes:jpeg,jpg,png | max:2000',
+            'email' => 'required | email | unique:users,email',
+            'password' => 'required | same:confirm-password',
+            // 'image'   => 'required | mimes:jpeg,jpg,png | max:2000',
             'roles' => 'required'
         ]);
 
@@ -79,12 +80,12 @@ public function store(Request $request)
         $input['password'] = Hash::make($input['password']);
         //define the image paths
 
-         $destinationFolder = '/uploadedimage/Avatar/';
-         $destinationThumbnail = '/uploadedimage/Avatar/thumbnails/';
-         $destinationMobile = '/uploadedimage/avatar/mobile/';
+        //  $destinationFolder = '/uploadedimage/Avatar/';
+        //  $destinationThumbnail = '/uploadedimage/Avatar/thumbnails/';
+        //  $destinationMobile = '/uploadedimage/avatar/mobile/';
 
-         //assign the image paths to new model, so we can save them to DB
-        $input->image_path = $destinationFolder;
+        //  //assign the image paths to new model, so we can save them to DB
+        // $input->image_path = $destinationFolder;
 
         $user = User::create($input);
         foreach ($request->input('roles') as $key => $value) {
@@ -92,23 +93,23 @@ public function store(Request $request)
         }
    //parts of the image we will need
 
-   $file = Input::file('image');
+   // $file = Input::file('image');
 
-   $imageName = $user->name;
-   $extension = $request->file('image')->getClientOriginalExtension();
+   // $imageName = $user->name;
+   // $extension = $request->file('image')->getClientOriginalExtension();
 
    //create instance of image from temp upload
 
-   $image = Image::make($file->getRealPath());
+   // $image = Image::make($file->getRealPath());
 
    //save image with thumbnail
 
-   $image->save(public_path() . $destinationFolder . $imageName . '.' . $extension)
-       ->resize(160, 160)
+   // $image->save(public_path() . $destinationFolder . $imageName . '.' . $extension)
+   //     ->resize(160, 160)
        // ->greyscale()
-       ->save(public_path() . $destinationThumbnail . 'thumb-' . $imageName . '.' . $extension);
+       // ->save(public_path() . $destinationThumbnail . 'thumb-' . $imageName . '.' . $extension);
 
-        return redirect()->route('users.index')
+        return redirect()->route('users')
                         ->with('success','User created successfully');
     }
      public function edit()
@@ -226,6 +227,15 @@ public function store(Request $request)
         }
              return redirect()->route('auth.logout')
                         ->with('success','User deleted successfully');
+    }
+    public function report(Request $request)
+    {
+        $users=Role::get();
+        $members = User::orderBy('id','desc')->paginate(20);
+        $role=Role::join("role_user","role_user.role_id","=","roles.id")->where('role_user.role_id','=',2)->count();
+        // $userRole = $users->roles->lists('display_name','id')->toArray();
+        return view('users/report',compact('roles','members','users','userRole'))
+           ->with('i', ($request->input('page', 1) - 1) * 20); 
     }
     /*public function createRole(Request $request){
 

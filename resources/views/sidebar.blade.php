@@ -74,11 +74,11 @@
             <li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-list"></i><span>Sales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-    <li></i><a href="{{route('permissions.index') }}"><i class="fa fa-circle-o"></i><span>My Sales</span></a></li>
+    <li></i><a href="{{route('orders.print')}}"><i class="fa fa-circle-o"></i><span>Sales Reports</span></a></li>
     <li></i><a href="{{route('advertisement.cart') }}"><i class="fa fa-circle-o"></i><span>Carts</span></a></li> 
                 </ul>
             </li>
-            <li class="treeview">
+<!--             <li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-circle-o"></i><span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
     <li><a href="{{route('users') }}"><i class="fa fa-circle-o"></i><span>View Products</span></a></li>
@@ -92,41 +92,41 @@
     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>New Customers</span></a></li> 
                 </ul>
             </li>
-<li class="treeview">
+ --><li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-cog"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i>
 </a>
                 <ul class="treeview-menu">
     <li><a href="{{ route('users.show',Auth::user()->id)}}"><i class="fa fa-circle-o"></i><span>Profile</span></a></li>
-    <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Manage Products</span></a></li> 
+<!--     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Manage Products</span></a></li> 
     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Manage Customers</span></a></li> 
-                </ul>
+ -->                </ul>
             </li>
 @else
             <li class="{{ url()->current()==url('/customers')?'active':'' }}" ><a href="/customers"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
             <li class="treeview"><a href="javascript:void(0)"><i class="fa fa-home"></i><span>Shops</span><i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-            <li><a href="{{route('advertisement.index') }}"><i class="fa fa-circle-o"></i><span>New Shop</span></a></li>            
-            <li><a href="{{url('/advertisement/create') }}"><i class="fa fa-circle-o"></i><span>My Shops</span></a></li>            
+            <!-- <li><a href="{{route('advertisement.index') }}"><i class="fa fa-circle-o"></i><span>New Shop</span></a></li>             -->
+            <li><a href="{{route('shops.home')}}"><i class="fa fa-circle-o"></i><span>Shops</span></a></li>            
             </ul></li>
             <li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-th"></i><span>Purchases</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-    <li><a href="{{route('permissions.index') }}"><i class="fa fa-circle-o"></i><span>My Purchases</span></a></li>
+    <!-- <li><a href="{{route('permissions.index') }}"><i class="fa fa-circle-o"></i><span>My Purchases</span></a></li> -->
     <li><a href="{{route('advertisement.cart') }}"><i class="fa fa-circle-o"></i><span>Cart</span></a></li> 
                 </ul>
             </li>
-            <li class="treeview">
+<!--             <li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-users"></i><span>Followers</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
     <li><a href="{{route('users') }}"><i class="fa fa-circle-o"></i><span>View Users</span></a></li>
     <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>New Users</span></a></li> 
                 </ul>
             </li>
-<li class="treeview">
+ --><li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-cog"></i><span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
     <li><a href="{{ route('users.show',Auth::user()->id)}}"><i class="fa fa-circle-o"></i><span>Profile</span></a></li>
-    <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Shops</span></a></li> 
+    <!-- <li><a href="{{route('users.create') }}"><i class="fa fa-circle-o"></i><span>Shops</span></a></li>  -->
                 </ul>
             </li>
             @endif

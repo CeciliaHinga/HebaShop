@@ -36,24 +36,30 @@
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$item->name}}</a></h4>
-                            <p>{{$product->ads_content}}{{Auth::user()->id}}</p> 
-                            <p>Web ID: {{$item->id}}{{$product->id}}</p>
+                            <p>{{$product->ads_content}}</p> 
+                            <p>Web ID: {{$item->id}}</p>
                         </td>
                         <td class="cart_price">
-                            <p>Ksh&puncsp;{{$item->price}}</p>
+                            <p>Ksh&puncsp;{{number_format($item->price, 2, '.', ',')}}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
+                                <form method="POST" action="{{url('advertisement/cart')}}">
                                 <a class="cart_quantity_up" href='{{url("advertisement/cart?product_id=$item->id&increment=1")}}'> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2">
                                 <a class="cart_quantity_down" href='{{url("advertisement/cart?product_id=$item->id&decrease=1")}}'> - </a>
+                                </form>
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">Ksh&puncsp;{{$item->subtotal}}</p>
+                            <p class="cart_total_price">Ksh&puncsp;{{number_format($item->subtotal, 2, '.', ',')}}</p>
                         </td>
                         <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                        {!! Form::open(['method' => 'DELETE','url' => ['cart-remove-item']]) !!}
+                        <input type="hidden" value="{{$item->id}}" name="product_id"> 
+            {!! Form::submit('&times;', ['class' => 'close']) !!}
+            {!! Form::close() !!}
+                            <!-- <a class="cart_quantity_delete" href="{{url('cart-remove-item')}}"><i class="fa fa-times"></i></a> -->
                         </td>
                     </tr>
                     @endif
@@ -132,9 +138,12 @@
                 <div class="total_area">
                     <ul>
                         <li>Cart Sub Total <span>Ksh&puncsp;59</span></li>
-                        <li>Tax <span>Ksh&puncsp;16</span></li>
+                        <li>Tax <span>Ksh&puncsp;2</span></li>
                         <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span>Ksh&puncsp;{{Cart::total()}}</span></li>
+                    @foreach($products as $product)
+                    @foreach($cart as $item)
+                    @if($item->id == $product->id && $product->identifier == Auth::user()->id)
+                        <li>Total <span>Ksh&puncsp;{{$item->total()}}</span></li>@endif @endforeach @endforeach
                     </ul>
                     <a class="btn btn-default update" href="{{url('clear-cart')}}">Clear Cart</a>
                     <a class="btn btn-default check_out" href="{{url('checkout')}}">Check Out</a>

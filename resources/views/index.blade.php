@@ -23,7 +23,7 @@
 <div class="col-xs-12 col-sm-12"><div class="col-sm-6 col-xs-12">
 <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
 </div>
-<div class="col-sm-6 col-xs-12"><dl><dt><span class="badge">Ksh&puncsp;{{ $advert->ads_price }}</span></dt>
+<div class="col-sm-6 col-xs-12"><dl><dt><span class="badge">Ksh&puncsp;{{ number_format($advert->ads_price, 2, '.', ',') }}</span></dt>
 <dt>Description</dt>
         <dd>  {{ $advert->ads_content }} </dd> </dl>    </div>    
         </div> </div></div>

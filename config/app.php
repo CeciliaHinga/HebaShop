@@ -190,7 +190,7 @@ return [
 
         'Accordion' => Bootstrapper\Facades\Accordion::class,
         'Alert' =>Bootstrapper\Facades\Alert::class,
-        'App' => Illumnate\Support\Facades\App::class,
+        'App' => Illuminate\Support\Facades\App::class,
         'Artisan'=> Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Badge' => Bootstrapper\Facades\Badge::class,

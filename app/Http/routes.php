@@ -16,9 +16,15 @@ use Illuminate\Pagination\Paginator;
 */
 
 	Route::get('/', ['as' => 'search', 'uses' => function(){
-	if($query = Input::get('query', false))
+	if($query = Input::get('query',false))
 	{
+		// $advertisement = User::search($query)->paginate(15);
 		$advertisement = CategoryType::search($query)->paginate(15);
+		$advertisement = User::join("category_types","category_types.user_id","=","users.id")
+		->where('name','LIKE', '%' . $query . '%')
+		->orWhere('ads_title','LIKE', '%' . $query . '%')
+		->orWhere('ads_content','LIKE', '%' . $query . '%')
+		->orWhere('ads_image','LIKE', '%' . $query . '%')->paginate(15);
           $related = CategoryType::orderBy('id','desc')->paginate(15);
 //		$advertisement = User::join("category_types","category_types.user_id","=","users.id")->search($query)->paginate(15);
     
@@ -98,6 +104,7 @@ Route::resource('users.roles','RolesController');
 Route::resource('categories','CategoriesController');
 Route::resource('types','TypesController');
 Route::get('shops/{id}',['as'=>'shops.show','uses'=>'HomeController@shop']);
+Route::get('shops',['as'=>'shops.home','uses'=>'HomeController@shops']);
 
 Route::auth();
 Route::group(['middleware' => ['auth']], function() 
@@ -108,6 +115,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	Route::get('users/{id}/edit',['as'=>'users.edit','uses'=>'UsersController@edit']);
     Route::get('users/create',['as'=>'users.create','uses'=>'UsersController@create']);
     Route::post('users/create',['as'=>'users.store','uses'=>'UsersController@store']);
+    Route::get('users/report',['as'=>'users.report','uses'=>'UsersController@report']);
     Route::get('/',['as'=>'admin','uses'=>'AdminController@index']);
 	Route::get('roles/{role_id}',['as'=>'roles.show','uses'=>'RolesController@show']);
    // Route::resource('roles','RolesController');	
@@ -131,6 +139,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	Route::get('advertisement/{id}/edit',['as'=>'advertisement.edit','uses'=>'AdvertisesController@edit','middleware' => ['permission:item-edit']]);
 	Route::patch('advertisement/{id}',['as'=>'advertisement.update','uses'=>'AdvertisesController@update','middleware' => ['permission:item-edit']]);
 	Route::delete('advertisement/{id}',['as'=>'advertisement.destroy','uses'=>'AdvertisesController@destroy','middleware' => ['permission:item-delete']]);
+	Route::get('/orders',['as' => 'orders.print','uses' => 'ShopOwnerController@printorder']);
 
 });
 	Route::group(['prefix' => 'customers', 'middleware' => ['role:Customer']], function()
@@ -155,6 +164,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin']], function()
 	Route::delete('permissions/{id}',['as'=>'permissions.destroy','uses'=>'PermissionsController@destroy','middleware' => ['permission:role-delete']]);
 	Route::get('advertisement/cart',['as'=>'advertisement.cart','uses'=>'AdvertisesController@cart','middleware' => ['permission:add-cart']]);
 	Route::post('advertisement/cart',['as'=>'advertisement.cart','uses'=>'AdvertisesController@cart','middleware' => ['permission:add-cart']]);
+    Route::get('/clear-cart', 'AdvertisesController@clear_cart');
+    Route::delete('/cart-remove-item', 'AdvertisesController@cart_remove_item');
 });
 
 //Route::get('index', 'HomeController@index');

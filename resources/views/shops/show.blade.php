@@ -22,7 +22,7 @@
 <img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}">
 </div>
 <div class="col-sm-6 col-xs-12"><h3>Description
-          <span class="badge">{{ $advert->ads_price }}</span></h3>
+          <span class="badge">{{ number_format($advert->ads_price, 2, '.', ',') }}</span></h3>
           {{ $advert->ads_content }}  </div>        
         </div> </div></div>
         <div class="modal-footer">

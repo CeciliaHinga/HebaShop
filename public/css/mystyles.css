@@ -181,27 +181,7 @@ background: #eee;
 .dropdown-menu li:last-child a {
     border-bottom-width: 0;
 }
-/*.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus{
-color:#fff;
-background:#1A237E;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus{
-color:#fff;
-background:#1A237E;
-}
-.navbar-default .navbar-nav .open .dropdown-menu> li > a,
-.navbar-default .navbar-nav .open .dropdown-menu {
-background-color:#303F9F;
-color:#eeeeee;
-}
-.navbar-default .navbar-nav .open .dropdown-menu> li > a:hover{
-color:#000000;
-}
-*/#navbar{
+#navbar{
     max-height: 490px;
 }
 .sidenav{

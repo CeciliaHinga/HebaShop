@@ -209,7 +209,7 @@ public function destroy($id)
 }
 
 public function cart(Request $request) {
- // $products = CategoryType::where('user_id',Auth::user()->id)->first();
+$cart = Cart::content();
  if ($request->isMethod('post')) {
         $product_id = $request->get('product_id');
         $product = CategoryType::find($product_id);
@@ -218,24 +218,33 @@ public function cart(Request $request) {
         $shopping ->instance = $request->get('product_id');
         $shopping ->content = $request->get('ads_price');
         $shopping ->save();
-        Cart::add(array('id' => $product_id, 'name' => $product->ads_title, 'qty' => 1, 'price' => $product->ads_price));
-    }
+
+        // $shopping = Shopping::lists('identifier','instance');
+        // $shopping ->identifier = $request->get('user_id');
+        // $shopping ->instance = $request->get('product_id');
+        // $shopping ->content = $request->get('ads_price') + 1;
+        // $shopping ->update();
+       Cart::add(array('id' => $product_id, 'name' => $product->ads_title, 'qty' => 1, 'price' => $product->ads_price));
+       }
 //increment the quantity
     if ($request->get('product_id') && ($request->get('increment')) == 1) {
         $rowId = Cart::search(function($key, $value) use($request){
 return $key->id == $request->product_id;
-});
+
         $item = Cart::get($rowId[0]);
 
         Cart::update($rowId[0], $item->qty + 1);
+        });
     }
 
     //decrease the quantity
     if ($request->get('product_id') && ($request->get('decrease')) == 1) {
-        $rowId = Cart::search(array('id' => $request->get('product_id')));
+        $rowId = Cart::search(function($key, $value) use($request){
+return $key->id == $request->product_id;
         $item = Cart::get($rowId[0]);
 
         Cart::update($rowId[0], $item->qty - 1);
+      });
     }
     $related = CategoryType::orderBy('id','desc')->paginate(15);
     $products = CategoryType::get();
@@ -245,5 +254,23 @@ return $key->id == $request->product_id;
     return view('cart', array('cart' => $cart, 'title' => 'Welcome', 'description' => '', 'page' => 'home',
      'related' =>$related, 'products' =>$products));
 }
-
+public function clear_cart()
+{
+    $products = Shopping::join('category_types','category_types.id','=','shoppingcart.instance')->where('shoppingcart.identifier','=',Auth::user()->id)->delete();
+        Cart::destroy();
+        return Redirect::away('advertisement/cart');
+}
+public function cart_remove_item(Request $request)
+{
+     $rowId = Shopping::where([['shoppingcart.identifier','=',Auth::user()->id],
+      ['shoppingcart.instance','=',$request->get('product_id')]])->delete();
+     $rowId = Cart::search(function($key, $value) use($request){
+      return $key->id == $request->product_id;
+     // foreach($products as $product)
+     // {
+     Cart::remove($rowId[0]);
+   // }
+   });
+      return Redirect::away('advertisement/cart'); 
+    }
 }

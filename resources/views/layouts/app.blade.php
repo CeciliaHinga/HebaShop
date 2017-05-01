@@ -104,7 +104,7 @@
 <li><a href="/">View ADs</a></li>
 <li><a href="/advertisement/create">My Adverts</a></li>
 </li></ul></li>
-         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-users" aria-hidden="true"></span>Customers<span class="caret"></span></a>  
+<!--          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-users" aria-hidden="true"></span>Customers<span class="caret"></span></a>  
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('roles.index') }}">View Roles</a></li>
     <li><a href="{{route('roles.createrole') }}">New Role</a></li> 
@@ -118,7 +118,7 @@
        <ul class="dropdown-menu dropdown-menu-right">
     <li><a href="{{route('users') }}">View Users</a></li>
     <li><a href="{{route('users.create') }}">New Users</a></li> 
-  </ul> </li>
+  </ul> </li> -->
 </li>        
 @if (Auth::user())
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Profile<span class="caret"></span></a>
@@ -139,8 +139,9 @@
 @else
 <div id="navbar" class="navbar-collapse collapse in" id="navbar">
 <ul class="nav navbar-nav navbar-right">
-<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
+@if(Entrust::hasRole('Customer'))
+<li><a href="/customers"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>Dashboard</a></li>@else
+<li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>@endif<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Categories<span class="caret"></span></a>
 <ul class="dropdown-menu">
 <li class="{{ Request::path() == '/categories/1' ? 'active' : '' }}"><a href="{{ url('/categories/1') }}" class="dropdown-header">Appliances</a>
 <li><a href="/types/1">Toys</a></li>

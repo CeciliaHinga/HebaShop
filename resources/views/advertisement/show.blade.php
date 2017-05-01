@@ -37,14 +37,17 @@
                 <p style="padding:20px;"></p>
                 <div class="col-sm-12">
                 Posted by:
-                <a href="{{ route('shops.show',$advertisement->user_id) }}">@foreach($users as $user) {{ $user->name}} @endforeach</a></div>
+                <a href="{{ route('shops.show',$advertisement->user_id) }}">@foreach($users as $user) 
+                @if($user->user_id ==$advertisement->user_id && $user->id == $advertisement->id) {{ $user->name}} @endif @endforeach</a></div>
                 <p style="padding:20px;"></p>
-@if(Entrust::hasRole(['Customer','Shopkeeper']) || !Auth::user())
+@if(Auth::user()->id == $advertisement->user_id)
+
+@else 
 <div class="col-sm-12"><form method="POST" action="{{route('advertisement.cart')}}">
                                             <input type="hidden" name="product_id" value="{{$advertisement->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                            <input type="hidden" name="ads_price" value="{{ $advertisement->ads_price }}">
+                                            <input type="hidden" name="ads_price" value="{{1}}">
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart
@@ -70,7 +73,7 @@
                 </span>
                 @endif
                 &puncsp;&puncsp; --><span class="badge">
-                Ksh&puncsp;{{ $advertisement->ads_price }}</span>
+                Ksh&puncsp;{{ number_format($advertisement->ads_price, 2, '.', ',') }}</span>
                 </h4></div>
                 <p>{{ $advertisement->ads_content }}</p>
                 <p><!--<a class="btn btn-primary btn-xs" href="#">More &raquo;</a>-->&puncsp;&puncsp;</p>

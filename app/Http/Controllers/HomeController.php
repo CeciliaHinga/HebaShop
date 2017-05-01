@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Role;
 use App\Category;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -50,7 +51,18 @@ class HomeController extends Controller
     $categories = CategoryType::paginate(15);
     $category = User::join("category_types","category_types.user_id","=","users.id")->where("users.id","=",$id)->count();
     $categories = User::join("category_types","category_types.user_id","=","users.id")->paginate(15);
-    // $category = Category::join("types","types.category_id","=","categories.id")->paginate(15);
-        return view('shops.show',compact('category','categories','users'));
+        $sales = CategoryType::join('shoppingcart','shoppingcart.instance','=','category_types.id')
+        ->where('category_types.user_id','=',$id)->count();
+        return view('shops.show',compact('category','categories','users','sales'));
+    }
+    public function shops()
+    {
+        // $roles = Role::join("role_user","role_user.role_id","=","roles.id")->get();
+        $users = User::join("role_user","role_user.user_id","=","users.id")
+        ->where('role_user.role_id','=',2)->orderBy('user_id','DESC')->paginate(10);
+        $roles = Role::get();
+        // $userRole = $users->roles->lists('display_name','id')->toArray();
+
+        return view('shops.index',compact('roles','users','userRole'));        
     }
 }

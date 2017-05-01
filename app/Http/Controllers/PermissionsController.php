@@ -70,7 +70,7 @@ class PermissionsController extends Controller
         $permission->save();
 
         return redirect()->route('roles.index')
-                        ->with('success','Permission created successfully. Attach it to a permission');
+                        ->with('success','Permission created successfully. Attach it to a role');
     }
         public function show($id)
     {

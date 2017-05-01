@@ -41,7 +41,7 @@
 			@endpermission
 			@permission('role-delete')
 			{!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Delete', array('class' => 'btn btn-danger', 'Onclick' => 'ConfirmDelete();')) !!}
         	{!! Form::close() !!}
         	@endpermission
 		</td>
@@ -52,3 +52,16 @@
 	</div>
 	</div>
 @endsection
+@section('scripts')
+    <script>
+
+        function ConfirmDelete()
+        {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+        </script>
+@endsection        

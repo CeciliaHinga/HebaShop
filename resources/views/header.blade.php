@@ -157,22 +157,22 @@
                                 <a href="{{route('users') }}">Customers</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="{{route('permissions.index') }}">Products</a>
+                                <!-- <a href="{{route('permissions.index') }}">Products</a> -->
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="{{route('roles.index') }}">Sales</a>
+                                <a href="{{route('orders.print') }}">Sales</a>
                             </div>
                             @else
                             <div class="col-xs-4 text-center">
-                                <a href="{{route('users') }}">Shops</a>
+                                <a href="{{route('shops.home')}}">Shops</a>
                             </div>
-                            <div class="col-xs-4 text-center">
+<!--                             <div class="col-xs-4 text-center">
                                 <a href="{{route('permissions.index') }}">Purchases</a>
                             </div>
                             <div class="col-xs-4 text-center">
                                 <a href="{{route('roles.index') }}">Followers</a>
                             </div>
-                            @endif
+ -->                            @endif
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">

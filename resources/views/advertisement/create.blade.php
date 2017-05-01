@@ -41,7 +41,7 @@
         <td><img class="media-object img-thumbnail" src="/uploadedimage/advertising/thumbnails/{{'thumb-' . $advert->ads_image. '.' . $advert->image_extension . '?'. 'time='. time() }}"></td>
         <!-- <td>@if ($advert->is_featured==1) YES @else NO @endif</td>
         <td>@if ($advert->is_active==1)  YES @else NO @endif</td> -->
-        <td>Ksh&puncsp;{{ $advert->ads_price}}</td>
+        <td>Ksh&puncsp;{{ number_format($advert->ads_price, 2, '.', ',')}}</td>
         <td>
             <a class="btn btn-info" href="{{ route('advertisement.show',$advert->id) }}">Show</a>
             @permission('item-edit')

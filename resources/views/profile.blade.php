@@ -24,7 +24,7 @@
                      </div></div><div class="col-sm-4 border-right"><div class="description-block">
                      	<h5 class="description-header">{{$category}}</h5><span class="description-text">PRODUCTS</span>
                      </div></div><div class="col-sm-4 border-right"><div class="description-block">
-                     	<h5 class="description-header">20</h5><span class="description-text">SALES</span>
+                     	<h5 class="description-header">{{$sales}}</h5><span class="description-text">SALES</span>
                      </div>
                      </div> </div>
 </div> </div>

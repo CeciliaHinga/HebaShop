@@ -24,7 +24,9 @@
         "elasticsearch/elasticsearch": "2.*",
         "gloudemans/shoppingcart": "^2.3",
         "reportico/laravel-reportico": "~5.2",
-        "amsgames/laravel-shop": "^0.2.12"
+        "amsgames/laravel-shop": "^0.2.12",
+        "khill/lavacharts": " ~3.1",
+        "barryvdh/laravel-dompdf": "^0.8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
